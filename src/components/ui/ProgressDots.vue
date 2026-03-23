@@ -1,5 +1,5 @@
 <template>
-  <div class="progress-dots" aria-label="流程进度">
+  <div class="progress-dots" aria-label="娴佺▼杩涘害">
     <span
       v-for="index in count"
       :key="index"

@@ -11,7 +11,7 @@ describe('session store', () => {
     localStorage.setItem(
       SESSION_STORAGE_KEY,
       JSON.stringify({
-        displayName: 'Ð¡Âú',
+        displayName: 'Xiaoman',
         email: 'xiaoman@example.com',
       }),
     );
@@ -19,7 +19,7 @@ describe('session store', () => {
     const session = createSessionStore(window.localStorage);
 
     expect(session.isAuthenticated.value).toBe(true);
-    expect(session.user.value?.displayName).toBe('Ð¡Âú');
+    expect(session.user.value?.displayName).toBe('Xiaoman');
   });
 
   it('persists and clears the mock session', () => {

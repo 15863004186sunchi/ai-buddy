@@ -31,7 +31,7 @@ describe('auth page', () => {
 
     await wrapper.get('[data-testid="auth-tab-register"]').trigger('click');
 
-    expect(wrapper.text()).toContain('创建你的专属陪伴');
+    expect(wrapper.text()).toContain('\u521b\u5efa\u4f60\u7684\u4e13\u5c5e\u966a\u4f34');
     expect(wrapper.find('input[name="displayName"]').exists()).toBe(true);
   });
 
@@ -44,24 +44,24 @@ describe('auth page', () => {
     await wrapper.get('input[name="confirmPassword"]').setValue('456');
     await wrapper.get('[data-testid="auth-form"]').trigger('submit');
 
-    expect(wrapper.text()).toContain('请输入昵称');
-    expect(wrapper.text()).toContain('请输入有效的邮箱地址');
-    expect(wrapper.text()).toContain('密码至少需要 8 位');
-    expect(wrapper.text()).toContain('两次输入的密码不一致');
+    expect(wrapper.text()).toContain('\u8bf7\u8f93\u5165\u6635\u79f0');
+    expect(wrapper.text()).toContain('\u8bf7\u8f93\u5165\u6709\u6548\u7684\u90ae\u7bb1\u5730\u5740');
+    expect(wrapper.text()).toContain('\u5bc6\u7801\u81f3\u5c11\u9700\u8981 8 \u4f4d');
+    expect(wrapper.text()).toContain('\u4e24\u6b21\u8f93\u5165\u7684\u5bc6\u7801\u4e0d\u4e00\u81f4');
   });
 
   it('navigates to home after valid register submission', async () => {
     const { router, wrapper } = await mountAuthPage();
 
     await wrapper.get('[data-testid="auth-tab-register"]').trigger('click');
-    await wrapper.get('input[name="displayName"]').setValue('小满');
+    await wrapper.get('input[name="displayName"]').setValue('Xiaoman');
     await wrapper.get('input[name="email"]').setValue('xiaoman@example.com');
     await wrapper.get('input[name="password"]').setValue('password123');
     await wrapper.get('input[name="confirmPassword"]').setValue('password123');
     await wrapper.get('[data-testid="auth-form"]').trigger('submit');
     await flushPromises();
 
-    expect(useSession().user.value?.displayName).toBe('小满');
+    expect(useSession().user.value?.displayName).toBe('Xiaoman');
     expect(router.currentRoute.value.fullPath).toBe('/home');
   });
 });

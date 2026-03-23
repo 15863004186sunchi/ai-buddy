@@ -37,7 +37,7 @@ function buildStore(storage: StorageLike): SessionStore {
     user,
     isAuthenticated,
     login(payload) {
-      const displayName = payload.email.split('@')[0] || 'ÂÃ°é';
+      const displayName = payload.email.split('@')[0] || 'æ—…ä¼´';
       persist({
         displayName,
         email: payload.email,

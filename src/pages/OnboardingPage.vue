@@ -6,7 +6,7 @@
           <p class="onboarding-page__eyebrow">{{ stepData.eyebrow }}</p>
           <h1 class="page-title">{{ stepData.title }}</h1>
         </div>
-        <button class="onboarding-page__skip" @click="router.push('/auth')">Ìø¹ý</button>
+        <button class="onboarding-page__skip" @click="router.push('/auth')">è·³è¿‡</button>
       </header>
 
       <GlassCard class="onboarding-page__card">
@@ -19,7 +19,7 @@
       <div class="onboarding-page__footer">
         <ProgressDots :count="onboardingSteps.length" :current="stepData.step" />
         <AppButton block @click="nextStep">
-          {{ stepData.step === onboardingSteps.length ? '½øÈëµÇÂ¼' : '¼ÌÐø' }}
+          {{ stepData.step === onboardingSteps.length ? 'è¿›å…¥ç™»å½•' : 'ç»§ç»­' }}
         </AppButton>
       </div>
     </main>

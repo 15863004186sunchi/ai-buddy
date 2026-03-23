@@ -14,11 +14,11 @@ export function validateLoginForm(form: LoginForm): ValidationErrors<'email' | '
   const errors: ValidationErrors<'email' | 'password'> = {};
 
   if (!form.email.trim() || !/.+@.+\..+/.test(form.email)) {
-    errors.email = 'ÇëÊäÈëÓĞĞ§µÄÓÊÏäµØÖ·';
+    errors.email = 'è¯·è¾“å…¥æœ‰æ•ˆçš„é‚®ç®±åœ°å€';
   }
 
   if (!form.password.trim()) {
-    errors.password = 'ÇëÊäÈëÃÜÂë';
+    errors.password = 'è¯·è¾“å…¥å¯†ç ';
   }
 
   return errors;
@@ -30,19 +30,19 @@ export function validateRegisterForm(
   const errors: ValidationErrors<'displayName' | 'email' | 'password' | 'confirmPassword'> = {};
 
   if (!form.displayName.trim()) {
-    errors.displayName = 'ÇëÊäÈëêÇ³Æ';
+    errors.displayName = 'è¯·è¾“å…¥æ˜µç§°';
   }
 
   if (!form.email.trim() || !/.+@.+\..+/.test(form.email)) {
-    errors.email = 'ÇëÊäÈëÓĞĞ§µÄÓÊÏäµØÖ·';
+    errors.email = 'è¯·è¾“å…¥æœ‰æ•ˆçš„é‚®ç®±åœ°å€';
   }
 
   if (form.password.trim().length < 8) {
-    errors.password = 'ÃÜÂëÖÁÉÙĞèÒª 8 Î»';
+    errors.password = 'å¯†ç è‡³å°‘éœ€è¦ 8 ä½';
   }
 
   if (form.confirmPassword !== form.password) {
-    errors.confirmPassword = 'Á½´ÎÊäÈëµÄÃÜÂë²»Ò»ÖÂ';
+    errors.confirmPassword = 'ä¸¤æ¬¡è¾“å…¥çš„å¯†ç ä¸ä¸€è‡´';
   }
 
   return errors;

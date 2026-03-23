@@ -16,10 +16,10 @@
 
 <script setup lang="ts">
 const items = [
-  { key: 'home', label: 'Ê×Ò³', icon: '?' },
-  { key: 'chat', label: 'Åã°é', icon: '?' },
-  { key: 'journal', label: 'ÈÕ¼Ç', icon: '?' },
-  { key: 'logout', label: 'ÍË³ö', icon: '¨J' },
+  { key: 'home', label: 'é¦–é¡µ', icon: '?' },
+  { key: 'chat', label: 'é™ªä¼´', icon: '?' },
+  { key: 'journal', label: 'æ—¥è®°', icon: '?' },
+  { key: 'logout', label: 'é€€å‡º', icon: 'â†—' },
 ];
 
 defineProps<{

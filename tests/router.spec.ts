@@ -23,7 +23,7 @@ describe('app bootstrap', () => {
       },
     });
 
-    expect(wrapper.text()).toContain('开始你的心灵旅程');
+    expect(wrapper.text()).toContain('\u8fdb\u5165\u4f53\u9a8c');
   });
 
   it('renders onboarding content for the current step route', async () => {
@@ -37,7 +37,7 @@ describe('app bootstrap', () => {
       },
     });
 
-    expect(wrapper.text()).toContain('记录情绪，见证成长');
+    expect(wrapper.text()).toContain('\u8bb0\u5f55\u60c5\u7eea\uff0c\u89c1\u8bc1\u6210\u957f');
   });
 
   it('redirects unauthenticated users away from home', async () => {
