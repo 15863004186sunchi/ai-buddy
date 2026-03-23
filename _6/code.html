@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-surface": "#0d0f0d",
+              "outline-variant": "#b0b3ae",
+              "inverse-on-surface": "#9d9d9a",
+              "primary-fixed": "#a190f5",
+              "inverse-primary": "#a190f5",
+              "on-surface": "#303330",
+              "primary-dim": "#5544a3",
+              "on-secondary-fixed-variant": "#785342",
+              "background": "#faf9f6",
+              "tertiary-container": "#c2fded",
+              "surface-tint": "#6150b0",
+              "primary-container": "#a190f5",
+              "surface-dim": "#d9dbd6",
+              "tertiary-dim": "#235c51",
+              "tertiary": "#31685d",
+              "error": "#a8364b",
+              "outline": "#797b78",
+              "on-tertiary": "#e3fff6",
+              "on-error-container": "#6e0523",
+              "tertiary-fixed-dim": "#b4eedf",
+              "on-tertiary-fixed-variant": "#366e62",
+              "secondary-fixed-dim": "#fcc9b4",
+              "surface-container-low": "#f4f4f0",
+              "secondary-dim": "#6f4b3a",
+              "primary": "#6150b0",
+              "secondary-container": "#ffdbcc",
+              "on-tertiary-container": "#2b6358",
+              "surface-bright": "#faf9f6",
+              "on-primary-fixed-variant": "#2a1277",
+              "surface": "#faf9f6",
+              "tertiary-fixed": "#c2fded",
+              "surface-container-highest": "#e1e3de",
+              "secondary": "#7c5645",
+              "on-secondary": "#fff7f5",
+              "on-secondary-container": "#6d4939",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed": "#155146",
+              "secondary-fixed": "#ffdbcc",
+              "error-container": "#f97386",
+              "on-error": "#fff7f7",
+              "on-primary-fixed": "#000000",
+              "on-background": "#303330",
+              "surface-variant": "#e1e3de",
+              "on-primary-container": "#20006e",
+              "surface-container": "#eeeeea",
+              "on-primary": "#fcf7ff",
+              "on-secondary-fixed": "#593728",
+              "on-surface-variant": "#5d605c",
+              "surface-container-high": "#e7e9e4",
+              "primary-fixed-dim": "#9483e6",
+              "error-dim": "#6b0221"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-effect {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<header class="fixed top-0 w-full z-50 bg-[#faf9f6]/60 backdrop-blur-xl flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#6150b0] text-2xl">bubble_chart</span>
+<h1 class="text-xl font-bold text-[#6150b0] font-headline tracking-tight">疗愈空间</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#f4f4f0]/50 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">settings</span>
+</button>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-2xl mx-auto space-y-10">
+<section>
+<div class="relative w-full aspect-[4/5] rounded-xl overflow-hidden shadow-sm group">
+<img alt="Daily Recommendation" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Dreamy foggy purple forest landscape at dawn" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4AG8jjDOgETwM8vba8F4P7MSBZn2S679Pk0kWtmFxZny8D9DNpsMqKQng1F00ghhFXZbB1ibTXFm8U1tr-Srmjd45kCM_92UpR_gViJCHmnqEGfcdSjYCHxepIlpgY3rOD0can_QlgSb6SRdlsJ8evdmOFBLEzvWxMWaRini6XkyJqOI9P5TXNx-u4UX904WYH-p9F0Jb8OoqSMKT7iqxY7xfmBhggSw3c84pfCeY9mYWr4DB36ZHtGXmwX8x3clSiBLtF82DEyUf"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#6150b0]/80 via-transparent to-transparent"></div>
+<div class="absolute inset-0 p-8 flex flex-col justify-end text-white">
+<span class="inline-block px-4 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-medium tracking-widest mb-4 w-fit">每日推荐</span>
+<h2 class="text-4xl font-headline font-extrabold leading-tight mb-2">深度睡眠引导</h2>
+<p class="text-white/80 text-sm mb-8 max-w-[80%]">在星光与海浪的交响中，开启一场通往潜意识的温柔旅程。</p>
+<div class="flex items-center gap-4">
+<button class="w-16 h-16 flex items-center justify-center rounded-full bg-white text-[#6150b0] shadow-lg hover:scale-105 transition-transform active:scale-95">
+<span class="material-symbols-outlined text-4xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+<div>
+<p class="font-semibold">24 分钟</p>
+<p class="text-xs text-white/60">5.2k 人正在聆听</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="text-xl font-headline font-bold text-[#6150b0]">心境选择</h3>
+</div>
+<div class="flex gap-3 overflow-x-auto hide-scrollbar -mx-6 px-6 py-2">
+<button class="flex-none px-6 py-3 rounded-full bg-primary-container text-on-primary-container font-medium text-sm shadow-sm">焦虑</button>
+<button class="flex-none px-6 py-3 rounded-full bg-surface-container-low text-on-surface-variant font-medium text-sm hover:bg-surface-container transition-colors">疲惫</button>
+<button class="flex-none px-6 py-3 rounded-full bg-surface-container-low text-on-surface-variant font-medium text-sm hover:bg-surface-container transition-colors">专注</button>
+<button class="flex-none px-6 py-3 rounded-full bg-surface-container-low text-on-surface-variant font-medium text-sm hover:bg-surface-container transition-colors">喜悦</button>
+<button class="flex-none px-6 py-3 rounded-full bg-surface-container-low text-on-surface-variant font-medium text-sm hover:bg-surface-container transition-colors">低落</button>
+</div>
+</section>
+<section class="space-y-6">
+<h3 class="text-xl font-headline font-bold text-[#6150b0]">疗愈分类</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-6 rounded-lg flex flex-col items-center text-center gap-4 hover:bg-surface-container transition-colors group cursor-pointer">
+<div class="w-16 h-16 rounded-full bg-tertiary-container flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-on-tertiary-container text-3xl">bedtime</span>
+</div>
+<div>
+<p class="font-headline font-bold">助眠原声</p>
+<p class="text-xs text-on-surface-variant mt-1">128 个音频</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg flex flex-col items-center text-center gap-4 hover:bg-surface-container transition-colors group cursor-pointer">
+<div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-on-secondary-container text-3xl">self_improvement</span>
+</div>
+<div>
+<p class="font-headline font-bold">减压冥想</p>
+<p class="text-xs text-on-surface-variant mt-1">85 个引导</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg flex flex-col items-center text-center gap-4 hover:bg-surface-container transition-colors group cursor-pointer">
+<div class="w-16 h-16 rounded-full bg-[#e8def8] flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[#6150b0] text-3xl">waves</span>
+</div>
+<div>
+<p class="font-headline font-bold">专注白噪音</p>
+<p class="text-xs text-on-surface-variant mt-1">42 种氛围</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg flex flex-col items-center text-center gap-4 hover:bg-surface-container transition-colors group cursor-pointer">
+<div class="w-16 h-16 rounded-full bg-[#fdf2d0] flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[#854d0e] text-3xl">wb_sunny</span>
+</div>
+<div>
+<p class="font-headline font-bold">晨间唤醒</p>
+<p class="text-xs text-on-surface-variant mt-1">15 个时刻</p>
+</div>
+</div>
+</div>
+</section>
+<section class="space-y-6">
+<div class="flex items-center justify-between">
+<h3 class="text-xl font-headline font-bold text-[#6150b0]">最近播放</h3>
+<button class="text-primary text-sm font-semibold">查看全部</button>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-4 p-4 rounded-lg bg-surface-container-lowest border border-outline-variant/5 hover:shadow-md transition-shadow cursor-pointer">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-none">
+<img alt="Rain Sound" class="w-full h-full object-cover" data-alt="Close up of rain drops on a window pane" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSqJIiEKQnaNIESFwqOJAFMUkCUchO5S67w4mmUMmZwV_73KIt-SyAmVqTv0Cu7_u-gdC80JTPHQ2rWHWk-MuKoyGnhUhuZUgB4iEJnSMKdCaTe5FFlAk2erpHygNrFy4RZ6-V1XpubFBkEQ-NQumv5fyLAt6EGAYgK6qO-TcGpNgWki_7FmDB8B6FcpW8F_Su6X6ELmAD7jufQ4lYDXJrgdUynl0qFOlpxLMZm1J1XZWKH70ZGDDWbVjwsmqSZ8BbuEAznSxPDmuQ"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-headline font-bold truncate">林间细雨</h4>
+<p class="text-xs text-on-surface-variant mt-1">环境音 · 15 分钟</p>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary-container/20 text-primary">
+<span class="material-symbols-outlined">play_circle</span>
+</button>
+</div>
+<div class="flex items-center gap-4 p-4 rounded-lg bg-surface-container-lowest border border-outline-variant/5 hover:shadow-md transition-shadow cursor-pointer">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-none">
+<img alt="Forest Zen" class="w-full h-full object-cover" data-alt="Sunlight filtering through tall green forest trees" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHrLCRdaWdxOPHqCQqry7J-q8hVl1ykjHQauWGjBApHY3uV_Biq9PUkMpP39hMJW8eYEN8QOjzT7YtdDxTYOdtY7YYpu8ZWUfiGYFQZiQFY29fzuU5selDaNt-ztRs5JzFoUyQk4ofaerC5N0yqlMukDHyN9uzUvVTKIhkHniVd40c7kUt4VTScR5uekCMFKxbI9CGKY7Z2MB1G1ltOygymIy2RuAFnu5w8GEJFlog9cufC9LbsVOPeI01cWikQf0Y95PBRKovq4v0"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-headline font-bold truncate">森林深处的宁静</h4>
+<p class="text-xs text-on-surface-variant mt-1">冥想引导 · 30 分钟</p>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary-container/20 text-primary">
+<span class="material-symbols-outlined">play_circle</span>
+</button>
+</div>
+<div class="flex items-center gap-4 p-4 rounded-lg bg-surface-container-lowest border border-outline-variant/5 hover:shadow-md transition-shadow cursor-pointer">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-none">
+<img alt="Ocean Breeze" class="w-full h-full object-cover" data-alt="Aerial view of calm blue ocean waves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoaoF86SAej2vFrG8H4-vx3aTDhtBhllJQoWJOArbu-QvyE3rZPBkLhMG4veYhq2dF_mB0-Ed2DOWqVFCkeFwsuzeUYHc4RYQ5yHII5GYSKBhJfRQjP1lhmkjTVQ6P7amzHubLvScWnG8UpAEuf1jPe3sNQsFSj2ofJegZjbwCE7Y2r6fCsSWKN2v1h5kYISFdabc9UU6qYFd-VN2-a1qHP22GL0C0NvAIfRm1RPCN0QmjuX_0ESeJ8GQ8ernihzx8ZjfN2o7m-8i7"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-headline font-bold truncate">潮汐呼吸法</h4>
+<p class="text-xs text-on-surface-variant mt-1">呼吸练习 · 10 分钟</p>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary-container/20 text-primary">
+<span class="material-symbols-outlined">play_circle</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-4 pt-3 bg-white/80 backdrop-blur-2xl border-t border-gray-100 z-50 rounded-t-[2.5rem] shadow-2xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-primary transition-all group" href="#">
+<span class="material-symbols-outlined text-2xl mb-1 group-hover:scale-110 transition-transform">home</span>
+<span class="text-[10px] font-bold tracking-wider font-headline">首页</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-primary transition-all group" href="#">
+<span class="material-symbols-outlined text-2xl mb-1 group-hover:scale-110 transition-transform">chat_bubble</span>
+<span class="text-[10px] font-bold tracking-wider font-headline">聊天</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-primary transition-all group" href="#">
+<span class="material-symbols-outlined text-2xl mb-1 group-hover:scale-110 transition-transform">event_note</span>
+<span class="text-[10px] font-bold tracking-wider font-headline">日志</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary text-white rounded-full px-6 py-2.5 shadow-lg shadow-primary/30 scale-105" href="#">
+<span class="material-symbols-outlined text-2xl mb-0.5" style="font-variation-settings: 'FILL' 1;">self_improvement</span>
+<span class="text-[10px] font-bold tracking-wider font-headline">疗愈</span>
+</a>
+</nav>
+</body></html>

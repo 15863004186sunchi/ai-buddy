@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be_Vietnam_Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .tonal-depth-shift {
+            background: linear-gradient(180deg, rgba(250, 249, 246, 0.8) 0%, rgba(244, 244, 240, 0.4) 100%);
+        }
+        .reflection-orb {
+            background: radial-gradient(circle, #a190f5 0%, #ffdbcc 50%, #c2fded 100%);
+            filter: blur(40px);
+            opacity: 0.15;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-dim": "#6f4b3a",
+              "error": "#a8364b",
+              "tertiary": "#31685d",
+              "tertiary-container": "#c2fded",
+              "on-tertiary-container": "#2b6358",
+              "surface-container-highest": "#e1e3de",
+              "error-container": "#f97386",
+              "primary-fixed-dim": "#9483e6",
+              "on-surface-variant": "#5d605c",
+              "on-secondary-fixed": "#593728",
+              "tertiary-fixed": "#c2fded",
+              "primary-container": "#a190f5",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#a190f5",
+              "primary-dim": "#5544a3",
+              "primary": "#6150b0",
+              "secondary": "#7c5645",
+              "surface-tint": "#6150b0",
+              "tertiary-dim": "#235c51",
+              "outline-variant": "#b0b3ae",
+              "inverse-on-surface": "#9d9d9a",
+              "on-tertiary-fixed": "#155146",
+              "on-background": "#303330",
+              "on-tertiary": "#e3fff6",
+              "on-error-container": "#6e0523",
+              "surface-container-high": "#e7e9e4",
+              "on-primary-container": "#20006e",
+              "on-tertiary-fixed-variant": "#366e62",
+              "on-primary-fixed": "#000000",
+              "background": "#faf9f6",
+              "secondary-container": "#ffdbcc",
+              "surface-container-low": "#f4f4f0",
+              "surface": "#faf9f6",
+              "on-error": "#fff7f7",
+              "surface-container": "#eeeeea",
+              "on-secondary-container": "#6d4939",
+              "tertiary-fixed-dim": "#b4eedf",
+              "on-primary": "#fcf7ff",
+              "inverse-surface": "#0d0f0d",
+              "on-secondary": "#fff7f5",
+              "surface-dim": "#d9dbd6",
+              "surface-variant": "#e1e3de",
+              "on-surface": "#303330",
+              "outline": "#797b78",
+              "secondary-fixed-dim": "#fcc9b4",
+              "inverse-primary": "#a190f5",
+              "secondary-fixed": "#ffdbcc",
+              "on-primary-fixed-variant": "#2a1277",
+              "error-dim": "#6b0221",
+              "on-secondary-fixed-variant": "#785342",
+              "surface-bright": "#faf9f6"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container/30">
+<!-- Top Navigation Bar -->
+<header class="bg-stone-50/60 backdrop-blur-xl fixed top-0 w-full z-50 shadow-sm shadow-violet-500/5 flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-3 scale-95 active:scale-90 transition-transform cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-surface-container overflow-hidden">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="Soft focused male portrait professional headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4wiMY51IPtk_YgBAaAR2mC1UM2IvKJWgiAeK352uV7l8eys6m1fQulMatyM-AdOYqV7H3DqMOQYuJCeEgJUoQveibYVTp55ZKZKeooMypsnel3CcuctejiGDZ4Vxxa_MF3D6c7f3aj40UhZIpPhPf8VNvI6DWrMEdd2KZ5_39XEfqr2O3a6NMBIPwxEzzaUQJBDOt87wMSLoxcIsMbZKkRrzpU1Qsjj8NnsizcZS8lbvPHdcWXBkdg1jYwCxq4-PGM2sxBdEnECPD"/>
+</div>
+</div>
+<div class="font-['Plus_Jakarta_Sans'] font-semibold tracking-tight text-2xl font-bold bg-gradient-to-tr from-violet-600 to-violet-400 bg-clip-text text-transparent">
+            SoulEcho
+        </div>
+<button class="text-stone-500 hover:opacity-80 transition-opacity scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-2xl mx-auto relative overflow-hidden">
+<!-- Background Reflection Orb -->
+<div class="absolute -top-20 -right-20 w-80 h-80 reflection-orb rounded-full z-0"></div>
+<div class="absolute top-1/2 -left-40 w-96 h-96 reflection-orb rounded-full z-0 opacity-10"></div>
+<!-- Hero Section -->
+<section class="relative z-10 mb-12 text-center">
+<h1 class="font-headline text-3xl font-extrabold tracking-tight text-on-surface mb-3">
+                欢迎回来，灵动之心
+            </h1>
+<p class="font-body text-on-surface-variant text-lg leading-relaxed max-w-xs mx-auto">
+                深呼吸，这一刻你的感觉如何？
+            </p>
+</section>
+<!-- Mood Grid (Bento Style) -->
+<section class="grid grid-cols-6 gap-4 mb-12 relative z-10">
+<!-- Calming (Large) -->
+<div class="col-span-4 bg-surface-container-low rounded-lg p-6 flex flex-col justify-between aspect-video group cursor-pointer hover:bg-surface-container-lowest transition-colors duration-500">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="bedtime">bedtime</span>
+<span class="text-xs font-label uppercase tracking-widest text-outline">Balance</span>
+</div>
+<h3 class="font-headline text-2xl font-bold text-primary">平静</h3>
+</div>
+<!-- Grateful (Small) -->
+<div class="col-span-2 bg-secondary-container rounded-lg p-6 flex flex-col justify-between aspect-square cursor-pointer hover:brightness-105 transition-all">
+<span class="material-symbols-outlined text-secondary text-2xl" data-icon="favorite">favorite</span>
+<h3 class="font-headline text-lg font-bold text-on-secondary-container">感激</h3>
+</div>
+<!-- Satisfied (Medium) -->
+<div class="col-span-3 bg-tertiary-container rounded-lg p-6 flex flex-col justify-between aspect-square cursor-pointer hover:brightness-105 transition-all">
+<div class="w-10 h-10 rounded-full bg-on-tertiary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-container text-2xl" data-icon="sentiment_satisfied">sentiment_satisfied</span>
+</div>
+<h3 class="font-headline text-xl font-bold text-on-tertiary-container">满足</h3>
+</div>
+<!-- Anxious & Worried (Stack) -->
+<div class="col-span-3 flex flex-col gap-4">
+<div class="flex-1 bg-surface-container rounded-lg p-5 flex items-center gap-4 cursor-pointer hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="bolt">bolt</span>
+<h3 class="font-headline text-lg font-semibold text-on-surface">焦躁</h3>
+</div>
+<div class="flex-1 bg-surface-container rounded-lg p-5 flex items-center gap-4 cursor-pointer hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="cloud">cloud</span>
+<h3 class="font-headline text-lg font-semibold text-on-surface">忧虑</h3>
+</div>
+</div>
+</section>
+<!-- Central Action -->
+<div class="flex justify-center mb-16 relative z-10">
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-4 rounded-full font-headline font-bold text-lg shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-3">
+<span>点击开启反思</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Footer Quote -->
+<footer class="text-center px-8 relative z-10">
+<div class="w-12 h-0.5 bg-outline-variant/30 mx-auto mb-6"></div>
+<p class="font-body italic text-on-surface-variant leading-relaxed">
+                “每一个瞬间都是一次新的呼吸，每一个情绪都是通往内心深处的阶梯。”
+            </p>
+</footer>
+</main>
+<!-- Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-stone-50/80 backdrop-blur-2xl rounded-t-[32px] shadow-[0_-8px_32px_rgba(165,148,249,0.1)]">
+<!-- Active Home Tab -->
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-violet-100 to-orange-50 dark:from-violet-900/40 dark:to-orange-900/20 text-violet-800 dark:text-violet-200 rounded-full px-5 py-2 scale-105 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-medium mt-1">首页</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-5 py-2 hover:text-violet-500 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-medium mt-1">聊天</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-5 py-2 hover:text-violet-500 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-medium mt-1">日记</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-5 py-2 hover:text-violet-500 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="self_care">self_care</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-medium mt-1">疗愈</span>
+</a>
+</nav>
+</body></html>

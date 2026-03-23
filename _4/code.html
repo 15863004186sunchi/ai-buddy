@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SoulEcho - 详情</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-container": "#a190f5",
+                        "secondary-dim": "#6f4b3a",
+                        "on-tertiary-fixed": "#155146",
+                        "secondary-container": "#ffdbcc",
+                        "background": "#faf9f6",
+                        "error": "#a8364b",
+                        "outline-variant": "#b0b3ae",
+                        "surface-container": "#eeeeea",
+                        "error-container": "#f97386",
+                        "on-primary-fixed-variant": "#2a1277",
+                        "on-tertiary": "#e3fff6",
+                        "on-surface-variant": "#5d605c",
+                        "error-dim": "#6b0221",
+                        "on-error-container": "#6e0523",
+                        "surface-dim": "#d9dbd6",
+                        "tertiary": "#31685d",
+                        "on-secondary": "#fff7f5",
+                        "on-secondary-container": "#6d4939",
+                        "primary-dim": "#5544a3",
+                        "primary-fixed-dim": "#9483e6",
+                        "secondary-fixed": "#ffdbcc",
+                        "primary-fixed": "#a190f5",
+                        "tertiary-fixed": "#c2fded",
+                        "secondary-fixed-dim": "#fcc9b4",
+                        "surface-tint": "#6150b0",
+                        "outline": "#797b78",
+                        "surface-container-high": "#e7e9e4",
+                        "surface": "#faf9f6",
+                        "on-tertiary-fixed-variant": "#366e62",
+                        "tertiary-dim": "#235c51",
+                        "on-secondary-fixed": "#593728",
+                        "inverse-primary": "#a190f5",
+                        "tertiary-container": "#c2fded",
+                        "inverse-on-surface": "#9d9d9a",
+                        "surface-variant": "#e1e3de",
+                        "on-tertiary-container": "#2b6358",
+                        "surface-container-highest": "#e1e3de",
+                        "primary": "#6150b0",
+                        "tertiary-fixed-dim": "#b4eedf",
+                        "on-background": "#303330",
+                        "surface-container-low": "#f4f4f0",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#20006e",
+                        "inverse-surface": "#0d0f0d",
+                        "on-primary": "#fcf7ff",
+                        "on-error": "#fff7f7",
+                        "surface-bright": "#faf9f6",
+                        "on-primary-fixed": "#000000",
+                        "on-secondary-fixed-variant": "#785342",
+                        "on-surface": "#303330",
+                        "secondary": "#7c5645"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            color: #303330;
+            background-color: #faf9f6;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased">
+<!-- Focused View: Minimal Header -->
+<header class="flex items-center justify-between p-4 bg-background sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<div class="text-on-surface flex size-10 shrink-0 items-center justify-center cursor-pointer hover:bg-surface-container rounded-full transition-colors" data-icon="arrow_back">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h1 class="font-headline font-bold text-lg text-on-surface">SoulEcho</h1>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center justify-center size-10 text-on-surface rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</button>
+<button class="flex items-center justify-center size-10 text-on-surface rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</header>
+<main class="max-w-2xl mx-auto pb-24">
+<!-- Shared Hero Section Style Integrated -->
+<div class="@container">
+<div class="@[480px]:px-4 @[480px]:py-3">
+<div class="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden bg-surface-container-low @[480px]:rounded-xl min-h-[320px] shadow-sm" data-alt="Soft sunset over a calm lake with purple and gold clouds" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBkMkoJ3bbP_yxGZ-aWcWhHvGTdV8o6cuzKxrYOgg-ACF0qSX66jjRynN57yRQOqrTiV6u9v90gfMGCFI-6czF2K374cTbTysSp-eWfWrpJI6IowFHIxl4bWrwqj3lY2WVDT0WCeBLMzNbyNR6VHT8CfQud8SYriur4VVbFC_id2mdP0yAXpiebFGVkDw38FKcEdkkre80Tvevy8kL-dGmpjhTZCeEeoD2kS3yB4Lhg8NLP700q5FoqpYQV6Sc1kJBXPPcVL5PQl2GK");'>
+</div>
+</div>
+</div>
+<div class="px-6 py-6">
+<div class="flex items-center justify-between mb-2">
+<h4 class="text-primary font-label font-bold text-sm tracking-[0.05em]">2026年10月12日</h4>
+<div class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface text-xs font-medium">内容</div>
+</div>
+<h2 class="font-headline text-on-surface tracking-tight text-[32px] font-extrabold leading-tight mb-6">心灵的宁静</h2>
+<div class="space-y-6 font-body text-on-surface leading-relaxed text-lg">
+<p>傍晚的阳光斜斜地洒进窗台，那一抹余晖仿佛带走了白日里所有的喧嚣。我合上书，任由思绪在微光中起舞。</p>
+<p>这种宁静并非死寂，而是一种与自我达成的和解。我听见风掠过树梢的声音，感受到指尖残留的余温。或许，生命最珍贵的瞬间，往往就藏在这些无人问津的留白里。</p>
+<p>今天，我终于学会了如何不去强求，只是静静地存在。就像那落日，它并不遗憾白昼的逝去，因为它知道，黑暗也是星光的前奏。</p>
+</div>
+<!-- Tags Section -->
+<div class="flex gap-2 mt-8 flex-wrap">
+<span class="px-4 py-2 rounded-full bg-surface-container-low border border-outline-variant/15 text-on-surface-variant text-sm font-medium">#平静</span>
+<span class="px-4 py-2 rounded-full bg-surface-container-low border border-outline-variant/15 text-on-surface-variant text-sm font-medium">#日落</span>
+<span class="px-4 py-2 rounded-full bg-surface-container-low border border-outline-variant/15 text-on-surface-variant text-sm font-medium">#感激</span>
+</div>
+</div>
+<!-- AI Feedback Section: SoulEcho Card -->
+<div class="px-4 mt-8">
+<div class="bg-primary-container/10 p-6 rounded-xl border border-primary-container/20 relative overflow-hidden">
+<div class="absolute -top-10 -right-10 size-40 bg-primary-fixed/20 blur-3xl rounded-full"></div>
+<div class="flex items-center gap-3 mb-4">
+<div class="size-8 bg-gradient-to-br from-primary to-primary-container rounded-full flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<h3 class="font-headline font-bold text-primary-dim text-lg">心灵的回响</h3>
+</div>
+<div class="font-body text-on-primary-fixed-variant leading-relaxed italic opacity-90">
+                    “在这份细腻的文字中，我听见了你灵魂深处的呼吸。你对落日的感悟，不仅是对景色的记录，更是对自己内在力量的温柔确认。愿这份宁静能化作夜晚的梦境，守护你的每分每秒。”
+                </div>
+<div class="mt-4 flex justify-end">
+<button class="text-primary font-label font-bold text-sm flex items-center gap-1 hover:underline">
+                        继续对话 <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bottom Interaction -->
+<div class="mt-12 px-6 flex items-center justify-center gap-8">
+<div class="flex flex-col items-center gap-1 cursor-pointer group">
+<div class="size-12 rounded-full bg-surface-container-low flex items-center justify-center group-hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-on-surface" data-icon="favorite">favorite</span>
+</div>
+<span class="text-xs font-label text-on-surface-variant">收藏</span>
+</div>
+<div class="flex flex-col items-center gap-1 cursor-pointer group">
+<div class="size-12 rounded-full bg-surface-container-low flex items-center justify-center group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-on-surface" data-icon="edit">edit</span>
+</div>
+<span class="text-xs font-label text-on-surface-variant">编辑</span>
+</div>
+<div class="flex flex-col items-center gap-1 cursor-pointer group">
+<div class="size-12 rounded-full bg-surface-container-low flex items-center justify-center group-hover:bg-error-container/20 transition-colors">
+<span class="material-symbols-outlined text-on-surface" data-icon="delete">delete</span>
+</div>
+<span class="text-xs font-label text-on-surface-variant">删除</span>
+</div>
+</div>
+</main>
+<!-- Floating Orb (Reflection Indicator Placeholder) -->
+<div class="fixed bottom-8 right-8 size-14 rounded-full bg-gradient-to-tr from-primary to-secondary shadow-lg flex items-center justify-center text-white cursor-pointer hover:scale-105 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+</div>
+</body></html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed": "#ffdbcc",
+                        "on-primary-container": "#20006e",
+                        "on-secondary-fixed-variant": "#785342",
+                        "secondary-container": "#ffdbcc",
+                        "on-surface": "#303330",
+                        "on-secondary": "#fff7f5",
+                        "primary": "#6150b0",
+                        "primary-fixed": "#a190f5",
+                        "secondary-dim": "#6f4b3a",
+                        "outline": "#797b78",
+                        "surface": "#faf9f6",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#a8364b",
+                        "tertiary-dim": "#235c51",
+                        "primary-dim": "#5544a3",
+                        "background": "#faf9f6",
+                        "tertiary": "#31685d",
+                        "error-dim": "#6b0221",
+                        "surface-container-high": "#e7e9e4",
+                        "on-primary-fixed-variant": "#2a1277",
+                        "on-primary": "#fcf7ff",
+                        "on-tertiary-container": "#2b6358",
+                        "secondary": "#7c5645",
+                        "surface-container": "#eeeeea",
+                        "primary-container": "#a190f5",
+                        "on-tertiary": "#e3fff6",
+                        "primary-fixed-dim": "#9483e6",
+                        "tertiary-container": "#c2fded",
+                        "inverse-on-surface": "#9d9d9a",
+                        "on-error": "#fff7f7",
+                        "outline-variant": "#b0b3ae",
+                        "on-tertiary-fixed": "#155146",
+                        "on-secondary-fixed": "#593728",
+                        "inverse-primary": "#a190f5",
+                        "surface-container-low": "#f4f4f0",
+                        "on-background": "#303330",
+                        "surface-dim": "#d9dbd6",
+                        "error-container": "#f97386",
+                        "surface-variant": "#e1e3de",
+                        "tertiary-fixed-dim": "#b4eedf",
+                        "on-error-container": "#6e0523",
+                        "on-primary-fixed": "#000000",
+                        "surface-tint": "#6150b0",
+                        "secondary-fixed-dim": "#fcc9b4",
+                        "on-tertiary-fixed-variant": "#366e62",
+                        "surface-container-highest": "#e1e3de",
+                        "on-secondary-container": "#6d4939",
+                        "tertiary-fixed": "#c2fded",
+                        "surface-bright": "#faf9f6",
+                        "inverse-surface": "#0d0f0d",
+                        "on-surface-variant": "#5d605c"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .signature-gradient {
+            background: linear-gradient(135deg, #6150b0 0%, #a190f5 100%);
+        }
+        .glass-effect {
+            background: rgba(225, 227, 222, 0.6);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- Start of Shared Component: TopAppBar logic applied (Focused View, simple back) -->
+<div class="relative flex h-screen min-h-screen w-full flex-col bg-surface group/design-root overflow-hidden">
+<!-- Minimal Header for Onboarding -->
+<div class="flex items-center bg-surface p-4 pb-2 justify-between">
+<div class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-on-surface" data-icon="arrow_back">arrow_back</span>
+</div>
+<h2 class="text-on-surface font-headline text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">SoulEcho</h2>
+</div>
+<!-- Illustration Hero Section -->
+<div class="flex w-full grow bg-surface @container py-3 px-6">
+<div class="w-full h-full relative overflow-hidden bg-surface-container-low rounded-xl flex items-center justify-center">
+<!-- Artistic Illustration Placeholder -->
+<div class="w-full h-full bg-center bg-no-repeat bg-cover flex-1" data-alt="Soft ethereal abstract shapes representing warm companionship and inner peace" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAmLNfDfPjb6wnSJK3F0OL8GWDrWnBSkt_iScmNDXs3V9GQdDVq-zjMVeg5iNKQvkzTnMdianaeZkZ_iiEv1dIc8QGxljsL-WzpmleReywIAwGkPPy7xdgM9008e5cVz46-37LFUNF43y2_bP4CotbbyiTpAP_UfIfMJ7F4u7CM2nhydg_qBN89udAtbjXDidfTalEwtEQZw_mjzlNDNJZFFj9a2K3Ptry_vjRqDB8Bb7bvor3IhSmCugw_STH0teeO8Yoy0-Zo5rx_");'>
+</div>
+<!-- Subtle Gradient Overlay to ensure text readability if needed -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface/40 to-transparent"></div>
+</div>
+</div>
+<!-- Content Area -->
+<div class="px-8 pt-8 pb-4 text-center">
+<h1 class="text-on-surface font-headline tracking-tight text-[32px] font-bold leading-tight pb-4">深度倾听</h1>
+<p class="text-on-surface-variant font-body text-base font-normal leading-relaxed">
+                寻觅你内心的宁静圣殿。让每一份情绪都有归宿，让每一个声音都有回响。
+            </p>
+</div>
+<!-- Pagination Dots -->
+<div class="flex w-full flex-row items-center justify-center gap-3 py-6">
+<div class="h-2 w-6 rounded-full bg-primary shadow-sm"></div>
+<div class="h-2 w-2 rounded-full bg-surface-container-highest"></div>
+<div class="h-2 w-2 rounded-full bg-surface-container-highest"></div>
+</div>
+<!-- Primary Action -->
+<div class="px-8 pb-12">
+<button class="w-full signature-gradient text-on-primary font-label text-base font-semibold py-4 px-8 rounded-full shadow-lg shadow-primary/20 flex items-center justify-center gap-2 group active:scale-[0.98] transition-transform">
+<span>开启心灵旅程</span>
+</button>
+</div>
+<!-- Ambient Decoration -->
+<div class="absolute -bottom-24 -left-24 w-64 h-64 rounded-full bg-primary/5 blur-[80px]"></div>
+<div class="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-secondary-fixed/10 blur-[60px]"></div>
+</div>
+</body></html>

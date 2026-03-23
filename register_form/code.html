@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SoulEcho - 立即注册</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed": "#593728",
+              "primary": "#6150b0",
+              "surface-container-highest": "#e1e3de",
+              "surface-variant": "#e1e3de",
+              "on-tertiary-container": "#2b6358",
+              "inverse-on-surface": "#9d9d9a",
+              "tertiary-container": "#c2fded",
+              "inverse-primary": "#a190f5",
+              "secondary-fixed-dim": "#fcc9b4",
+              "tertiary-fixed": "#c2fded",
+              "tertiary-dim": "#235c51",
+              "on-tertiary-fixed-variant": "#366e62",
+              "surface": "#faf9f6",
+              "surface-container-high": "#e7e9e4",
+              "outline": "#797b78",
+              "surface-tint": "#6150b0",
+              "on-primary-fixed": "#000000",
+              "surface-bright": "#faf9f6",
+              "secondary": "#7c5645",
+              "on-surface": "#303330",
+              "on-secondary-fixed-variant": "#785342",
+              "on-primary-container": "#20006e",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-low": "#f4f4f0",
+              "on-background": "#303330",
+              "tertiary-fixed-dim": "#b4eedf",
+              "on-error": "#fff7f7",
+              "on-primary": "#fcf7ff",
+              "inverse-surface": "#0d0f0d",
+              "error": "#a8364b",
+              "background": "#faf9f6",
+              "on-tertiary": "#e3fff6",
+              "on-surface-variant": "#5d605c",
+              "on-primary-fixed-variant": "#2a1277",
+              "error-container": "#f97386",
+              "surface-container": "#eeeeea",
+              "outline-variant": "#b0b3ae",
+              "primary-container": "#a190f5",
+              "secondary-container": "#ffdbcc",
+              "on-tertiary-fixed": "#155146",
+              "secondary-dim": "#6f4b3a",
+              "primary-fixed": "#a190f5",
+              "secondary-fixed": "#ffdbcc",
+              "primary-fixed-dim": "#9483e6",
+              "primary-dim": "#5544a3",
+              "tertiary": "#31685d",
+              "surface-dim": "#d9dbd6",
+              "on-error-container": "#6e0523",
+              "error-dim": "#6b0221",
+              "on-secondary-container": "#6d4939",
+              "on-secondary": "#fff7f5"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Be Vietnam Pro', sans-serif; background-color: #faf9f6; }
+        h1, h2, h3, .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .orb-gradient {
+            background: radial-gradient(circle at center, #a190f5 0%, #ffdbcc 50%, #c2fded 100%);
+            filter: blur(60px);
+            opacity: 0.15;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col items-center selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="w-full top-0 z-50 flex items-center justify-between px-6 py-4 bg-[#faf9f6] dark:bg-slate-950">
+<button class="p-2 hover:bg-[#eeeeea] dark:hover:bg-slate-800 transition-colors rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[#6150b0] dark:text-[#a190f5]" data-icon="arrow_back">arrow_back</span>
+</button>
+<span class="text-2xl font-bold text-[#6150b0] dark:text-[#a190f5] tracking-tight font-headline">SoulEcho</span>
+<div class="w-10"></div> <!-- Spacer for symmetry -->
+</header>
+<!-- Background Decoration -->
+<div class="fixed inset-0 pointer-events-none overflow-hidden">
+<div class="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] orb-gradient rounded-full"></div>
+<div class="absolute top-[40%] -right-[15%] w-[60%] h-[60%] orb-gradient rounded-full" style="background: radial-gradient(circle, #ffdbcc 0%, #c2fded 100%); opacity: 0.1;"></div>
+</div>
+<!-- Main Registration Container -->
+<main class="relative z-10 w-full max-w-lg px-6 pt-8 pb-24 flex flex-col items-center">
+<!-- Header Section -->
+<div class="text-center mb-10 w-full">
+<h1 class="text-[2.25rem] leading-tight font-extrabold text-on-surface tracking-tight mb-3">立即注册</h1>
+<p class="text-on-surface-variant text-base font-medium opacity-80 max-w-[280px] mx-auto">
+                开启您的心灵旅程，让每一份情绪都有归宿。
+            </p>
+</div>
+<!-- Registration Form Card -->
+<div class="w-full surface-container-lowest bg-white/40 glass-card rounded-xl p-8 shadow-[0_8px_32px_0_rgba(48,51,48,0.03)] border border-white/20">
+<form class="space-y-6">
+<!-- Username -->
+<div class="space-y-2">
+<label class="text-sm font-semibold text-on-surface-variant ml-2">用户名</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-5 flex items-center pointer-events-none text-on-surface-variant/50">
+<span class="material-symbols-outlined text-lg" data-icon="person">person</span>
+</div>
+<input class="w-full pl-12 pr-6 py-4 bg-surface-container rounded-xl border-none focus:ring-2 focus:ring-primary/20 placeholder:text-on-surface-variant/40 text-on-surface font-medium transition-all" placeholder="输入您的昵称" type="text"/>
+</div>
+</div>
+<!-- Email -->
+<div class="space-y-2">
+<label class="text-sm font-semibold text-on-surface-variant ml-2">电子邮箱</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-5 flex items-center pointer-events-none text-on-surface-variant/50">
+<span class="material-symbols-outlined text-lg" data-icon="mail">mail</span>
+</div>
+<input class="w-full pl-12 pr-6 py-4 bg-surface-container rounded-xl border-none focus:ring-2 focus:ring-primary/20 placeholder:text-on-surface-variant/40 text-on-surface font-medium transition-all" placeholder="example@email.com" type="email"/>
+</div>
+</div>
+<!-- Password -->
+<div class="space-y-2">
+<label class="text-sm font-semibold text-on-surface-variant ml-2">设置密码</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-5 flex items-center pointer-events-none text-on-surface-variant/50">
+<span class="material-symbols-outlined text-lg" data-icon="lock">lock</span>
+</div>
+<input class="w-full pl-12 pr-12 py-4 bg-surface-container rounded-xl border-none focus:ring-2 focus:ring-primary/20 placeholder:text-on-surface-variant/40 text-on-surface font-medium transition-all" placeholder="至少8位字符" type="password"/>
+<button class="absolute inset-y-0 right-4 flex items-center text-on-surface-variant/30 hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<!-- Confirm Password -->
+<div class="space-y-2">
+<label class="text-sm font-semibold text-on-surface-variant ml-2">确认密码</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-5 flex items-center pointer-events-none text-on-surface-variant/50">
+<span class="material-symbols-outlined text-lg" data-icon="lock_clock">lock_clock</span>
+</div>
+<input class="w-full pl-12 pr-12 py-4 bg-surface-container rounded-xl border-none focus:ring-2 focus:ring-primary/20 placeholder:text-on-surface-variant/40 text-on-surface font-medium transition-all" placeholder="再次输入密码" type="password"/>
+</div>
+</div>
+<!-- CTA -->
+<div class="pt-4">
+<button class="w-full py-4 px-6 bg-gradient-to-br from-primary to-primary-container text-white font-bold rounded-full shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200" type="submit">
+                        立即注册
+                    </button>
+</div>
+<!-- Legal Text -->
+<p class="text-center text-xs leading-relaxed text-on-surface-variant/60 px-4">
+                    点击注册即表示您同意<a class="text-primary hover:underline font-medium" href="#">《用户协议》</a>与<a class="text-primary hover:underline font-medium" href="#">《隐私政策》</a>
+</p>
+</form>
+</div>
+<!-- Social Register (Optional Extension for UI Polish) -->
+<div class="w-full mt-10 flex flex-col items-center">
+<div class="flex items-center w-full gap-4 mb-8">
+<div class="h-[1px] flex-1 bg-outline-variant/30"></div>
+<span class="text-xs font-bold text-on-surface-variant/40 tracking-widest">第三方注册</span>
+<div class="h-[1px] flex-1 bg-outline-variant/30"></div>
+</div>
+<div class="flex gap-6">
+<button class="w-14 h-14 rounded-full surface-container flex items-center justify-center hover:bg-surface-container-high transition-colors active:scale-90">
+<img alt="" class="w-6 h-6" data-alt="Google logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBooIzXYLCuczDjuvC9Gwkqj8H7nPcXiTBTCHjaNMNH8DaEVd3uRol81RgUJ-GH9_MRDig_opO62rhi4aEzh4vVgRSAuDbPuIoufdidIhxZaF80umj6eGkyu7JFEWCV084PXXXRn19Kqpoy_VEEcxrXBjsKVqu_UepZ4Mi2lafaRAuoWR4SjyUJR3S1kg-7CyV8sED5DR6B0_xmzCBmQQUpt1h4BkBM5R89hlD-H0EhcFs134FWqnYqm9YSqMZfv0EpO7ogL3JVtbBH"/>
+</button>
+<button class="w-14 h-14 rounded-full surface-container flex items-center justify-center hover:bg-surface-container-high transition-colors active:scale-90">
+<img alt="" class="w-6 h-6" data-alt="Apple logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBaCP4jaYpTzI3glqx16EnEa3YAQrC0W3Kdg9-x8i3GaGYeI_RnPpQWLK6k2HSBxWVmY52TJdoSQYG2d3w-LcWlBBhhkZFeYE7j6Yv3BjeeZ5zOfBT7Zt5n_ivm_bSTD5FHZli79Kw7KcrBrfJXe7GiaYQB-pGGQzwsD2jaMqSxlDzHIzJUJsvadGBcWv4TXQQ5EVfkgTzPSC37KnRsQiaGz1pbcACXT-rFNKv3AJoyrnoRPnOUGNjDL5FPBBcW6SJz7zmgo4H3mZe"/>
+</button>
+<button class="w-14 h-14 rounded-full surface-container flex items-center justify-center hover:bg-surface-container-high transition-colors active:scale-90">
+<img alt="" class="w-6 h-6" data-alt="WeChat logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuvtfg3AXLMWOikEV5nhyc3rtzwO7LGQScGz5ScOJSbS0NwEG3IFQWxEhvtDZttl4e9-11t56-I-HE844Cc3wBAx_K03VTQqoeBIGAS2p-m7NBsYPckc6foFAQoa1EFBJ00736XR9VhZKdcCE4xCNIt5PiY7eZdDSTLqsKD-QFB2HUGqPSq5p_9O3wGLXeZdp2S2CZMSD8YBpF8IVq6H_yvg5VX9UPyYEYRfWj3GjsRqMNp2PIhTSvzTj22GOJ_7ya3pFiQIml2uRM"/>
+</button>
+</div>
+</div>
+<!-- Footer Footer -->
+<footer class="mt-12 text-center">
+<p class="text-on-surface-variant font-medium">
+                已有账号？ <a class="text-primary font-bold hover:underline" href="#">立即登录</a>
+</p>
+</footer>
+</main>
+<!-- Decorative Reflection Orb (Bottom) -->
+<div class="fixed bottom-[-150px] left-1/2 -translate-x-1/2 w-[400px] h-[400px] orb-gradient rounded-full"></div>
+</body></html>

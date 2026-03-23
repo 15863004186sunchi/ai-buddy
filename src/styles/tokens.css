@@ -1,0 +1,22 @@
+:root {
+  --color-background: #faf9f6;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f4f4f0;
+  --color-surface-muted: #eeeeea;
+  --color-text: #303330;
+  --color-text-muted: #5d605c;
+  --color-primary: #6150b0;
+  --color-primary-soft: #a190f5;
+  --color-secondary: #ffdbcc;
+  --color-tertiary: #c2fded;
+  --color-border: rgba(97, 80, 176, 0.12);
+  --color-danger: #b94c68;
+  --shadow-soft: 0 22px 60px rgba(97, 80, 176, 0.14);
+  --shadow-card: 0 10px 30px rgba(48, 51, 48, 0.08);
+  --radius-xl: 32px;
+  --radius-lg: 24px;
+  --radius-md: 18px;
+  --radius-pill: 999px;
+  --font-display: 'Plus Jakarta Sans', 'Trebuchet MS', sans-serif;
+  --font-body: 'Be Vietnam Pro', 'Segoe UI', sans-serif;
+}

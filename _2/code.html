@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-dim": "#6f4b3a",
+              "error": "#a8364b",
+              "tertiary": "#31685d",
+              "tertiary-container": "#c2fded",
+              "on-tertiary-container": "#2b6358",
+              "surface-container-highest": "#e1e3de",
+              "error-container": "#f97386",
+              "primary-fixed-dim": "#9483e6",
+              "on-surface-variant": "#5d605c",
+              "on-secondary-fixed": "#593728",
+              "tertiary-fixed": "#c2fded",
+              "primary-container": "#a190f5",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#a190f5",
+              "primary-dim": "#5544a3",
+              "primary": "#6150b0",
+              "secondary": "#7c5645",
+              "surface-tint": "#6150b0",
+              "tertiary-dim": "#235c51",
+              "outline-variant": "#b0b3ae",
+              "inverse-on-surface": "#9d9d9a",
+              "on-tertiary-fixed": "#155146",
+              "on-background": "#303330",
+              "on-tertiary": "#e3fff6",
+              "on-error-container": "#6e0523",
+              "surface-container-high": "#e7e9e4",
+              "on-primary-container": "#20006e",
+              "on-tertiary-fixed-variant": "#366e62",
+              "on-primary-fixed": "#000000",
+              "background": "#faf9f6",
+              "secondary-container": "#ffdbcc",
+              "surface-container-low": "#f4f4f0",
+              "surface": "#faf9f6",
+              "on-error": "#fff7f7",
+              "surface-container": "#eeeeea",
+              "on-secondary-container": "#6d4939",
+              "tertiary-fixed-dim": "#b4eedf",
+              "on-primary": "#fcf7ff",
+              "inverse-surface": "#0d0f0d",
+              "on-secondary": "#fff7f5",
+              "surface-dim": "#d9dbd6",
+              "surface-variant": "#e1e3de",
+              "on-surface": "#303330",
+              "outline": "#797b78",
+              "secondary-fixed-dim": "#fcc9b4",
+              "inverse-primary": "#a190f5",
+              "secondary-fixed": "#ffdbcc",
+              "on-primary-fixed-variant": "#2a1277",
+              "error-dim": "#6b0221",
+              "on-secondary-fixed-variant": "#785342",
+              "surface-bright": "#faf9f6"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-depth-shift {
+            background-image: linear-gradient(180deg, rgba(250, 249, 246, 0.8) 0%, rgba(250, 249, 246, 0) 100%);
+        }
+        .surface-container-low-bg {
+            background-color: #f4f4f0;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-stone-50/60 backdrop-blur-xl flex justify-between items-center px-6 h-16 shadow-sm shadow-violet-500/5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container overflow-hidden">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="Portrait of a calm young woman smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXGv6DohtOYfCVGSHQk3lEm4kho3XgjQN_ARHpuKe3tekWL9x4QFcFpy8tLgTig0mhRxGjSgB2z8DY4kr3HmA0_KFb-FpKCnU1cliWMwWBRYav00h4aFB55o8dtn-l67hsG4F9CGnA703JX8JQivH2xIyUUEotyBva_zdywv1KicmOOY5Ay5IuuqP5_OzHy0k_CWQnEI880T9JdMbp5cm6LivWQoNTgSGy4d0yxXHwDcDMdJp3Ql_mZuqX8jeJitkclo787gRYgC2-"/>
+</div>
+<h1 class="font-headline font-bold text-2xl bg-gradient-to-tr from-violet-600 to-violet-400 bg-clip-text text-transparent">SoulEcho</h1>
+</div>
+<button class="material-symbols-outlined text-violet-600 hover:opacity-80 transition-opacity scale-95 active:scale-90 transition-transform" data-icon="settings">settings</button>
+</header>
+<main class="pt-20 px-6 space-y-10 max-w-2xl mx-auto">
+<!-- Hero Section: Greeting & Status -->
+<section class="mt-4">
+<h2 class="font-headline text-3xl font-bold tracking-tight text-on-background mb-2">早安，灵动之心</h2>
+<div class="inline-flex items-center gap-2 px-4 py-2 bg-primary-container/10 rounded-full border border-primary/10">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<p class="text-primary font-medium text-sm">你现在的气场与‘平静’共鸣。</p>
+</div>
+</section>
+<!-- Mood Interaction Section -->
+<section class="space-y-4">
+<h3 class="font-headline text-lg font-semibold px-1">你现在感觉如何？</h3>
+<div class="grid grid-cols-3 gap-4">
+<button class="flex flex-col items-center justify-center p-6 bg-surface-container-lowest rounded-xl shadow-sm hover:bg-primary-container/20 transition-all group border border-transparent hover:border-primary/10">
+<span class="material-symbols-outlined text-3xl text-primary mb-2 group-hover:scale-110 transition-transform" data-icon="self_care">self_care</span>
+<span class="text-sm font-medium">平静</span>
+</button>
+<button class="flex flex-col items-center justify-center p-6 bg-surface-container-lowest rounded-xl shadow-sm hover:bg-secondary-container/50 transition-all group border border-transparent hover:border-secondary/10">
+<span class="material-symbols-outlined text-3xl text-secondary mb-2 group-hover:scale-110 transition-transform" data-icon="sentiment_satisfied">sentiment_satisfied</span>
+<span class="text-sm font-medium">喜悦</span>
+</button>
+<button class="flex flex-col items-center justify-center p-6 bg-surface-container-lowest rounded-xl shadow-sm hover:bg-tertiary-container/50 transition-all group border border-transparent hover:border-tertiary/10">
+<span class="material-symbols-outlined text-3xl text-tertiary mb-2 group-hover:scale-110 transition-transform" data-icon="bedtime">bedtime</span>
+<span class="text-sm font-medium">疲惫</span>
+</button>
+</div>
+</section>
+<!-- Daily Echo: Editorial Reflection Card -->
+<section class="space-y-4">
+<div class="flex justify-between items-end px-1">
+<h3 class="font-headline text-lg font-semibold">每日回响</h3>
+<span class="text-xs text-outline font-medium">2024年5月24日</span>
+</div>
+<div class="relative aspect-[4/5] rounded-xl overflow-hidden group shadow-lg">
+<img alt="Serene landscape" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Serene morning lake with soft mist and mountains" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHLsXQXWVUMy-H-tVbVcZj_v-J8dXtKFYpRZsDuUiMLxSBcITq7V7yJkHX8M_1BqSyaYoNRslc9AO4f4v_u1zjXYYYFiKK_Op30_or4aY_WRQdQc1jgoLFMNqy9fVfxTJ99PWc8mkiFKE5lkptmRsOAnGfBqHEp7MtUUJmsNO8DXANMWVv46-QxZhYbLthwaiWZKLHjTOAhAKiBnDF1xPfm-NxXYps3Z55B3Qy98vUynuDa5vmVpJNdSBOqwXxVXRJ_QI1-BE0U-0h"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 text-white space-y-3">
+<span class="material-symbols-outlined text-primary-fixed" data-icon="format_quote" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+<p class="text-xl font-headline font-medium leading-relaxed italic">
+                        “在灵魂深处，总有一处平静的湖泊，等待着你归来。”
+                    </p>
+<div class="h-px w-12 bg-primary-fixed/50"></div>
+</div>
+</div>
+</section>
+<!-- Recommendations: Bento/Cards -->
+<section class="space-y-4 pb-12">
+<h3 class="font-headline text-lg font-semibold px-1">为你推荐</h3>
+<div class="grid grid-cols-2 gap-4">
+<!-- Recommendation Card 1 -->
+<div class="bg-surface-container-low rounded-xl p-4 flex flex-col gap-3 group">
+<div class="aspect-square rounded-lg overflow-hidden relative">
+<img alt="Mindfulness breathing" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Soft incense smoke swirling in sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUfTjpUhUkY6kKL97JBlC1GwPDOKiVimUwpdyoedipls1qpMFpxNfSheZqeOEvCqNwP0L5K_10C7t05SPxoj6lR-OylaBsbgHd0IAETShOXRhiIx1-pFT8X4XqbVoGwxumJ9x4TdiinagQN1QpfK1V_1rKhOyGqA9Ob6wgwUTTJ2w3eY3nm0YeOQCB5AL0iJf_OAec_50P6J32Le8rcC440e_IaGuGSXDQ1u8fh4vceWLlRsAX6Q3lCOfo4WBYQNox9LIX6xrj1cfL"/>
+<div class="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
+</div>
+<div>
+<h4 class="font-headline font-bold text-on-surface">正念呼吸</h4>
+<p class="text-xs text-on-surface-variant mt-1">5分钟 · 基础练习</p>
+</div>
+<button class="mt-1 flex items-center justify-center w-8 h-8 rounded-full bg-primary text-on-primary ml-auto shadow-md">
+<span class="material-symbols-outlined text-sm" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<!-- Recommendation Card 2 -->
+<div class="bg-secondary-container/30 rounded-xl p-4 flex flex-col gap-3 group">
+<div class="aspect-square rounded-lg overflow-hidden relative">
+<img alt="Soundscape" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Abstract vibrant colors representing sound waves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA67x88SSEBWVDE-VLuiA5LoPKv-LrfPVv2_YNdLh5Gab20DtKCIWrzc1sbtl4zb9kxEPUuP00h6wDbMOfA3vpM54_1abxsatNdjDJjF8qA3yfrFPYSt3A79wUrfBtDUxmEe9jYyOYZlvcYGQ6oPzftzK797rVY0MH972fR1bhQGfyFGqwSt9uAzomOkzoWIFUd2Y852Zyf9BEWQNwh-GgW-YP105i9vUh4knN9wd9vIa2dbi1PjB5J-XLX84ebWQI0uum7oaXfvFO4"/>
+</div>
+<div>
+<h4 class="font-headline font-bold text-on-surface">灵动音景</h4>
+<p class="text-xs text-on-surface-variant mt-1">12分钟 · 自然混响</p>
+</div>
+<button class="mt-1 flex items-center justify-center w-8 h-8 rounded-full bg-secondary text-on-secondary ml-auto shadow-md">
+<span class="material-symbols-outlined text-sm" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-stone-50/80 backdrop-blur-2xl rounded-t-[32px] shadow-[0_-8px_32px_rgba(165,148,249,0.1)]">
+<!-- Active Tab: 首页 (Home) -->
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-violet-100 to-orange-50 text-violet-800 rounded-full px-5 py-2 scale-105 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-medium">首页</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 px-5 py-2 hover:text-violet-500 transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-medium">聊天</span>
+</a>
+<!-- Reflection Orb / Special FAB visual style would go here if needed, but following the JSON destination count -->
+<a class="flex flex-col items-center justify-center text-stone-400 px-5 py-2 hover:text-violet-500 transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="auto_stories">auto_stories</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-medium">日志</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 px-5 py-2 hover:text-violet-500 transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="self_care">self_care</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-medium">疗愈</span>
+</a>
+</nav>
+<!-- Floating Thinking Indicator Overlay (Subtle) -->
+<div class="fixed bottom-28 right-6 w-12 h-12 rounded-full bg-gradient-to-br from-primary-container via-secondary-container to-tertiary-container blur-sm opacity-60"></div>
+<div class="fixed bottom-28 right-6 w-12 h-12 rounded-full border border-white/40 flex items-center justify-center text-primary shadow-lg backdrop-blur-sm bg-white/30 active:scale-90 transition-transform cursor-pointer">
+<span class="material-symbols-outlined animate-pulse" data-icon="waves">waves</span>
+</div>
+</body></html>

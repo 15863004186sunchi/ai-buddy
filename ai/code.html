@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-dim": "#6f4b3a",
+              "error": "#a8364b",
+              "tertiary": "#31685d",
+              "tertiary-container": "#c2fded",
+              "on-tertiary-container": "#2b6358",
+              "surface-container-highest": "#e1e3de",
+              "error-container": "#f97386",
+              "primary-fixed-dim": "#9483e6",
+              "on-surface-variant": "#5d605c",
+              "on-secondary-fixed": "#593728",
+              "tertiary-fixed": "#c2fded",
+              "primary-container": "#a190f5",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#a190f5",
+              "primary-dim": "#5544a3",
+              "primary": "#6150b0",
+              "secondary": "#7c5645",
+              "surface-tint": "#6150b0",
+              "tertiary-dim": "#235c51",
+              "outline-variant": "#b0b3ae",
+              "inverse-on-surface": "#9d9d9a",
+              "on-tertiary-fixed": "#155146",
+              "on-background": "#303330",
+              "on-tertiary": "#e3fff6",
+              "on-error-container": "#6e0523",
+              "surface-container-high": "#e7e9e4",
+              "on-primary-container": "#20006e",
+              "on-tertiary-fixed-variant": "#366e62",
+              "on-primary-fixed": "#000000",
+              "background": "#faf9f6",
+              "secondary-container": "#ffdbcc",
+              "surface-container-low": "#f4f4f0",
+              "surface": "#faf9f6",
+              "on-error": "#fff7f7",
+              "surface-container": "#eeeeea",
+              "on-secondary-container": "#6d4939",
+              "tertiary-fixed-dim": "#b4eedf",
+              "on-primary": "#fcf7ff",
+              "inverse-surface": "#0d0f0d",
+              "on-secondary": "#fff7f5",
+              "surface-dim": "#d9dbd6",
+              "surface-variant": "#e1e3de",
+              "on-surface": "#303330",
+              "outline": "#797b78",
+              "secondary-fixed-dim": "#fcc9b4",
+              "secondary-fixed": "#ffdbcc",
+              "on-primary-fixed-variant": "#2a1277",
+              "error-dim": "#6b0221",
+              "on-secondary-fixed-variant": "#785342",
+              "surface-bright": "#faf9f6"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .reflection-orb {
+        background: radial-gradient(circle, #a190f5 0%, #ffdbcc 50%, #c2fded 100%);
+        filter: blur(40px);
+        opacity: 0.15;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container/30">
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 w-full z-50 bg-stone-50/60 dark:bg-stone-950/60 backdrop-blur-xl shadow-sm shadow-violet-500/5 flex justify-between items-center px-6 h-16">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-gradient-to-tr from-violet-600 to-orange-400 overflow-hidden shadow-inner">
+<img alt="User avatar" data-alt="Minimalist person avatar in soft tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDu4L6AsikGC-IEnc9XlafGavPVX12cZjkbux9h5kKNnyw-Su9UFBWFTcp4FmcP0oNOi2AEwB8H2BqmqTSmjwqZXMD_M9VPmcdC7xbiVgMDuJtZ5vuyYxYkJL6iuUERXe6dnZMnR9CDHucywvDpdIPN5zjCXKGR-LWruaez_lAhTYm1qnH9ADhiELX44hAofcZ7f5Z_AffUmHnQFJMX8NwblLnpIf3LaCaCipH90jnzvX2qwuec1wYwef59iWfMnVNo37JO3diE6ePI"/>
+</div>
+<span class="text-2xl font-bold bg-gradient-to-tr from-violet-600 to-violet-400 bg-clip-text text-transparent font-headline tracking-tight">SoulEcho</span>
+</div>
+<button class="text-stone-500 hover:opacity-80 transition-opacity scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</header>
+<main class="pt-20 pb-32 px-4 md:px-8 max-w-3xl mx-auto min-h-screen relative overflow-x-hidden">
+<!-- Reflection Orb background decoration -->
+<div class="fixed top-1/4 -right-20 w-80 h-80 reflection-orb -z-10"></div>
+<div class="fixed bottom-1/4 -left-20 w-64 h-64 reflection-orb -z-10" style="opacity: 0.1;"></div>
+<!-- Chat Feed Area -->
+<div class="space-y-8 flex flex-col">
+<!-- System/Time Marker -->
+<div class="flex justify-center">
+<span class="text-xs font-label text-outline bg-surface-container-low px-3 py-1 rounded-full">今天下午 2:15</span>
+</div>
+<!-- AI Message -->
+<div class="flex flex-col items-start max-w-[85%] group">
+<div class="flex items-center gap-2 mb-2 ml-2">
+<span class="text-[10px] font-bold tracking-widest text-primary uppercase font-headline">SoulEcho</span>
+</div>
+<div class="bg-primary-container text-on-primary-container p-5 rounded-lg rounded-tl-none shadow-sm shadow-primary/10 leading-relaxed text-[15px]">
+                    我能感觉到你此刻的疲惫。深呼吸，这并不是你的错。现在的这种压力就像一片云，虽然遮住了阳光，但它终究会飘走的。
+                </div>
+</div>
+<!-- User Message -->
+<div class="flex flex-col items-end max-w-[85%] self-end group">
+<div class="flex items-center gap-2 mb-2 mr-2">
+<span class="text-[10px] font-bold tracking-widest text-secondary uppercase font-headline">你</span>
+</div>
+<div class="bg-secondary-container text-on-secondary-container p-5 rounded-lg rounded-tr-none shadow-sm shadow-secondary/10 leading-relaxed text-[15px]">
+                    事情太多了，我感觉自己快要窒息了。我不知道该从哪里开始，大脑一片混乱。
+                </div>
+</div>
+<!-- AI Message with Grounding Exercise -->
+<div class="flex flex-col items-start max-w-[90%]">
+<div class="flex items-center gap-2 mb-2 ml-2">
+<span class="text-[10px] font-bold tracking-widest text-primary uppercase font-headline">SoulEcho</span>
+</div>
+<div class="bg-primary-container text-on-primary-container p-6 rounded-lg rounded-tl-none shadow-sm shadow-primary/10 space-y-4">
+<p class="text-[15px] leading-relaxed">没关系的。让我们试着把思绪带回当下。我们来做一个简单的**着陆练习**：</p>
+<div class="grid grid-cols-1 gap-3 mt-2">
+<div class="flex items-center gap-3 bg-on-primary-container/5 p-3 rounded-xl border border-on-primary-container/10">
+<span class="w-8 h-8 flex items-center justify-center bg-on-primary-container/10 rounded-full text-xs font-bold">1</span>
+<span class="text-sm font-medium">寻找 3 种你现在能看到的颜色</span>
+</div>
+<div class="flex items-center gap-3 bg-on-primary-container/5 p-3 rounded-xl border border-on-primary-container/10">
+<span class="w-8 h-8 flex items-center justify-center bg-on-primary-container/10 rounded-full text-xs font-bold">2</span>
+<span class="text-sm font-medium">感受 2 种皮肤触碰到的质感</span>
+</div>
+<div class="flex items-center gap-3 bg-on-primary-container/5 p-3 rounded-xl border border-on-primary-container/10">
+<span class="w-8 h-8 flex items-center justify-center bg-on-primary-container/10 rounded-full text-xs font-bold">3</span>
+<span class="text-sm font-medium">深吸一口气，数到 4 再慢慢呼出</span>
+</div>
+</div>
+<p class="text-[15px] italic opacity-90 pt-2">我会在这里陪着你，慢慢来。</p>
+</div>
+</div>
+<!-- Thinking Indicator (Reflection Orb Concept) -->
+<div class="flex items-center gap-3 ml-2 opacity-60">
+<div class="flex gap-1.5">
+<div class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" style="animation-delay: 0.2s"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse" style="animation-delay: 0.4s"></div>
+</div>
+<span class="text-[10px] font-label tracking-wider text-outline">正在倾听你的呼吸...</span>
+</div>
+</div>
+<!-- Floating Input Container -->
+<div class="fixed bottom-24 left-0 w-full px-4 md:px-8 pointer-events-none">
+<div class="max-w-3xl mx-auto flex items-end gap-3 pointer-events-auto">
+<div class="flex-1 bg-surface-container-highest/80 backdrop-blur-xl rounded-xl p-2 shadow-lg shadow-on-surface/5 border border-white/20">
+<div class="flex items-end">
+<button class="p-3 text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+</button>
+<textarea class="flex-1 bg-transparent border-none focus:ring-0 text-on-surface placeholder:text-outline/60 py-3 resize-none font-body text-[15px]" placeholder="分享你的想法..." rows="1"></textarea>
+<button class="p-3 text-outline hover:text-secondary transition-colors">
+<span class="material-symbols-outlined" data-icon="mic">mic</span>
+</button>
+</div>
+</div>
+<button class="w-12 h-12 bg-gradient-to-br from-primary to-primary-container text-white rounded-full flex items-center justify-center shadow-md shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="send" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-stone-50/80 dark:bg-stone-950/80 backdrop-blur-2xl flex justify-around items-center px-4 pb-6 pt-3 rounded-t-[32px] shadow-[0_-8px_32px_rgba(165,148,249,0.1)]">
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-5 py-2 hover:text-violet-500 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-medium">首页</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-violet-100 to-orange-50 dark:from-violet-900/40 dark:to-orange-900/20 text-violet-800 dark:text-violet-200 rounded-full px-5 py-2 scale-105 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="chat_bubble" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-medium">聊天</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-5 py-2 hover:text-violet-500 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="auto_stories">auto_stories</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-medium">日记</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-5 py-2 hover:text-violet-500 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="self_care">self_care</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-medium">疗愈</span>
+</a>
+</nav>
+</body></html>

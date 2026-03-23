@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-fixed": "#a190f5",
+              "inverse-primary": "#a190f5",
+              "on-surface": "#303330",
+              "primary-dim": "#5544a3",
+              "on-secondary-fixed-variant": "#785342",
+              "background": "#faf9f6",
+              "tertiary-container": "#c2fded",
+              "surface-tint": "#6150b0",
+              "primary-container": "#a190f5",
+              "surface-dim": "#d9dbd6",
+              "inverse-surface": "#0d0f0d",
+              "outline-variant": "#b0b3ae",
+              "inverse-on-surface": "#9d9d9a",
+              "secondary-dim": "#6f4b3a",
+              "primary": "#6150b0",
+              "secondary-container": "#ffdbcc",
+              "on-tertiary-container": "#2b6358",
+              "tertiary-dim": "#235c51",
+              "tertiary": "#31685d",
+              "error": "#a8364b",
+              "outline": "#797b78",
+              "on-tertiary": "#e3fff6",
+              "on-error-container": "#6e0523",
+              "tertiary-fixed-dim": "#b4eedf",
+              "on-tertiary-fixed-variant": "#366e62",
+              "secondary-fixed-dim": "#fcc9b4",
+              "surface-container-low": "#f4f4f0",
+              "on-secondary-container": "#6d4939",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed": "#155146",
+              "secondary-fixed": "#ffdbcc",
+              "error-container": "#f97386",
+              "on-error": "#fff7f7",
+              "surface-bright": "#faf9f6",
+              "on-primary-fixed-variant": "#2a1277",
+              "surface": "#faf9f6",
+              "tertiary-fixed": "#c2fded",
+              "surface-container-highest": "#e1e3de",
+              "secondary": "#7c5645",
+              "on-secondary": "#fff7f5",
+              "surface-variant": "#e1e3de",
+              "on-primary-container": "#20006e",
+              "surface-container": "#eeeeea",
+              "on-primary": "#fcf7ff",
+              "on-secondary-fixed": "#593728",
+              "on-surface-variant": "#5d605c",
+              "surface-container-high": "#e7e9e4",
+              "primary-fixed-dim": "#9483e6",
+              "error-dim": "#6b0221",
+              "on-primary-fixed": "#000000",
+              "on-background": "#303330"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-nav {
+        backdrop-filter: blur(24px);
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background font-body text-on-surface antialiased no-scrollbar">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#faf9f6]/60 dark:bg-[#303330]/60 backdrop-blur-xl">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-screen-xl mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="Soft illustrated avatar of a person" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYF73J4kbY1QKWAKUlCNKJUNgrbwdjehAFvvmcTTfIObMhetz9_uUd6GVaRwjESwHzpexkqkhnIt9h1-wfaK3o5qXzBDW7eAghJaB3x8SEw8hXwoBamjjFpErkHBbdFGs-1iRElxokOKMiGWg9jbHUcz6zhO1Jvw72DiwfVofQHO2nTWvNnpvLQ6ZI_OzS0BVhCkfcqu-8uOPoGGAFqlCZumQtrUySctQHG4XnE07dZrnP5KxBjQmyOUAUlIyi5hw43T8Jf7sKD1Vt"/>
+</div>
+</div>
+<h1 class="text-2xl font-bold tracking-tight text-[#6150b0] dark:text-[#a190f5] font-headline">心情日记</h1>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#f4f4f0]/50 transition-colors">
+<span class="material-symbols-outlined text-[#6150b0]">settings</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-screen-xl mx-auto">
+<!-- Hero Section / Search & Stats -->
+<section class="mb-10 space-y-6">
+<div class="flex flex-col gap-2">
+<p class="text-sm font-label text-primary uppercase tracking-widest">心灵圣殿</p>
+<h2 class="text-4xl font-headline font-extrabold text-on-surface leading-tight">过去的心灵足迹</h2>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-body text-on-surface-variant placeholder-outline" placeholder="搜索那一刻的情感..." type="text"/>
+</div>
+</section>
+<!-- Journal List - Magazine Layout -->
+<div class="mb-10 group cursor-pointer">
+<div class="bg-surface-container-low p-8 rounded-xl border-2 border-dashed border-outline-variant/30 flex flex-col items-center justify-center text-center gap-4 transition-all hover:border-primary/40 hover:bg-primary/5">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">add</span>
+</div>
+<div>
+<h4 class="text-xl font-headline font-bold text-on-surface">开启新篇章</h4>
+<p class="text-sm text-on-surface-variant mt-2">今天的你，有什么想要留给未来的吗？</p>
+</div>
+</div>
+</div><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Entry 1 (Large Featured) -->
+<div class="md:col-span-2 group cursor-pointer">
+<div class="relative overflow-hidden rounded-xl bg-surface-container-lowest border border-outline-variant/15 transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+<div class="aspect-[16/9] w-full relative">
+<img alt="Serene forest path" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Mist rising from a pine forest at dawn" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfJx_T5crytOMDWWfE5y2b1nRoyhRc53SFc0SEj6nD19hbkJBjbufrwXgE1ifCW6t147J1Nq0LtxrvjwKaKrzXGxn6dYIKAplt9vRGj5tmJOU9cOFi5mawdeJ5k-36wCD4ufZ--xjs-U6v-nzqRJFPIajXOlpj_hv7gIXTZJ60A1UIQKiNPHQ3gFi7FCkCjXslzpl8b_4z3oFdMITKRCNUj7itet_ozh1P5ONb7fiRQASX4nt-o6EKqgwGa8ajA4CJMaHbsUkH4s91"/>
+<div class="absolute top-4 left-4 bg-tertiary-container text-on-tertiary-container px-4 py-1.5 rounded-full text-xs font-bold font-label flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+                            宁静
+                        </div>
+</div>
+<div class="p-8">
+<p class="text-sm text-outline mb-2 font-label">2026年10月12日</p>
+<h3 class="text-2xl font-headline font-bold mb-4 text-on-surface">晨间的森林呼吸</h3>
+<p class="text-on-surface-variant leading-relaxed mb-6 italic border-l-4 border-tertiary-container pl-4">
+                            "你在这片静谧中找回了久违的节奏，如同叶尖滴落的露水般清透。"
+                        </p>
+<div class="flex justify-between items-center">
+<span class="text-primary font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">回顾全文 <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Entry 2 -->
+<div class="group cursor-pointer">
+<div class="h-full bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/15 transition-all hover:shadow-lg">
+<div class="aspect-square w-full relative">
+<img alt="Sunset at beach" class="w-full h-full object-cover" data-alt="Soft pink and orange sunset over a calm sea" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsbfuG6GtdQt75Ab3THy_Mg7ljM4X6hP4G_caAXfyur_n-Hjp-upr2H3kYB48iSDrWg9QWL0Mc_yT-3Jf62TDoQH6ip38YOZNZd4GsphvagTKGse_bIVQ8fG8sqgZlW3V9buxN1Xv8XNotXicTE80--kRUXDHykJBmgPpgIHPybWpYWHFGHu1iORYY10qjyQm0QOfZgKOa9Hk3OK58D4rl1qpdTQEKIs0cArszPUlrkbqHPd_fc413Ulu3UsNFu5Bw8Heiyrh88ph4"/>
+<div class="absolute top-4 left-4 bg-secondary-container text-on-secondary-container px-4 py-1.5 rounded-full text-xs font-bold font-label flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                            欣喜
+                        </div>
+</div>
+<div class="p-6">
+<p class="text-xs text-outline mb-1 font-label">2026年10月10日</p>
+<h3 class="text-xl font-headline font-bold mb-3 text-on-surface">橘色海边的重逢</h3>
+<p class="text-sm text-on-surface-variant line-clamp-2">
+                            "那些被晚霞染红的回忆，让你的内心充满了如潮汐般温暖的喜悦。"
+                        </p>
+</div>
+</div>
+</div>
+<!-- Entry 3 -->
+<div class="group cursor-pointer">
+<div class="h-full bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/15 transition-all hover:shadow-lg">
+<div class="aspect-square w-full relative">
+<img alt="Cup of tea by window" class="w-full h-full object-cover" data-alt="Steaming cup of tea on a wooden table during rain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4szn6QggDj_d3tBJuhZYkRXfWOvEOt_L2Tn9pxFK8Wc4h2HAzlJQxzy8cNwzyqtzD9WWI631HsOwHta0YVAYKwQe2Mf6UgvtlbUpW4xkppc_BJ76873uAcZf0I4gomYUZtXUBypmRSSGH8o2KJEhtPhVGKYVu9Y51EdSm5VmNnf0xYd11A4U0jqphFGcMWMZp0B82kOuGG3YNLzSwkN4DJveKbZsVEERUWoMNjbFdH73X2g7ba3B40TfrIo0IXfGoInCoeRHEKBFF"/>
+<div class="absolute top-4 left-4 bg-primary-container text-on-primary-container px-4 py-1.5 rounded-full text-xs font-bold font-label flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                            沉思
+                        </div>
+</div>
+<div class="p-6">
+<p class="text-xs text-outline mb-1 font-label">2026年10月08日</p>
+<h3 class="text-xl font-headline font-bold mb-3 text-on-surface">雨落时的茶室絮语</h3>
+<p class="text-sm text-on-surface-variant line-clamp-2">
+                            "在雨声的包裹下，你完成了一场深度的自我梳理，找到了前行的微光。"
+                        </p>
+</div>
+</div>
+</div>
+<!-- Entry 4 (Asymmetric Offset) -->
+<!-- Entry 5 -->
+<div class="group cursor-pointer">
+<div class="h-full bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/15 transition-all hover:shadow-lg">
+<div class="aspect-square w-full relative">
+<img alt="Starry night sky" class="w-full h-full object-cover" data-alt="Clear dark sky filled with thousands of tiny stars" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-upC9YnfZnwtgUtYW6Onjhlkc13Wy33ATGU6Sh7jZ16W_uzEwo1g3TzlQcmY2wh_pPZxmgV33uopHmI1figYymgwPd7_Ut_TqN487Yl5FPGpYpQ9SBVzaoqPj7d_9i6SJn3zl_3scFJZb8pwxziNfw2N8qUv-jiKKwqmMpggcOiEBj60mtnC9qirJ5kZvoopAVS4LhgmQ0KNmBpKKQ4ood2lckpBZE__SWyu_TlMNEl2WZ-wPPeAgcdKQnPDyw9n7IUaorG4dw1XB"/>
+<div class="absolute top-4 left-4 bg-on-surface/80 text-white px-4 py-1.5 rounded-full text-xs font-bold font-label flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-white"></span>
+                            旷远
+                        </div>
+</div>
+<div class="p-6">
+<p class="text-xs text-outline mb-1 font-label">2026年10月05日</p>
+<h3 class="text-xl font-headline font-bold mb-3 text-on-surface">星空下的渺小感</h3>
+<p class="text-sm text-on-surface-variant line-clamp-2">
+                            "仰望星空时，那些困扰已久的烦恼似乎在无限的空间中消散了。"
+                        </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Action Button (Optional but useful for journaling) -->
+<button class="fixed bottom-28 right-8 w-16 h-16 rounded-full bg-gradient-to-br from-primary to-primary-container text-white shadow-[0_8px_32px_0_rgba(97,80,176,0.3)] flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined text-3xl">edit_note</span>
+</button>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-8 pt-4 bg-[#faf9f6]/80 dark:bg-[#303330]/80 backdrop-blur-2xl z-50 rounded-t-[3rem] shadow-[0_-8px_32px_0_rgba(48,51,48,0.05)]">
+<a class="flex flex-col items-center justify-center text-[#303330]/60 dark:text-[#f4f4f0]/60 px-4 py-2 hover:text-[#6150b0] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-xs font-medium font-label mt-1">首页</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#303330]/60 dark:text-[#f4f4f0]/60 px-4 py-2 hover:text-[#6150b0] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="text-xs font-medium font-label mt-1">聊天</span>
+</a>
+<!-- Active Tab: Journal -->
+<a class="flex flex-col items-center justify-center bg-[#a190f5] dark:bg-[#6150b0] text-white rounded-full px-6 py-2 transition-all duration-300 scale-110" href="#">
+<span class="material-symbols-outlined" data-icon="book_2" style="font-variation-settings: 'FILL' 1;">book_2</span>
+<span class="text-xs font-medium font-label mt-0.5">日志</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#303330]/60 dark:text-[#f4f4f0]/60 px-4 py-2 hover:text-[#6150b0] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="self_improvement">self_improvement</span>
+<span class="text-xs font-medium font-label mt-1">疗愈</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SoulEcho - 登录与注册</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500&amp;family=Noto+Sans+SC:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed-variant": "#785342",
+              "secondary-container": "#ffdbcc",
+              "on-secondary": "#fff7f5",
+              "on-surface": "#303330",
+              "secondary-fixed": "#ffdbcc",
+              "on-primary-container": "#20006e",
+              "tertiary": "#31685d",
+              "primary-dim": "#5544a3",
+              "error-dim": "#6b0221",
+              "background": "#faf9f6",
+              "on-primary-fixed-variant": "#2a1277",
+              "on-primary": "#fcf7ff",
+              "surface-container-high": "#e7e9e4",
+              "on-tertiary-container": "#2b6358",
+              "surface-container": "#eeeeea",
+              "secondary": "#7c5645",
+              "secondary-dim": "#6f4b3a",
+              "primary-fixed": "#a190f5",
+              "primary": "#6150b0",
+              "surface": "#faf9f6",
+              "outline": "#797b78",
+              "tertiary-dim": "#235c51",
+              "surface-container-lowest": "#ffffff",
+              "error": "#a8364b",
+              "outline-variant": "#b0b3ae",
+              "on-tertiary-fixed": "#155146",
+              "surface-dim": "#d9dbd6",
+              "on-background": "#303330",
+              "surface-container-low": "#f4f4f0",
+              "on-secondary-fixed": "#593728",
+              "inverse-primary": "#a190f5",
+              "surface-variant": "#e1e3de",
+              "error-container": "#f97386",
+              "primary-container": "#a190f5",
+              "primary-fixed-dim": "#9483e6",
+              "on-tertiary": "#e3fff6",
+              "on-error": "#fff7f7",
+              "inverse-on-surface": "#9d9d9a",
+              "tertiary-container": "#c2fded",
+              "surface-container-highest": "#e1e3de",
+              "on-tertiary-fixed-variant": "#366e62",
+              "tertiary-fixed": "#c2fded",
+              "on-secondary-container": "#6d4939",
+              "surface-bright": "#faf9f6",
+              "inverse-surface": "#0d0f0d",
+              "on-surface-variant": "#5d605c",
+              "tertiary-fixed-dim": "#b4eedf",
+              "on-primary-fixed": "#000000",
+              "on-error-container": "#6e0523",
+              "secondary-fixed-dim": "#fcc9b4",
+              "surface-tint": "#6150b0"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans", "Noto Sans SC"],
+              "body": ["Be Vietnam Pro", "Noto Sans SC"],
+              "label": ["Plus Jakarta Sans", "Noto Sans SC"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .orb-gradient {
+        background: radial-gradient(circle at center, #a190f5 0%, #ffdbcc 50%, #c2fded 100%);
+        filter: blur(60px);
+        opacity: 0.15;
+      }
+      .glass-effect {
+        backdrop-filter: blur(20px);
+        background: rgba(250, 249, 246, 0.6);
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-[#faf9f6]/60 dark:bg-[#1a1c1a]/60 backdrop-blur-xl fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#6150b0] dark:text-[#a190f5] text-3xl">spa</span>
+<h1 class="text-2xl font-bold tracking-tight text-[#6150b0] dark:text-[#a190f5] font-headline">SoulEcho</h1>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center pt-24 pb-12 px-4 relative overflow-hidden">
+<!-- Background Orbs -->
+<div class="absolute top-[-10%] left-[-10%] w-96 h-96 orb-gradient rounded-full"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] orb-gradient rounded-full"></div>
+<div class="w-full max-w-md z-10">
+<!-- Content Container -->
+<div class="bg-surface-container-low rounded-xl p-8 md:p-10 shadow-sm border border-outline-variant/10">
+<div class="text-center mb-10">
+<h2 class="text-3xl font-bold font-headline text-on-surface mb-2" id="form-title">欢迎回来</h2>
+<p class="text-on-surface-variant text-sm">在宁静中寻找共鸣，开启你的心灵旅程</p>
+</div>
+<!-- Segmented Control (Tabs) -->
+<div class="bg-surface-container-highest p-1.5 rounded-full flex mb-8 relative">
+<div class="absolute top-1.5 left-1.5 w-[calc(50%-6px)] h-[calc(100%-12px)] bg-surface-container-lowest rounded-full shadow-sm transition-all duration-300 ease-out" id="tab-slider"></div>
+<button class="flex-1 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 relative z-10 text-primary" id="btn-login" onclick="switchTab('login')">
+                        登录
+                    </button>
+<button class="flex-1 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 relative z-10 text-on-surface-variant" id="btn-register" onclick="switchTab('register')">
+                        立即注册
+                    </button>
+</div>
+<!-- Form Section -->
+<form class="space-y-6">
+<!-- Dynamic Register Field -->
+<div class="space-y-1 tab-content" id="username-field">
+<label class="block text-xs font-bold font-label uppercase tracking-wider text-on-surface-variant ml-4 mb-1">用户名</label>
+<div class="relative">
+<input class="w-full bg-surface-container-highest border-none rounded-full py-4 px-6 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary/20 transition-all" placeholder="您的昵称" type="text"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="block text-xs font-bold font-label uppercase tracking-wider text-on-surface-variant ml-4 mb-1">电子邮箱</label>
+<div class="relative">
+<input class="w-full bg-surface-container-highest border-none rounded-full py-4 px-6 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary/20 transition-all" placeholder="hello@soulecho.com" type="email"/>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between items-center px-4 mb-1">
+<label class="text-xs font-bold font-label uppercase tracking-wider text-on-surface-variant">密码</label>
+<a class="text-xs font-semibold text-primary hover:text-primary-dim transition-colors" href="#" id="forgot-password-link">忘记密码？</a>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container-highest border-none rounded-full py-4 px-6 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary/20 transition-all" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<!-- Primary Action Button -->
+<button class="w-full py-4 rounded-full bg-gradient-to-tr from-primary to-primary-container text-white font-bold font-headline text-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300" id="submit-button" type="submit">
+                        登录
+                    </button>
+</form>
+<!-- Divider -->
+<div class="flex items-center my-8">
+<div class="flex-grow h-[1px] bg-outline-variant/20"></div>
+<span class="px-4 text-xs font-bold font-label text-outline uppercase tracking-widest">或者通过</span>
+<div class="flex-grow h-[1px] bg-outline-variant/20"></div>
+</div>
+<!-- Social Login -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-3 py-3.5 px-4 rounded-full bg-surface-container-lowest border border-outline-variant/10 hover:bg-surface-container transition-colors duration-300 group">
+<svg class="w-5 h-5 text-[#07C160] group-hover:scale-110 transition-transform" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 2C6.477 2 2 6.477 2 12c0 3.058 1.367 5.8 3.535 7.653.25.215.352.548.243.855l-.64 1.833a.502.502 0 0 0 .743.582l2.365-1.391c.218-.128.483-.153.722-.067A9.957 9.957 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zM8.336 10.16c.451 0 .816.365.816.816v1.306c0 .451-.365.816-.816.816a.816.816 0 0 1-.816-.816V10.976c0-.451.365-.816.816-.816zm4.898 0c.451 0 .816.365.816.816v1.306c0 .451-.365.816-.816.816a.816.816 0 0 1-.816-.816V10.976c0-.451.365-.816.816-.816zm3.535 4.312c-.512 0-.965-.183-1.31-.482a1.868 1.868 0 0 1-.502-1.31v-.023c0-.486.17-.929.452-1.272.33-.404.82-.667 1.371-.667.502 0 .95.22 1.258.57.303.344.484.805.484 1.31v.059c0 .488-.173.93-.456 1.272a1.84 1.84 0 0 1-1.297.543z"></path>
+</svg>
+<span class="text-sm font-semibold text-on-surface">微信</span>
+</button>
+<button class="flex items-center justify-center gap-3 py-3.5 px-4 rounded-full bg-surface-container-lowest border border-outline-variant/10 hover:bg-surface-container transition-colors duration-300 group">
+<svg class="w-5 h-5 text-[#12B7F5] group-hover:scale-110 transition-transform" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12.003 2c-5.523 0-10 4.477-10 10 0 5.523 4.477 10 10 10 5.523 0 10-4.477 10-10 0-5.523-4.477-10-10-10zm4.242 13.5c-.146.43-.374.838-.68 1.201-.197.234-.343.407-.435.518-.328.396-.492.673-.492.831 0 .15.067.291.202.424.135.132.327.237.576.315.249.078.536.117.86.117h.171c.361 0 .686-.021.975-.062l-.086.516c-.328.055-.7.082-1.117.082h-.24c-.452 0-.853-.062-1.202-.186a1.996 1.996 0 0 1-.95-.694 2.193 2.193 0 0 1-.413-.996l-.014-.145c-.01-.362.062-.733.216-1.112.155-.38.358-.707.608-.981.127-.14.24-.263.338-.368.1-.105.151-.19.151-.253 0-.083-.074-.162-.224-.236a2.022 2.022 0 0 1-.531-.414 1.77 1.77 0 0 1-.384-.668c-.092-.284-.139-.58-.139-.888 0-.44.095-.838.286-1.192.19-.355.459-.64.805-.856.347-.216.749-.323 1.207-.323s.859.107 1.207.323c.346.216.615.501.805.856.191.354.286.752.286 1.192 0 .308-.047.604-.139.888a1.77 1.77 0 0 1-.384.668 2.022 2.022 0 0 1-.531.414c-.15.074-.224.153-.224.236 0 .063.05.148.151.253.098.105.211.228.338.368.25.274.453.601.608.981z"></path>
+</svg>
+<span class="text-sm font-semibold text-on-surface">QQ</span>
+</button>
+</div>
+</div>
+<!-- Footer Quote -->
+<div class="mt-12 text-center px-6">
+<p class="text-on-surface-variant italic font-light text-sm">“在声音的交响中，找到属于你的那一抹宁静。”</p>
+</div>
+</div>
+</main>
+<script>
+        function switchTab(type) {
+            const slider = document.getElementById('tab-slider');
+            const loginBtn = document.getElementById('btn-login');
+            const registerBtn = document.getElementById('btn-register');
+            const title = document.getElementById('form-title');
+            const submitBtn = document.getElementById('submit-button');
+            const usernameField = document.getElementById('username-field');
+            const forgotPwd = document.getElementById('forgot-password-link');
+
+            if (type === 'login') {
+                slider.style.left = '6px';
+                loginBtn.classList.add('text-primary');
+                loginBtn.classList.remove('text-on-surface-variant');
+                registerBtn.classList.add('text-on-surface-variant');
+                registerBtn.classList.remove('text-primary');
+                
+                title.innerText = '欢迎回来';
+                submitBtn.innerText = '登录';
+                usernameField.classList.add('tab-content');
+                usernameField.classList.remove('active');
+                forgotPwd.style.visibility = 'visible';
+            } else {
+                slider.style.left = 'calc(50% + 1px)';
+                registerBtn.classList.add('text-primary');
+                registerBtn.classList.remove('text-on-surface-variant');
+                loginBtn.classList.add('text-on-surface-variant');
+                loginBtn.classList.remove('text-primary');
+
+                title.innerText = '开启旅程';
+                submitBtn.innerText = '立即注册';
+                usernameField.classList.remove('tab-content');
+                usernameField.classList.add('active');
+                forgotPwd.style.visibility = 'hidden';
+            }
+        }
+        
+        // Initial state set
+        window.onload = () => switchTab('login');
+    </script>
+</body></html>

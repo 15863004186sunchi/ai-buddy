@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SoulEcho - 林间细雨</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#6150b0",
+              "inverse-surface": "#0d0f0d",
+              "surface-dim": "#d9dbd6",
+              "tertiary-fixed-dim": "#b4eedf",
+              "surface-container-highest": "#e1e3de",
+              "surface-bright": "#faf9f6",
+              "background": "#faf9f6",
+              "on-primary-fixed": "#000000",
+              "on-secondary-fixed-variant": "#785342",
+              "on-secondary-container": "#6d4939",
+              "on-secondary": "#fff7f5",
+              "error": "#a8364b",
+              "outline": "#797b78",
+              "on-tertiary-fixed": "#155146",
+              "surface-container-high": "#e7e9e4",
+              "primary-dim": "#5544a3",
+              "secondary-dim": "#6f4b3a",
+              "on-primary-fixed-variant": "#2a1277",
+              "on-error-container": "#6e0523",
+              "inverse-primary": "#a190f5",
+              "secondary": "#7c5645",
+              "on-primary": "#fcf7ff",
+              "error-dim": "#6b0221",
+              "tertiary-fixed": "#c2fded",
+              "primary": "#6150b0",
+              "on-background": "#303330",
+              "on-primary-container": "#20006e",
+              "on-surface": "#303330",
+              "tertiary-container": "#c2fded",
+              "on-error": "#fff7f7",
+              "surface-container-lowest": "#ffffff",
+              "secondary-container": "#ffdbcc",
+              "primary-fixed-dim": "#9483e6",
+              "on-tertiary-container": "#2b6358",
+              "secondary-fixed": "#ffdbcc",
+              "on-secondary-fixed": "#593728",
+              "outline-variant": "#b0b3ae",
+              "primary-container": "#a190f5",
+              "surface": "#faf9f6",
+              "surface-variant": "#e1e3de",
+              "on-surface-variant": "#5d605c",
+              "on-tertiary-fixed-variant": "#366e62",
+              "tertiary-dim": "#235c51",
+              "surface-container": "#eeeeea",
+              "surface-container-low": "#f4f4f0",
+              "inverse-on-surface": "#9d9d9a",
+              "error-container": "#f97386",
+              "tertiary": "#31685d",
+              "secondary-fixed-dim": "#fcc9b4",
+              "primary-fixed": "#a190f5",
+              "on-tertiary": "#e3fff6"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-immersive-forest {
+            background: linear-gradient(rgba(250, 249, 246, 0.4), rgba(250, 249, 246, 0.1)), url('https://images.unsplash.com/photo-1448375235573-6730ee238ef1?auto=format&fit=crop&q=80&w=1200');
+            background-size: cover;
+            background-position: center;
+        }
+        .orb-animation {
+            background: radial-gradient(circle, rgba(161, 144, 245, 0.3) 0%, rgba(194, 253, 237, 0.2) 50%, rgba(255, 219, 204, 0.1) 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body min-h-screen selection:bg-primary-container">
+<!-- TopAppBar (Small Center Aligned) -->
+<header class="fixed top-0 w-full z-50 bg-transparent flex justify-between items-center w-full px-6 py-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-violet-50/50 transition-colors duration-200 ease-in-out active:scale-95 text-violet-600">
+<span class="material-symbols-outlined" data-icon="expand_more">expand_more</span>
+</button>
+<h1 class="text-xl font-bold text-violet-700 tracking-tight font-headline">SoulEcho</h1>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-violet-50/50 transition-colors duration-200 ease-in-out active:scale-95 text-violet-600">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</header>
+<main class="relative min-h-screen pt-20 pb-32 flex flex-col items-center overflow-hidden">
+<!-- Immersive Background Overlay -->
+<div class="absolute inset-0 -z-10 bg-immersive-forest opacity-40 blur-sm" data-alt="Soft ethereal misty green forest sunlight filtering through trees"></div>
+<div class="absolute inset-0 -z-10 orb-animation"></div>
+<!-- Hero Section: Album Art -->
+<section class="flex flex-col items-center mt-8 px-6 text-center w-full">
+<div class="relative group">
+<div class="absolute -inset-4 bg-primary-container/20 rounded-full blur-2xl group-hover:bg-primary-container/30 transition-all"></div>
+<div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full border-[6px] border-surface-container-lowest overflow-hidden shadow-2xl">
+<img alt="专辑封面" class="w-full h-full object-cover transform scale-110 group-hover:scale-125 transition-transform duration-1000" data-alt="Lush mossy forest landscape close up in mist" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-L1fe16cgWEd_fNcM2V3Ekv6BCIXiSzyZbEBEH3eIfsaz2jHWrOlk5X2HQ52I1eaghc7CTtmnysW_O09b5hogF1sNJqYohIi7srurJTkKImMjU_fR4NjRoTuPa20zuTeCuE2GAdUaGE1BO10kvHsIHuJuS6B0Cqu-Q64o7y7CQoAndRWf_HcbuxX0XfCDWMuxn-B5QlIN4D4EnoGhgJyY6HEx1bd6sae_8EkaNCxeDBJs0gtZFmV9UyGthAc1TZUaen0jPnMOkmrZ"/>
+</div>
+</div>
+<!-- Content Details -->
+<div class="mt-10">
+<h2 class="text-3xl md:text-4xl font-bold font-headline text-on-surface tracking-tight">林间细雨</h2>
+<div class="mt-2 inline-flex items-center px-4 py-1.5 rounded-full bg-tertiary-container/40 text-on-tertiary-container font-medium text-sm backdrop-blur-md">
+<span class="material-symbols-outlined text-[18px] mr-1.5" data-icon="self_improvement">self_improvement</span>
+                    冥想引导
+                </div>
+</div>
+</section>
+<!-- Player Controls (Glassmorphism Section) -->
+<section class="mt-auto mb-8 w-full max-w-md px-6">
+<div class="bg-white/40 backdrop-blur-2xl rounded-xl p-8 shadow-sm border border-white/30">
+<!-- Progress Bar -->
+<div class="w-full mb-6">
+<div class="relative h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="absolute top-0 left-0 h-full w-[53%] bg-gradient-to-r from-primary to-primary-container rounded-full"></div>
+</div>
+<div class="flex justify-between mt-3 text-xs font-medium text-on-surface-variant font-body">
+<span>12:45</span>
+<span>24:00</span>
+</div>
+</div>
+<!-- Control Buttons -->
+<div class="flex items-center justify-between">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="shuffle">shuffle</span>
+</button>
+<div class="flex items-center gap-8">
+<button class="text-on-surface hover:text-primary transition-colors active:scale-90">
+<span class="material-symbols-outlined text-3xl" data-icon="skip_previous" style="font-variation-settings: 'FILL' 1;">skip_previous</span>
+</button>
+<!-- Play/Pause Button (Primary CTA) -->
+<button class="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-primary-dim flex items-center justify-center text-on-primary shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-4xl" data-icon="pause" style="font-variation-settings: 'FILL' 1;">pause</span>
+</button>
+<button class="text-on-surface hover:text-primary transition-colors active:scale-90">
+<span class="material-symbols-outlined text-3xl" data-icon="skip_next" style="font-variation-settings: 'FILL' 1;">skip_next</span>
+</button>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="repeat">repeat</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-8 pt-4 bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl rounded-t-[3rem] border-t border-white/20 z-50 shadow-[0_-8px_32px_rgba(48,51,48,0.05)]">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-slate-500 px-5 py-2 hover:text-violet-700 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="text-[12px] font-medium font-body">首页</span>
+</a>
+<!-- Chat -->
+<a class="flex flex-col items-center justify-center text-slate-500 px-5 py-2 hover:text-violet-700 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="chat_bubble">chat_bubble</span>
+<span class="text-[12px] font-medium font-body">聊天</span>
+</a>
+<!-- Journal -->
+<a class="flex flex-col items-center justify-center text-slate-500 px-5 py-2 hover:text-violet-700 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="edit_note">edit_note</span>
+<span class="text-[12px] font-medium font-body">日志</span>
+</a>
+<!-- Healing (ACTIVE) -->
+<a class="flex flex-col items-center justify-center bg-violet-100 text-violet-800 rounded-full px-5 py-2 active:scale-90 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="self_improvement" style="font-variation-settings: 'FILL' 1;">self_improvement</span>
+<span class="text-[12px] font-medium font-body">疗愈</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#a190f5",
+              "inverse-on-surface": "#9d9d9a",
+              "on-error": "#fff7f7",
+              "outline": "#797b78",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-container": "#20006e",
+              "surface-bright": "#faf9f6",
+              "secondary-container": "#ffdbcc",
+              "on-secondary": "#fff7f5",
+              "on-primary-fixed-variant": "#2a1277",
+              "on-secondary-fixed": "#593728",
+              "tertiary-container": "#c2fded",
+              "on-primary-fixed": "#000000",
+              "secondary": "#7c5645",
+              "primary-fixed": "#a190f5",
+              "on-error-container": "#6e0523",
+              "inverse-surface": "#0d0f0d",
+              "on-tertiary": "#e3fff6",
+              "on-secondary-container": "#6d4939",
+              "surface-container-high": "#e7e9e4",
+              "on-surface-variant": "#5d605c",
+              "on-background": "#303330",
+              "on-tertiary-container": "#2b6358",
+              "on-secondary-fixed-variant": "#785342",
+              "surface-dim": "#d9dbd6",
+              "outline-variant": "#b0b3ae",
+              "secondary-dim": "#6f4b3a",
+              "background": "#faf9f6",
+              "secondary-fixed": "#ffdbcc",
+              "secondary-fixed-dim": "#fcc9b4",
+              "error": "#a8364b",
+              "on-surface": "#303330",
+              "error-container": "#f97386",
+              "tertiary": "#31685d",
+              "on-tertiary-fixed-variant": "#366e62",
+              "primary-dim": "#5544a3",
+              "surface": "#faf9f6",
+              "surface-variant": "#e1e3de",
+              "inverse-primary": "#a190f5",
+              "surface-container-low": "#f4f4f0",
+              "primary-fixed-dim": "#9483e6",
+              "on-tertiary-fixed": "#155146",
+              "tertiary-fixed": "#c2fded",
+              "tertiary-fixed-dim": "#b4eedf",
+              "tertiary-dim": "#235c51",
+              "surface-tint": "#6150b0",
+              "error-dim": "#6b0221",
+              "primary": "#6150b0",
+              "on-primary": "#fcf7ff",
+              "surface-container": "#eeeeea",
+              "surface-container-highest": "#e1e3de"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-nav {
+        background: rgba(250, 249, 246, 0.8);
+        backdrop-filter: blur(20px);
+      }
+      .reflection-orb {
+        background: radial-gradient(circle, #a190f5 0%, #ffdbcc 50%, #c2fded 100%);
+        filter: blur(40px);
+        opacity: 0.15;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- TopAppBar (Shared Logic Implementation) -->
+<header class="sticky top-0 z-50 flex items-center bg-surface p-4 justify-between border-b border-outline-variant/15">
+<div class="w-10"></div> <!-- Spacer for centering -->
+<h2 class="font-headline text-on-surface text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">心情日记</h2>
+<div class="flex w-10 justify-end">
+<button class="text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area (Empty State) -->
+<main class="flex flex-1 flex-col items-center justify-center px-8 py-12 text-center relative overflow-hidden">
+<!-- Background Decoration: Reflection Orb -->
+<div class="reflection-orb absolute top-1/4 left-1/2 -translate-x-1/2 w-64 h-64 rounded-full pointer-events-none"></div>
+<div class="relative z-10 flex flex-col items-center gap-10 max-w-md">
+<!-- Illustration Section -->
+<div class="relative w-full aspect-square max-w-[280px]">
+<div class="absolute inset-0 bg-surface-container-low rounded-xl rotate-3"></div>
+<div class="absolute inset-0 bg-surface-container-lowest rounded-xl -rotate-2 border border-outline-variant/10 shadow-sm flex items-center justify-center p-6">
+<div class="flex flex-col items-center gap-4">
+<div class="w-20 h-20 bg-primary-container/20 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-5xl" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div class="space-y-2 w-full">
+<div class="h-2 w-3/4 bg-surface-variant rounded-full mx-auto"></div>
+<div class="h-2 w-1/2 bg-surface-variant/60 rounded-full mx-auto"></div>
+</div>
+</div>
+</div>
+<!-- Small decorative floating element -->
+<div class="absolute -top-4 -right-4 w-12 h-12 bg-secondary-container rounded-full flex items-center justify-center shadow-lg transform rotate-12">
+<span class="material-symbols-outlined text-secondary" data-icon="edit">edit</span>
+</div>
+</div>
+<!-- Text Content -->
+<div class="flex flex-col gap-4">
+<h1 class="font-headline text-on-surface text-2xl font-bold tracking-tight">开始你的第一篇日记</h1>
+<p class="text-on-surface-variant text-base leading-relaxed max-w-[300px] mx-auto">
+                        记录此刻的心情，让每一份情绪都有归宿。
+                    </p>
+</div>
+<!-- Primary CTA Button -->
+<button class="group relative flex min-w-[200px] items-center justify-center overflow-hidden rounded-full p-[2px] focus:outline-none">
+<div class="absolute inset-0 bg-gradient-to-r from-primary to-primary-container transition-all group-hover:opacity-90"></div>
+<div class="relative flex w-full items-center justify-center gap-2 rounded-full px-8 py-4 text-on-primary font-headline font-bold text-base transition-transform active:scale-95">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+<span>立即记录</span>
+</div>
+</button>
+<!-- Secondary tip -->
+<div class="mt-4 flex items-center gap-2 text-on-surface-variant/60 text-xs font-medium uppercase tracking-widest">
+<span class="h-px w-8 bg-outline-variant/30"></span>
+<span>倾听你的心声</span>
+<span class="h-px w-8 bg-outline-variant/30"></span>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Shared Component Template) -->
+<nav class="glass-nav sticky bottom-0 z-50 flex gap-2 border-t border-outline-variant/10 px-4 pb-6 pt-2">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-on-surface-variant" href="#"><div class="flex h-8 items-center justify-center"><span class="material-symbols-outlined" data-icon="home">home</span></div><p class="text-xs font-medium leading-normal tracking-[0.015em]">首页</p></a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-on-surface" href="#"><div class="flex h-8 items-center justify-center"><span class="material-symbols-outlined" data-icon="chat" style="font-variation-settings: 'FILL' 1;">chat</span></div><p class="text-xs font-bold leading-normal tracking-[0.015em]">聊天</p></a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-on-surface-variant" href="#"><div class="flex h-8 items-center justify-center"><span class="material-symbols-outlined" data-icon="menu_book">menu_book</span></div><p class="text-xs font-medium leading-normal tracking-[0.015em]">日志</p></a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-on-surface-variant" href="#"><div class="flex h-8 items-center justify-center"><span class="material-symbols-outlined" data-icon="self_care">self_care</span></div><p class="text-xs font-medium leading-normal tracking-[0.015em]">疗愈</p></a>
+</nav>
+</div>
+</body></html>

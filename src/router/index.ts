@@ -1,14 +1,32 @@
+import type { RouterHistory } from 'vue-router';
 import { createRouter, createWebHistory } from 'vue-router';
 
+import { useSession } from '@/composables/useSession';
+import AuthPage from '@/pages/AuthPage.vue';
+import HomePage from '@/pages/HomePage.vue';
+import OnboardingPage from '@/pages/OnboardingPage.vue';
 import WelcomePage from '@/pages/WelcomePage.vue';
 
-export const router = createRouter({
-  history: createWebHistory(),
-  routes: [
-    {
-      path: '/',
-      name: 'welcome',
-      component: WelcomePage,
-    },
-  ],
-});
+export function createAppRouter(history: RouterHistory = createWebHistory()) {
+  const router = createRouter({
+    history,
+    routes: [
+      { path: '/', name: 'welcome', component: WelcomePage },
+      { path: '/onboarding/:step(1|2|3)', name: 'onboarding', component: OnboardingPage },
+      { path: '/auth', name: 'auth', component: AuthPage },
+      { path: '/home', name: 'home', component: HomePage },
+    ],
+  });
+
+  router.beforeEach((to) => {
+    if (to.name === 'home' && !useSession().isAuthenticated.value) {
+      return '/auth';
+    }
+
+    return true;
+  });
+
+  return router;
+}
+
+export const router = createAppRouter();
