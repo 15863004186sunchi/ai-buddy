@@ -65,4 +65,14 @@ describe('home page navigation and media', () => {
     await wrapper.get('[data-testid="nav-healing"]').trigger('click');
     expect(wrapper.text()).toContain('\u7597\u6108\u65f6\u523b');
   });
+
+  it('keeps the bottom navigation outside the scrollable content region', async () => {
+    const { wrapper } = await mountHomePage();
+
+    const scrollArea = wrapper.get('[data-testid="home-scroll"]');
+    const bottomNav = wrapper.get('[data-testid="bottom-nav"]');
+
+    expect(scrollArea.find('[data-testid="bottom-nav"]').exists()).toBe(false);
+    expect(bottomNav.exists()).toBe(true);
+  });
 });

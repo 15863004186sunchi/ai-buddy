@@ -12,86 +12,88 @@
         <button class="home-page__logout" data-testid="logout-button" @click="logout">退出</button>
       </header>
 
-      <section v-if="activeTab === 'home'" class="home-page__content home-page__content--overview">
-        <section class="home-page__daily">
+      <section class="home-page__scroll" data-testid="home-scroll">
+        <section v-if="activeTab === 'home'" class="home-page__content home-page__content--overview">
+          <section class="home-page__daily">
+            <div class="home-page__section-header">
+              <h2>{{ dailyEcho.title }}</h2>
+              <span>{{ dailyEcho.date }}</span>
+            </div>
+            <article class="home-page__echo-card">
+              <img :src="dailyEcho.image" alt="每日回响配图" />
+              <div class="home-page__echo-overlay">
+                <p class="home-page__quote">“{{ dailyEcho.quote }}”</p>
+                <p class="page-copy">{{ dailyEcho.description }}</p>
+              </div>
+            </article>
+          </section>
+
+          <section class="home-page__section">
+            <div class="home-page__section-header">
+              <h2>此刻的你</h2>
+            </div>
+            <div class="home-page__moods">
+              <article v-for="item in moodOptions" :key="item.label" class="home-page__mood-card">
+                <strong>{{ item.label }}</strong>
+                <span>{{ item.hint }}</span>
+              </article>
+            </div>
+          </section>
+
+          <section class="home-page__section">
+            <div class="home-page__section-header">
+              <h2>为你推荐</h2>
+            </div>
+            <div class="home-page__recommendations">
+              <article v-for="item in recommendations" :key="item.title" class="home-page__recommendation-card glass-panel">
+                <img :src="item.image" :alt="item.title" />
+                <div>
+                  <strong>{{ item.title }}</strong>
+                  <span>{{ item.meta }}</span>
+                </div>
+              </article>
+            </div>
+          </section>
+        </section>
+
+        <section v-else-if="activeTab === 'chat'" class="home-page__content">
           <div class="home-page__section-header">
-            <h2>{{ dailyEcho.title }}</h2>
-            <span>{{ dailyEcho.date }}</span>
+            <h2>陪伴对话</h2>
           </div>
-          <article class="home-page__echo-card">
-            <img :src="dailyEcho.image" alt="每日回响配图" />
-            <div class="home-page__echo-overlay">
-              <p class="home-page__quote">“{{ dailyEcho.quote }}”</p>
-              <p class="page-copy">{{ dailyEcho.description }}</p>
+          <article v-for="card in companionCards" :key="card.title" class="home-page__feature-card glass-panel">
+            <img :src="card.image" :alt="card.title" />
+            <div>
+              <strong>{{ card.title }}</strong>
+              <p>{{ card.text }}</p>
             </div>
           </article>
         </section>
 
-        <section class="home-page__section">
+        <section v-else-if="activeTab === 'journal'" class="home-page__content">
           <div class="home-page__section-header">
-            <h2>此刻的你</h2>
+            <h2>今日日记</h2>
           </div>
-          <div class="home-page__moods">
-            <article v-for="item in moodOptions" :key="item.label" class="home-page__mood-card">
-              <strong>{{ item.label }}</strong>
-              <span>{{ item.hint }}</span>
-            </article>
-          </div>
+          <article v-for="prompt in journalPrompts" :key="prompt.title" class="home-page__feature-card glass-panel">
+            <img :src="prompt.image" :alt="prompt.title" />
+            <div>
+              <strong>{{ prompt.title }}</strong>
+              <p>{{ prompt.text }}</p>
+            </div>
+          </article>
         </section>
 
-        <section class="home-page__section">
+        <section v-else class="home-page__content">
           <div class="home-page__section-header">
-            <h2>为你推荐</h2>
+            <h2>疗愈时刻</h2>
           </div>
-          <div class="home-page__recommendations">
-            <article v-for="item in recommendations" :key="item.title" class="home-page__recommendation-card glass-panel">
-              <img :src="item.image" :alt="item.title" />
-              <div>
-                <strong>{{ item.title }}</strong>
-                <span>{{ item.meta }}</span>
-              </div>
-            </article>
-          </div>
+          <article v-for="card in healingCards" :key="card.title" class="home-page__feature-card glass-panel">
+            <img :src="card.image" :alt="card.title" />
+            <div>
+              <strong>{{ card.title }}</strong>
+              <p>{{ card.meta }}</p>
+            </div>
+          </article>
         </section>
-      </section>
-
-      <section v-else-if="activeTab === 'chat'" class="home-page__content">
-        <div class="home-page__section-header">
-          <h2>陪伴对话</h2>
-        </div>
-        <article v-for="card in companionCards" :key="card.title" class="home-page__feature-card glass-panel">
-          <img :src="card.image" :alt="card.title" />
-          <div>
-            <strong>{{ card.title }}</strong>
-            <p>{{ card.text }}</p>
-          </div>
-        </article>
-      </section>
-
-      <section v-else-if="activeTab === 'journal'" class="home-page__content">
-        <div class="home-page__section-header">
-          <h2>今日日记</h2>
-        </div>
-        <article v-for="prompt in journalPrompts" :key="prompt.title" class="home-page__feature-card glass-panel">
-          <img :src="prompt.image" :alt="prompt.title" />
-          <div>
-            <strong>{{ prompt.title }}</strong>
-            <p>{{ prompt.text }}</p>
-          </div>
-        </article>
-      </section>
-
-      <section v-else class="home-page__content">
-        <div class="home-page__section-header">
-          <h2>疗愈时刻</h2>
-        </div>
-        <article v-for="card in healingCards" :key="card.title" class="home-page__feature-card glass-panel">
-          <img :src="card.image" :alt="card.title" />
-          <div>
-            <strong>{{ card.title }}</strong>
-            <p>{{ card.meta }}</p>
-          </div>
-        </article>
       </section>
 
       <BottomNav :active="activeTab" @select="activeTab = $event" />
@@ -129,11 +131,12 @@ async function logout() {
 
 <style scoped>
 .home-page {
-  min-height: 100%;
+  height: 100%;
   display: grid;
-  align-content: start;
-  gap: 1.2rem;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 1rem;
   padding: 1.4rem 1.4rem 0;
+  overflow: hidden;
 }
 
 .home-page__header {
@@ -141,6 +144,7 @@ async function logout() {
   justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
+  flex-shrink: 0;
 }
 
 .home-page__brand-block {
@@ -177,9 +181,21 @@ async function logout() {
   cursor: pointer;
 }
 
+.home-page__scroll {
+  min-height: 0;
+  overflow-y: auto;
+  padding-bottom: 0.5rem;
+  scrollbar-width: none;
+}
+
+.home-page__scroll::-webkit-scrollbar {
+  display: none;
+}
+
 .home-page__content {
   display: grid;
   gap: 1.2rem;
+  align-content: start;
 }
 
 .home-page__section,

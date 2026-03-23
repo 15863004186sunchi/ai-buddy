@@ -17,7 +17,7 @@
 
 .viewport-shell__phone {
   width: min(100%, 430px);
-  min-height: min(920px, calc(100vh - 48px));
+  height: min(920px, calc(100vh - 48px));
   background: rgba(250, 249, 246, 0.92);
   border-radius: 36px;
   overflow: hidden;
@@ -33,7 +33,7 @@
 
   .viewport-shell__phone {
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     border-radius: 0;
   }
 }
