@@ -1,0 +1,9 @@
+services:
+  ai-buddy:
+    container_name: ai-buddy
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    restart: unless-stopped
