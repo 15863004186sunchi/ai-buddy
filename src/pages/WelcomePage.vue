@@ -14,7 +14,7 @@
           进入体验
         </AppButton>
       </div>
-      <div class="welcome-page__rings">
+      <div class="welcome-page__rings" aria-hidden="true">
         <span></span>
         <span></span>
         <span></span>
@@ -45,6 +45,12 @@ const router = useRouter();
     radial-gradient(circle at bottom left, rgba(161, 144, 245, 0.18), transparent 32%);
 }
 
+.welcome-page__brand,
+.welcome-page__hero {
+  position: relative;
+  z-index: 1;
+}
+
 .welcome-page__brand {
   text-align: center;
   font-family: var(--font-display);
@@ -72,6 +78,8 @@ const router = useRouter();
   display: flex;
   justify-content: center;
   gap: 1rem;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .welcome-page__rings span {
