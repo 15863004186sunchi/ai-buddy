@@ -1,10 +1,26 @@
 <template>
   <div class="viewport-shell">
     <div class="viewport-shell__phone">
-      <slot />
+      <div class="viewport-shell__body">
+        <div class="viewport-shell__scroll" :data-testid="scrollTestId">
+          <slot />
+        </div>
+        <div v-if="$slots.bottom" class="viewport-shell__bottom">
+          <slot name="bottom" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+defineProps({
+  scrollTestId: {
+    type: String,
+    default: undefined,
+  },
+});
+</script>
 
 <style scoped>
 .viewport-shell {
@@ -24,6 +40,23 @@
   border: 1px solid rgba(255, 255, 255, 0.55);
   box-shadow: var(--shadow-soft);
   position: relative;
+}
+
+.viewport-shell__body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.viewport-shell__scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.viewport-shell__bottom {
+  flex-shrink: 0;
 }
 
 @media (max-width: 640px) {

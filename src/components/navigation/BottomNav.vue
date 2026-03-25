@@ -20,10 +20,10 @@
 <script setup lang="ts">
 const items = [
   { key: 'home', label: '首页', icon: 'M3 11.5 12 4l9 7.5M5 10.5V20h14v-9.5M9 20v-5h6v5' },
-  { key: 'chat', label: '陪伴', icon: 'M5 7.5A2.5 2.5 0 0 1 7.5 5h9A2.5 2.5 0 0 1 19 7.5v6A2.5 2.5 0 0 1 16.5 16H10l-4 3v-3.5A2.5 2.5 0 0 1 5 13.5z' },
+  { key: 'companion', label: '陪伴', icon: 'M5 7.5A2.5 2.5 0 0 1 7.5 5h9A2.5 2.5 0 0 1 19 7.5v6A2.5 2.5 0 0 1 16.5 16H10l-4 3v-3.5A2.5 2.5 0 0 1 5 13.5z' },
   { key: 'journal', label: '日记', icon: 'M7 4.5h8.5A2.5 2.5 0 0 1 18 7v13H7.5A2.5 2.5 0 0 0 5 22V7A2.5 2.5 0 0 1 7.5 4.5zM9 9h6M9 13h6M9 17h4' },
   { key: 'healing', label: '疗愈', icon: 'M12 20s-6.5-4.2-6.5-9.5A3.5 3.5 0 0 1 12 8a3.5 3.5 0 0 1 6.5 2.5C18.5 15.8 12 20 12 20Z' },
-];
+] as const;
 
 defineProps<{
   active: string;
@@ -36,8 +36,6 @@ defineEmits<{
 
 <style scoped>
 .bottom-nav {
-  position: sticky;
-  bottom: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.5rem;
@@ -46,6 +44,7 @@ defineEmits<{
   backdrop-filter: blur(18px);
   border-top-left-radius: 28px;
   border-top-right-radius: 28px;
+  box-shadow: 0 -12px 30px rgba(97, 80, 176, 0.08);
 }
 
 .bottom-nav__item {
