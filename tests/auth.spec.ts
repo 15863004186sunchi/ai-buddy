@@ -62,6 +62,6 @@ describe('auth page', () => {
     await flushPromises();
 
     expect(useSession().user.value?.displayName).toBe('Xiaoman');
-    expect(router.currentRoute.value.fullPath).toBe('/home');
+    expect(router.currentRoute.value.fullPath).toBe('/app/home');
   });
 });

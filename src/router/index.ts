@@ -11,15 +11,17 @@ export function createAppRouter(history: RouterHistory = createWebHistory()) {
   const router = createRouter({
     history,
     routes: [
-      { path: '/', name: 'welcome', component: WelcomePage },
+      { path: '/', redirect: '/welcome' },
+      { path: '/welcome', name: 'welcome', component: WelcomePage },
       { path: '/onboarding/:step(1|2|3)', name: 'onboarding', component: OnboardingPage },
       { path: '/auth', name: 'auth', component: AuthPage },
-      { path: '/home', name: 'home', component: HomePage },
+      { path: '/register', name: 'register', component: AuthPage },
+      { path: '/app/:tab(home|companion|journal|healing)', name: 'app', component: HomePage },
     ],
   });
 
   router.beforeEach((to) => {
-    if (to.name === 'home' && !useSession().isAuthenticated.value) {
+    if (to.name === 'app' && !useSession().isAuthenticated.value) {
       return '/auth';
     }
 

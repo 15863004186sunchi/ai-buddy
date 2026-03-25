@@ -12,18 +12,12 @@ describe('app bootstrap', () => {
     resetSessionForTests();
   });
 
-  it('renders the welcome route by default', async () => {
+  it('redirects the root path to the welcome route', async () => {
     const router = createAppRouter(createMemoryHistory());
     router.push('/');
     await router.isReady();
 
-    const wrapper = mount(App, {
-      global: {
-        plugins: [router],
-      },
-    });
-
-    expect(wrapper.text()).toContain('\u8fdb\u5165\u4f53\u9a8c');
+    expect(router.currentRoute.value.fullPath).toBe('/welcome');
   });
 
   it('renders onboarding content for the current step route', async () => {
@@ -40,9 +34,9 @@ describe('app bootstrap', () => {
     expect(wrapper.text()).toContain('\u8bb0\u5f55\u60c5\u7eea\uff0c\u89c1\u8bc1\u6210\u957f');
   });
 
-  it('redirects unauthenticated users away from home', async () => {
+  it('redirects unauthenticated users from the app shell to auth', async () => {
     const router = createAppRouter(createMemoryHistory());
-    router.push('/home');
+    router.push('/app/home');
     await router.isReady();
 
     mount(App, {

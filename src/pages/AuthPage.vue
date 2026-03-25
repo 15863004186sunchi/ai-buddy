@@ -157,7 +157,7 @@ async function handleSubmit() {
     }
 
     session.register(registerForm);
-    await router.push('/home');
+    await router.push('/app/home');
     return;
   }
 
@@ -167,7 +167,7 @@ async function handleSubmit() {
   }
 
   session.login(loginForm);
-  await router.push('/home');
+  await router.push('/app/home');
 }
 </script>
 
