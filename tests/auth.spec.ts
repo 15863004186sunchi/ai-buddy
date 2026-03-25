@@ -3,10 +3,11 @@ import { createMemoryHistory } from 'vue-router';
 import { beforeEach, describe, expect, it } from 'vitest';
 
 import AuthPage from '@/pages/AuthPage.vue';
+import RegisterPage from '@/pages/RegisterPage.vue';
 import { resetSessionForTests, useSession } from '@/composables/useSession';
 import { createAppRouter } from '@/router';
 
-async function mountAuthPage() {
+async function mountLoginPage() {
   const router = createAppRouter(createMemoryHistory());
   router.push('/auth');
   await router.isReady();
@@ -20,29 +21,42 @@ async function mountAuthPage() {
   return { router, wrapper };
 }
 
-describe('auth page', () => {
+async function mountRegisterPage() {
+  const router = createAppRouter(createMemoryHistory());
+  router.push('/register');
+  await router.isReady();
+
+  const wrapper = mount(RegisterPage, {
+    global: {
+      plugins: [router],
+    },
+  });
+
+  return { router, wrapper };
+}
+
+describe('auth entry pages', () => {
   beforeEach(() => {
     localStorage.clear();
     resetSessionForTests();
   });
 
-  it('switches from login to register mode', async () => {
-    const { wrapper } = await mountAuthPage();
+  it('navigates from login to register', async () => {
+    const { router, wrapper } = await mountLoginPage();
 
-    await wrapper.get('[data-testid="auth-tab-register"]').trigger('click');
+    await wrapper.get('[data-testid="go-register"]').trigger('click');
+    await flushPromises();
 
-    expect(wrapper.text()).toContain('\u521b\u5efa\u4f60\u7684\u4e13\u5c5e\u966a\u4f34');
-    expect(wrapper.find('input[name="displayName"]').exists()).toBe(true);
+    expect(router.currentRoute.value.fullPath).toBe('/register');
   });
 
   it('shows validation messages for invalid register submission', async () => {
-    const { wrapper } = await mountAuthPage();
+    const { wrapper } = await mountRegisterPage();
 
-    await wrapper.get('[data-testid="auth-tab-register"]').trigger('click');
     await wrapper.get('input[name="email"]').setValue('bad-email');
     await wrapper.get('input[name="password"]').setValue('123');
     await wrapper.get('input[name="confirmPassword"]').setValue('456');
-    await wrapper.get('[data-testid="auth-form"]').trigger('submit');
+    await wrapper.get('[data-testid="register-form"]').trigger('submit');
 
     expect(wrapper.text()).toContain('\u8bf7\u8f93\u5165\u6635\u79f0');
     expect(wrapper.text()).toContain('\u8bf7\u8f93\u5165\u6709\u6548\u7684\u90ae\u7bb1\u5730\u5740');
@@ -51,14 +65,13 @@ describe('auth page', () => {
   });
 
   it('navigates to home after valid register submission', async () => {
-    const { router, wrapper } = await mountAuthPage();
+    const { router, wrapper } = await mountRegisterPage();
 
-    await wrapper.get('[data-testid="auth-tab-register"]').trigger('click');
     await wrapper.get('input[name="displayName"]').setValue('Xiaoman');
     await wrapper.get('input[name="email"]').setValue('xiaoman@example.com');
     await wrapper.get('input[name="password"]').setValue('password123');
     await wrapper.get('input[name="confirmPassword"]').setValue('password123');
-    await wrapper.get('[data-testid="auth-form"]').trigger('submit');
+    await wrapper.get('[data-testid="register-form"]').trigger('submit');
     await flushPromises();
 
     expect(useSession().user.value?.displayName).toBe('Xiaoman');

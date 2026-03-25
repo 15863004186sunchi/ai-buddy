@@ -2,59 +2,39 @@
   <MobileViewport>
     <main class="auth-page">
       <header class="auth-page__header">
-        <p class="auth-page__brand">AI Buddy</p>
-        <h1 class="page-title">{{ isRegister ? '创建你的专属陪伴' : '欢迎回来' }}</h1>
-        <p class="page-copy">
-          {{ isRegister ? '只需要几步，就能开启属于你的情绪记录与温柔陪伴。' : '继续这段熟悉的自我照看练习。' }}
-        </p>
+        <p class="auth-page__brand">SoulEcho</p>
+        <h1 class="page-title">欢迎回来</h1>
+        <p class="page-copy">在宁静中寻找共鸣，开启你的心灵旅程。</p>
       </header>
 
       <GlassCard class="auth-page__panel">
-        <SegmentedTabs v-model="mode" :options="tabOptions" />
-
         <form data-testid="auth-form" class="auth-page__form" @submit.prevent="handleSubmit">
           <AppInput
-            v-if="isRegister"
-            v-model="registerForm.displayName"
-            name="displayName"
-            label="昵称"
-            placeholder="例如：小满"
-            :error="registerErrors.displayName"
-          />
-
-          <AppInput
-            v-model="activeEmail"
+            v-model="loginForm.email"
             name="email"
             type="email"
             label="邮箱"
             placeholder="hello@ai-buddy.com"
             autocomplete="email"
-            :error="activeErrors.email"
+            :error="loginErrors.email"
           />
 
           <AppInput
-            v-model="activePassword"
+            v-model="loginForm.password"
             name="password"
             type="password"
             label="密码"
-            placeholder="至少 8 位密码"
+            placeholder="请输入密码"
             autocomplete="current-password"
-            :error="activeErrors.password"
+            :error="loginErrors.password"
           />
 
-          <AppInput
-            v-if="isRegister"
-            v-model="registerForm.confirmPassword"
-            name="confirmPassword"
-            type="password"
-            label="确认密码"
-            placeholder="再次输入密码"
-            autocomplete="new-password"
-            :error="registerErrors.confirmPassword"
-          />
+          <button type="button" class="auth-page__link auth-page__link--muted" @click="showMockToast('忘记密码功能将在下一版本开放')">
+            忘记密码？
+          </button>
 
           <AppButton block data-testid="auth-submit" type="submit">
-            {{ isRegister ? '注册并进入' : '登录并继续' }}
+            登录
           </AppButton>
         </form>
 
@@ -62,7 +42,7 @@
 
         <div class="auth-page__divider">
           <span></span>
-          <b>其他方式</b>
+          <b>或者通过</b>
           <span></span>
         </div>
 
@@ -70,27 +50,29 @@
           <button type="button" class="auth-page__social" @click="showMockToast('微信登录将在下一版本接入')">微信</button>
           <button type="button" class="auth-page__social" @click="showMockToast('QQ 登录将在下一版本接入')">QQ</button>
         </div>
+
+        <button type="button" class="auth-page__link" data-testid="go-register" @click="router.push('/register')">
+          还没有账号？立即注册
+        </button>
       </GlassCard>
     </main>
   </MobileViewport>
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, ref } from 'vue';
+import { reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 import AppButton from '@/components/ui/AppButton.vue';
 import AppInput from '@/components/ui/AppInput.vue';
 import GlassCard from '@/components/ui/GlassCard.vue';
-import SegmentedTabs from '@/components/ui/SegmentedTabs.vue';
 import ToastBanner from '@/components/ui/ToastBanner.vue';
 import { useSession } from '@/composables/useSession';
 import MobileViewport from '@/layouts/MobileViewport.vue';
-import { validateLoginForm, validateRegisterForm } from '@/lib/validation';
+import { validateLoginForm } from '@/lib/validation';
 
 const router = useRouter();
 const session = useSession();
-const mode = ref<'login' | 'register'>('login');
 const toastMessage = ref('');
 
 const loginForm = reactive({
@@ -98,49 +80,10 @@ const loginForm = reactive({
   password: '',
 });
 
-const registerForm = reactive({
-  displayName: '',
-  email: '',
-  password: '',
-  confirmPassword: '',
-});
-
 const loginErrors = reactive<{ email?: string; password?: string }>({});
-const registerErrors = reactive<{ displayName?: string; email?: string; password?: string; confirmPassword?: string }>({});
-
-const tabOptions = [
-  { label: '登录', value: 'login' },
-  { label: '注册', value: 'register' },
-];
-
-const isRegister = computed(() => mode.value === 'register');
-const activeEmail = computed({
-  get: () => (isRegister.value ? registerForm.email : loginForm.email),
-  set: (value: string) => {
-    if (isRegister.value) {
-      registerForm.email = value;
-      return;
-    }
-
-    loginForm.email = value;
-  },
-});
-const activePassword = computed({
-  get: () => (isRegister.value ? registerForm.password : loginForm.password),
-  set: (value: string) => {
-    if (isRegister.value) {
-      registerForm.password = value;
-      return;
-    }
-
-    loginForm.password = value;
-  },
-});
-const activeErrors = computed(() => (isRegister.value ? registerErrors : loginErrors));
 
 function clearErrors() {
   Object.keys(loginErrors).forEach((key) => delete loginErrors[key as keyof typeof loginErrors]);
-  Object.keys(registerErrors).forEach((key) => delete registerErrors[key as keyof typeof registerErrors]);
 }
 
 function showMockToast(message: string) {
@@ -149,19 +92,8 @@ function showMockToast(message: string) {
 
 async function handleSubmit() {
   clearErrors();
-
-  if (isRegister.value) {
-    Object.assign(registerErrors, validateRegisterForm(registerForm));
-    if (Object.keys(registerErrors).length > 0) {
-      return;
-    }
-
-    session.register(registerForm);
-    await router.push('/app/home');
-    return;
-  }
-
   Object.assign(loginErrors, validateLoginForm(loginForm));
+
   if (Object.keys(loginErrors).length > 0) {
     return;
   }
@@ -174,15 +106,16 @@ async function handleSubmit() {
 <style scoped>
 .auth-page {
   min-height: 100%;
-  padding: 1.6rem;
+  padding: 1.4rem;
   display: grid;
-  gap: 1.4rem;
-  align-content: center;
+  gap: 1rem;
+  align-content: start;
 }
 
 .auth-page__header {
   display: grid;
-  gap: 0.75rem;
+  gap: 0.55rem;
+  margin-top: 0.35rem;
 }
 
 .auth-page__brand {
@@ -199,7 +132,7 @@ async function handleSubmit() {
 
 .auth-page__form {
   display: grid;
-  gap: 1rem;
+  gap: 0.95rem;
 }
 
 .auth-page__divider {
@@ -230,5 +163,21 @@ async function handleSubmit() {
   color: var(--color-text);
   font-weight: 700;
   cursor: pointer;
+}
+
+.auth-page__link {
+  border: none;
+  background: transparent;
+  padding: 0;
+  color: var(--color-primary);
+  font-weight: 700;
+  cursor: pointer;
+  text-align: left;
+}
+
+.auth-page__link--muted {
+  color: var(--color-text-muted);
+  font-weight: 600;
+  justify-self: end;
 }
 </style>

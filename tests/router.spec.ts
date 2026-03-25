@@ -34,6 +34,20 @@ describe('app bootstrap', () => {
     expect(wrapper.text()).toContain('\u8bb0\u5f55\u60c5\u7eea\uff0c\u89c1\u8bc1\u6210\u957f');
   });
 
+  it('renders the dedicated register route', async () => {
+    const router = createAppRouter(createMemoryHistory());
+    router.push('/register');
+    await router.isReady();
+
+    const wrapper = mount(App, {
+      global: {
+        plugins: [router],
+      },
+    });
+
+    expect(wrapper.text()).toContain('\u7acb\u5373\u6ce8\u518c');
+  });
+
   it('redirects unauthenticated users from the app shell to auth', async () => {
     const router = createAppRouter(createMemoryHistory());
     router.push('/app/home');
