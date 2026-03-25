@@ -40,9 +40,10 @@ describe('app tabs routing', () => {
     expect(wrapper.text()).toContain('\u6bcf\u65e5\u56de\u54cd');
   });
 
-  it('renders the journal tab for /app/journal', async () => {
-    const { wrapper } = await mountApp('/app/journal');
+  it('renders companion as a chat screen for /app/companion', async () => {
+    const { wrapper } = await mountApp('/app/companion');
 
-    expect(wrapper.text()).toContain('\u4eca\u65e5\u65e5\u8bb0');
+    expect(wrapper.get('[data-testid="chat-thread"]').exists()).toBe(true);
+    expect(wrapper.get('[data-testid="chat-composer"]').exists()).toBe(true);
   });
 });
