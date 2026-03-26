@@ -42,6 +42,17 @@ describe('app tabs shell', () => {
     expect(wrapper.text()).toContain('\u4e3a\u4f60\u63a8\u8350');
   });
 
+  it('renders real bottom nav labels instead of question-mark placeholders', async () => {
+    const { wrapper } = await mountAppTabs();
+    const navText = wrapper.get('[data-testid="bottom-nav"]').text();
+
+    expect(navText).toContain('\u9996\u9875');
+    expect(navText).toContain('\u966a\u4f34');
+    expect(navText).toContain('\u65e5\u8bb0');
+    expect(navText).toContain('\u7597\u6108');
+    expect(navText).not.toContain('?');
+  });
+
   it('renders the bottom nav outside the shared scroll area', async () => {
     const { wrapper } = await mountAppTabs();
 
