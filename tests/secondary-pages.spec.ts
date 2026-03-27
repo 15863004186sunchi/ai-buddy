@@ -6,7 +6,7 @@ import App from '@/App.vue';
 import { resetSessionForTests, useSession } from '@/composables/useSession';
 import { createAppRouter } from '@/router';
 
-async function mountSecondaryPage(path: string) {
+async function mountSecondaryPage(path: string, fromPath?: string) {
   resetSessionForTests();
   localStorage.clear();
   useSession().register({
@@ -16,14 +16,24 @@ async function mountSecondaryPage(path: string) {
   });
 
   const router = createAppRouter(createMemoryHistory());
-  router.push(path);
-  await router.isReady();
+
+  if (fromPath) {
+    router.push(fromPath);
+    await router.isReady();
+    await router.push(path);
+    await flushPromises();
+  } else {
+    router.push(path);
+    await router.isReady();
+  }
 
   const wrapper = mount(App, {
     global: {
       plugins: [router],
     },
   });
+
+  await flushPromises();
 
   return { router, wrapper };
 }
@@ -34,8 +44,8 @@ describe('secondary pages', () => {
     resetSessionForTests();
   });
 
-  it('renders the journal detail route shell inside the shared viewport and returns to the journal tab', async () => {
-    const { router, wrapper } = await mountSecondaryPage('/journal/journal-1');
+  it('renders the journal detail route shell inside the shared viewport and keeps history on the journal tab after custom back', async () => {
+    const { router, wrapper } = await mountSecondaryPage('/journal/journal-1', '/app/journal');
 
     expect(router.currentRoute.value.fullPath).toBe('/journal/journal-1');
     expect(wrapper.get('[data-testid="journal-detail-page"]').exists()).toBe(true);
@@ -46,10 +56,15 @@ describe('secondary pages', () => {
     await flushPromises();
 
     expect(router.currentRoute.value.fullPath).toBe('/app/journal');
+
+    router.back();
+    await flushPromises();
+
+    expect(router.currentRoute.value.fullPath).toBe('/app/journal');
   });
 
-  it('renders the healing player route shell inside the shared viewport and returns to the healing tab', async () => {
-    const { router, wrapper } = await mountSecondaryPage('/healing/track-1');
+  it('renders the healing player route shell inside the shared viewport and keeps history on the healing tab after custom back', async () => {
+    const { router, wrapper } = await mountSecondaryPage('/healing/track-1', '/app/healing');
 
     expect(router.currentRoute.value.fullPath).toBe('/healing/track-1');
     expect(wrapper.get('[data-testid="healing-player-page"]').exists()).toBe(true);
@@ -57,6 +72,11 @@ describe('secondary pages', () => {
     expect(wrapper.text()).toContain('Healing Player');
 
     await wrapper.get('[data-testid="healing-player-back"]').trigger('click');
+    await flushPromises();
+
+    expect(router.currentRoute.value.fullPath).toBe('/app/healing');
+
+    router.back();
     await flushPromises();
 
     expect(router.currentRoute.value.fullPath).toBe('/app/healing');

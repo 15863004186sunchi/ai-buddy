@@ -19,8 +19,8 @@ import MobileViewport from '@/layouts/MobileViewport.vue';
 
 const router = useRouter();
 
-function goBack() {
-  void router.push('/app/healing');
+async function goBack() {
+  await router.replace('/app/healing');
 }
 </script>
 
