@@ -15,23 +15,28 @@ export const companionHeader = {
   status: '正在倾听你的呼吸...',
 };
 
+export const companionParticipants = {
+  assistant: companionHeader.title,
+  user: '你',
+};
+
 export const companionMessages: CompanionMessage[] = [
   {
     id: 'assistant-1',
     role: 'assistant',
-    author: 'SoulEcho',
+    author: companionParticipants.assistant,
     text: '我能感觉到你此刻的疲惫。深呼吸，这并不是你的错。现在的这种压力就像一片云，虽然遮住了阳光，但它终究会飘走的。',
   },
   {
     id: 'user-1',
     role: 'user',
-    author: '你',
+    author: companionParticipants.user,
     text: '事情太多了，我感觉自己快要窒息了。我不知道该从哪里开始，大脑一片混乱。',
   },
   {
     id: 'assistant-2',
     role: 'assistant',
-    author: 'SoulEcho',
+    author: companionParticipants.assistant,
     text: '没关系的。让我们试着把思绪带回当下。我们来做一个简单的着陆练习。',
     steps: [
       '寻找 3 种你现在能看到的颜色',
@@ -41,6 +46,17 @@ export const companionMessages: CompanionMessage[] = [
     closing: '我会在这里陪着你，慢慢来。',
   },
 ];
+
+function cloneMessage(message: CompanionMessage): CompanionMessage {
+  return {
+    ...message,
+    steps: message.steps ? [...message.steps] : undefined,
+  };
+}
+
+export function createInitialCompanionMessages() {
+  return companionMessages.map(cloneMessage);
+}
 
 export const composerActions = {
   placeholder: '分享你的想法...',

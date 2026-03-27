@@ -78,26 +78,15 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
+import { useCompanionChat } from '@/composables/useCompanionChat';
 import {
   companionFeedbackMessages,
   companionHeader,
-  companionMessages,
   composerActions,
-  createMockCompanionReply,
-  type CompanionMessage,
 } from '@/data/companion';
-
-function cloneMessage(message: CompanionMessage): CompanionMessage {
-  return {
-    ...message,
-    steps: message.steps ? [...message.steps] : undefined,
-  };
-}
-
-const threadMessages = ref<CompanionMessage[]>(companionMessages.map(cloneMessage));
+const { messages: threadMessages, sendLocalMessage } = useCompanionChat();
 const draftMessage = ref('');
 const feedbackMessage = ref('');
-const replyIndex = ref(0);
 
 function showFeedback(message: string) {
   feedbackMessage.value = message;
@@ -111,21 +100,7 @@ function sendMessage() {
     return;
   }
 
-  threadMessages.value.push({
-    id: `user-${threadMessages.value.length + 1}`,
-    role: 'user',
-    author: '你',
-    text: trimmedDraft,
-  });
-
-  threadMessages.value.push({
-    id: `assistant-${threadMessages.value.length + 1}`,
-    role: 'assistant',
-    author: companionHeader.title,
-    text: createMockCompanionReply(trimmedDraft, replyIndex.value),
-  });
-
-  replyIndex.value += 1;
+  sendLocalMessage(trimmedDraft);
   draftMessage.value = '';
   feedbackMessage.value = '';
 }

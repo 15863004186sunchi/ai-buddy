@@ -2,11 +2,13 @@ import { flushPromises, mount } from '@vue/test-utils';
 import { createMemoryHistory } from 'vue-router';
 import { beforeEach, describe, expect, it } from 'vitest';
 
+import { resetCompanionChatForTests } from '@/composables/useCompanionChat';
 import { resetSessionForTests, useSession } from '@/composables/useSession';
 import AppTabsPage from '@/pages/AppTabsPage.vue';
 import { createAppRouter } from '@/router';
 
 async function mountApp(tab = '/app/home') {
+  resetCompanionChatForTests();
   resetSessionForTests();
   localStorage.clear();
   useSession().register({
@@ -38,6 +40,7 @@ function getThreadMessages(wrapper: Awaited<ReturnType<typeof mountApp>>['wrappe
 
 describe('app tabs routing', () => {
   beforeEach(() => {
+    resetCompanionChatForTests();
     resetSessionForTests();
     localStorage.clear();
   });
@@ -242,4 +245,35 @@ describe('local companion composer interactions', () => {
       expect((chatInput.element as HTMLInputElement).value).toBe('\u5148\u4e0d\u8981\u6539\u52a8\u6211\u7684\u8f93\u5165');
     }
   });
+
+  it('keeps sent messages when switching tabs but resets draft and feedback', async () => {
+    const { wrapper, router } = await mountApp('/app/companion');
+    const initialThreadCount = getThreadMessages(wrapper).length;
+    const chatInput = wrapper.get('[data-testid="chat-input"]');
+    const sendButton = wrapper.get('[data-testid="chat-send"]');
+
+    await chatInput.setValue('Remember this message');
+    await sendButton.trigger('click');
+    await flushPromises();
+
+    await chatInput.setValue('This draft should clear');
+    await wrapper.get('[data-testid="chat-plus"]').trigger('click');
+    await flushPromises();
+
+    await router.push('/app/home');
+    await flushPromises();
+    await router.push('/app/companion');
+    await flushPromises();
+
+    const threadMessages = getThreadMessages(wrapper);
+    expect(threadMessages).toHaveLength(initialThreadCount + 2);
+    expect(threadMessages[threadMessages.length - 2].attributes('data-role')).toBe('user');
+    expect(threadMessages[threadMessages.length - 2].get('[data-testid="chat-message-text"]').text()).toBe(
+      'Remember this message',
+    );
+    expect(threadMessages[threadMessages.length - 1].attributes('data-role')).toBe('assistant');
+    expect((wrapper.get('[data-testid="chat-input"]').element as HTMLInputElement).value).toBe('');
+    expect(wrapper.get('[data-testid="chat-feedback"]').text()).toBe('');
+  });
+
 });
