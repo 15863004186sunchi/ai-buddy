@@ -82,5 +82,5 @@ export const journalDetails: Record<string, JournalDetail> = {
 };
 
 export function getJournalDetail(id: string) {
-  return journalDetails[id] ?? journalDetails['journal-1'];
+  return journalDetails[id] ?? null;
 }

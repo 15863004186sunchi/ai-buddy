@@ -1,14 +1,20 @@
 <template>
   <MobileViewport scroll-test-id="journal-detail-scroll">
-    <section class="journal-detail-page" data-testid="journal-detail-page">
+    <section v-if="detail" class="journal-detail-page" data-testid="journal-detail-page">
       <header class="journal-detail-page__header">
-        <button type="button" class="journal-detail-page__icon-button" data-testid="journal-detail-back" @click="goBack">
+        <button
+          type="button"
+          class="journal-detail-page__icon-button"
+          data-testid="journal-detail-back"
+          aria-label="返回日记"
+          @click="goBack"
+        >
           ←
         </button>
         <h1>SoulEcho</h1>
         <div class="journal-detail-page__actions">
-          <button type="button" class="journal-detail-page__icon-button">↗</button>
-          <button type="button" class="journal-detail-page__icon-button">⋯</button>
+          <button type="button" class="journal-detail-page__icon-button" aria-label="分享日记">↗</button>
+          <button type="button" class="journal-detail-page__icon-button" aria-label="更多操作">⋯</button>
         </div>
       </header>
 
@@ -51,27 +57,42 @@
           type="button"
           class="journal-detail-page__action"
           :data-state="favoriteState"
+          :aria-pressed="String(isFavorite)"
           data-testid="journal-detail-favorite"
           @click="toggleFavorite"
         >
           <span>{{ favoriteState === 'active' ? '♥' : '♡' }}</span>
           <strong>收藏</strong>
         </button>
-        <button type="button" class="journal-detail-page__action">
+        <button
+          type="button"
+          class="journal-detail-page__action"
+          data-testid="journal-detail-edit"
+          @click="showPlaceholder('编辑功能将在下一阶段开放')"
+        >
           <span>✎</span>
           <strong>编辑</strong>
         </button>
-        <button type="button" class="journal-detail-page__action">
+        <button
+          type="button"
+          class="journal-detail-page__action"
+          data-testid="journal-detail-delete"
+          @click="showPlaceholder('删除功能将在下一阶段开放')"
+        >
           <span>⌫</span>
           <strong>删除</strong>
         </button>
       </section>
+
+      <p v-if="actionFeedback" class="journal-detail-page__action-feedback" data-testid="journal-detail-action-feedback">
+        {{ actionFeedback }}
+      </p>
     </section>
   </MobileViewport>
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, ref, watchEffect } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
 import { getJournalDetail } from '@/data/journal';
@@ -80,9 +101,16 @@ import MobileViewport from '@/layouts/MobileViewport.vue';
 const route = useRoute();
 const router = useRouter();
 const isFavorite = ref(false);
+const actionFeedback = ref('');
 
 const detail = computed(() => getJournalDetail(String(route.params.id ?? 'journal-1')));
 const favoriteState = computed(() => (isFavorite.value ? 'active' : 'inactive'));
+
+watchEffect(() => {
+  if (!detail.value) {
+    void router.replace('/app/journal');
+  }
+});
 
 async function goBack() {
   await router.replace('/app/journal');
@@ -94,6 +122,10 @@ async function goCompanion() {
 
 function toggleFavorite() {
   isFavorite.value = !isFavorite.value;
+}
+
+function showPlaceholder(message: string) {
+  actionFeedback.value = message;
 }
 </script>
 
@@ -170,7 +202,8 @@ function toggleFavorite() {
 
 .journal-detail-page__meta p,
 .journal-detail-page__paragraphs p,
-.journal-detail-page__feedback p {
+.journal-detail-page__feedback p,
+.journal-detail-page__action-feedback {
   margin: 0;
 }
 
@@ -272,5 +305,14 @@ function toggleFavorite() {
 .journal-detail-page__action[data-state='active'] span {
   background: rgba(255, 219, 204, 0.95);
   color: #c55b61;
+}
+
+.journal-detail-page__action-feedback {
+  margin: 0 1.5rem;
+  padding: 0.85rem 1rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--color-text-muted);
+  text-align: center;
 }
 </style>
