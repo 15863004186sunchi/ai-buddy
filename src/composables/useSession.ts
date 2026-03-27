@@ -1,5 +1,6 @@
 import { computed, ref } from 'vue';
 
+import { resetCompanionChatState } from '@/composables/useCompanionChat';
 import type { StorageLike } from '@/lib/storage';
 import { readJson, writeJson } from '@/lib/storage';
 
@@ -51,6 +52,7 @@ function buildStore(storage: StorageLike): SessionStore {
     },
     logout() {
       persist(null);
+      resetCompanionChatState();
     },
   };
 }

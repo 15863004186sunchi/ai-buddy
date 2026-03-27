@@ -2,6 +2,7 @@ import { flushPromises, mount } from '@vue/test-utils';
 import { createMemoryHistory } from 'vue-router';
 import { beforeEach, describe, expect, it } from 'vitest';
 
+import { resetCompanionChatForTests, useCompanionChat } from '@/composables/useCompanionChat';
 import AuthPage from '@/pages/AuthPage.vue';
 import RegisterPage from '@/pages/RegisterPage.vue';
 import { resetSessionForTests, useSession } from '@/composables/useSession';
@@ -38,6 +39,7 @@ async function mountRegisterPage() {
 describe('auth entry pages', () => {
   beforeEach(() => {
     localStorage.clear();
+    resetCompanionChatForTests();
     resetSessionForTests();
   });
 
@@ -76,5 +78,29 @@ describe('auth entry pages', () => {
 
     expect(useSession().user.value?.displayName).toBe('Xiaoman');
     expect(router.currentRoute.value.fullPath).toBe('/app/home');
+  });
+
+  it('clears the local companion chat when the session logs out', () => {
+    const session = useSession();
+    session.register({
+      displayName: 'User One',
+      email: 'user-one@example.com',
+      password: 'password123',
+    });
+
+    const chat = useCompanionChat();
+    const initialMessageCount = chat.messages.value.length;
+
+    chat.sendLocalMessage('Please remember this');
+    expect(chat.messages.value).toHaveLength(initialMessageCount + 2);
+
+    session.logout();
+    session.register({
+      displayName: 'User Two',
+      email: 'user-two@example.com',
+      password: 'password123',
+    });
+
+    expect(useCompanionChat().messages.value).toHaveLength(initialMessageCount);
   });
 });

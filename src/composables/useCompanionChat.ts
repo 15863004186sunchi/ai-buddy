@@ -45,6 +45,8 @@ export function useCompanionChat() {
   return singleton;
 }
 
-export function resetCompanionChatForTests() {
+export function resetCompanionChatState() {
   singleton = null;
 }
+
+export const resetCompanionChatForTests = resetCompanionChatState;
