@@ -100,13 +100,29 @@ describe('secondary pages', () => {
     expect(wrapper.find('[data-testid="journal-detail-page"]').exists()).toBe(false);
   });
 
-  it('renders the healing player route shell inside the shared viewport and keeps history on the healing tab after custom back', async () => {
+  it('renders the healing player route with immersive playback controls, local play toggle, and stable back navigation', async () => {
     const { router, wrapper } = await mountSecondaryPage('/healing/track-1', '/app/healing');
 
     expect(router.currentRoute.value.fullPath).toBe('/healing/track-1');
     expect(wrapper.get('[data-testid="healing-player-page"]').exists()).toBe(true);
     expect(wrapper.get('[data-testid="healing-player-scroll"]').exists()).toBe(true);
-    expect(wrapper.text()).toContain('Healing Player');
+    expect(wrapper.get('[data-testid="healing-player-artwork"]').exists()).toBe(true);
+    expect(wrapper.get('[data-testid="healing-player-badge"]').text()).toContain('\u51a5\u60f3\u5f15\u5bfc');
+    expect(wrapper.get('[data-testid="healing-player-progress"]').exists()).toBe(true);
+    expect(wrapper.get('[data-testid="healing-player-controls"]').exists()).toBe(true);
+    expect(wrapper.text()).toContain('\u6797\u95f4\u7ec6\u96e8');
+    expect(wrapper.text()).toContain('12:45');
+    expect(wrapper.text()).toContain('24:00');
+
+    const toggle = wrapper.get('[data-testid="healing-player-toggle"]');
+    expect(toggle.attributes('data-state')).toBe('playing');
+    expect(toggle.attributes('aria-pressed')).toBe('true');
+
+    await toggle.trigger('click');
+    await flushPromises();
+
+    expect(wrapper.get('[data-testid="healing-player-toggle"]').attributes('data-state')).toBe('paused');
+    expect(wrapper.get('[data-testid="healing-player-toggle"]').attributes('aria-pressed')).toBe('false');
 
     await wrapper.get('[data-testid="healing-player-back"]').trigger('click');
     await flushPromises();

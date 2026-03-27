@@ -17,6 +17,8 @@ describe('source encoding', () => {
     const journalData = readUtf8('src/data/journal.ts');
     const journalDetail = readUtf8('src/pages/JournalDetailPage.vue');
     const healing = readUtf8('src/components/tabs/HealingTab.vue');
+    const healingData = readUtf8('src/data/healing.ts');
+    const healingPlayer = readUtf8('src/pages/HealingPlayerPage.vue');
     const home = readUtf8('src/data/home.ts');
     const validation = readUtf8('src/lib/validation.ts');
 
@@ -33,6 +35,8 @@ describe('source encoding', () => {
     expect(journalDetail).toContain('\u7ee7\u7eed\u5bf9\u8bdd');
     expect(journalDetail).toContain('\u6536\u85cf');
     expect(healing).toContain('\u7597\u6108\u7a7a\u95f4');
+    expect(healingData).toContain('\u6797\u95f4\u7ec6\u96e8');
+    expect(healingPlayer).toContain('\u51a5\u60f3\u5f15\u5bfc');
     expect(home).toContain('\u5e73\u9759');
     expect(validation).toContain('\u8bf7\u8f93\u5165\u6635\u79f0');
   });

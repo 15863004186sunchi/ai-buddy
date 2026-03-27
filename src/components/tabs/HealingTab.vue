@@ -8,7 +8,12 @@
       <button type="button" class="healing-tab__settings">设置</button>
     </header>
 
-    <section class="healing-tab__hero">
+    <button
+      type="button"
+      class="healing-tab__hero"
+      data-testid="healing-hero-entry"
+      @click="openPlayer(healingHero.targetId)"
+    >
       <img :src="healingHero.image" :alt="healingHero.title" />
       <div class="healing-tab__hero-overlay">
         <span>{{ healingHero.badge }}</span>
@@ -16,39 +21,61 @@
         <p>{{ healingHero.description }}</p>
         <strong>{{ healingHero.meta }}</strong>
       </div>
-    </section>
+    </button>
 
     <section class="healing-tab__moods">
       <button v-for="mood in healingMoods" :key="mood" type="button">{{ mood }}</button>
     </section>
 
     <section class="healing-tab__categories" data-testid="healing-categories">
-      <article v-for="category in healingCategories" :key="category.id" class="healing-tab__category glass-panel">
+      <button
+        v-for="category in healingCategories"
+        :key="category.id"
+        type="button"
+        class="healing-tab__category glass-panel"
+        :data-testid="`healing-category-${category.id}`"
+        @click="openPlayer(category.targetId)"
+      >
         <div class="healing-tab__category-icon">{{ category.icon }}</div>
         <div>
           <h3>{{ category.title }}</h3>
           <p>{{ category.meta }}</p>
         </div>
-      </article>
+      </button>
     </section>
 
     <section class="healing-tab__recent">
       <div class="healing-tab__section-header">
         <h2>最近播放</h2>
       </div>
-      <article v-for="track in recentHealingTracks" :key="track.id" class="healing-tab__track glass-panel">
+      <button
+        v-for="track in recentHealingTracks"
+        :key="track.id"
+        type="button"
+        class="healing-tab__track glass-panel"
+        :data-testid="`healing-track-${track.id}`"
+        @click="openPlayer(track.id)"
+      >
         <img :src="track.image" :alt="track.title" />
         <div>
           <h3>{{ track.title }}</h3>
           <p>{{ track.meta }}</p>
         </div>
-      </article>
+      </button>
     </section>
   </section>
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
+
 import { healingCategories, healingHero, healingMoods, recentHealingTracks } from '@/data/healing';
+
+const router = useRouter();
+
+function openPlayer(id: string) {
+  void router.push(`/healing/${id}`);
+}
 </script>
 
 <style scoped>
@@ -81,11 +108,22 @@ import { healingCategories, healingHero, healingMoods, recentHealingTracks } fro
   color: var(--color-text-muted);
 }
 
+.healing-tab__hero,
+.healing-tab__category,
+.healing-tab__track {
+  width: 100%;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
 .healing-tab__hero {
   position: relative;
   overflow: hidden;
   border-radius: 28px;
   min-height: 21rem;
+  padding: 0;
+  background: transparent;
 }
 
 .healing-tab__hero img {
