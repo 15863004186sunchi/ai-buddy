@@ -55,7 +55,7 @@ npm run build
 2. 上传项目代码到服务器
 3. 进入项目目录
 4. 执行 `chmod +x scripts/*.sh`
-5. 执行 `./scripts/start.sh`
+5. 首次启动执行 `./scripts/start.sh`
 6. 执行 `./scripts/status.sh` 确认容器正常运行
 7. 执行 `./scripts/logs.sh` 查看启动日志
 
@@ -63,10 +63,19 @@ npm run build
 
 ```bash
 ./scripts/start.sh
+./scripts/start.sh --fresh
 ./scripts/status.sh
 ./scripts/logs.sh
 ./scripts/stop.sh
 ```
+
+切换分支、更新依赖，或者怀疑 Docker 构建缓存导致页面未生效时，优先执行：
+
+```bash
+./scripts/start.sh --fresh
+```
+
+这个模式会先停止当前容器，再使用 `docker compose build --no-cache` 重新构建，并通过 `up -d --force-recreate` 强制重建容器，适合 VPS 上做一次干净部署。
 
 如果需要查看更多日志，可以执行：
 
