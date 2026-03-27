@@ -57,13 +57,13 @@ export const companionFeedbackMessages = {
   settings: '设置功能暂未开放',
 } as const;
 
-const defaultReplyTemplates = [
+export const companionReplyTemplates = [
   '谢谢你愿意说出来。我们可以先抓住最让你在意的那一件事，慢慢拆开。',
   '我听见你的紧绷了。先不用急着解决全部问题，我们一步一步来。',
   '你已经很努力了。现在能把感受说出来，本身就是在照顾自己。',
 ];
 
-const keywordReplyGroups = [
+export const companionKeywordReplyGroups = [
   {
     keywords: ['累', '疲惫', '压力', '忙', '乱', '撑不住'],
     replies: [
@@ -89,10 +89,10 @@ const keywordReplyGroups = [
 
 export function createMockCompanionReply(draft: string, replyIndex: number) {
   const normalizedDraft = draft.trim();
-  const matchedGroup = keywordReplyGroups.find((group) =>
+  const matchedGroup = companionKeywordReplyGroups.find((group) =>
     group.keywords.some((keyword) => normalizedDraft.includes(keyword)),
   );
-  const templates = matchedGroup?.replies ?? defaultReplyTemplates;
+  const templates = matchedGroup?.replies ?? companionReplyTemplates;
 
   return templates[replyIndex % templates.length];
 }
