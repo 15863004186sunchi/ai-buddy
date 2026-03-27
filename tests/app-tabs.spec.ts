@@ -123,6 +123,14 @@ describe('app tabs routing', () => {
 });
 
 describe('local companion composer interactions', () => {
+  function getThreadArticles(wrapper) {
+    return wrapper.find('[data-testid="chat-thread"]').findAll('article');
+  }
+
+  function getMessagesByAuthor(wrapper, author) {
+    return getThreadArticles(wrapper).filter((article) => article.get('span').text() === author);
+  }
+
   it('allows typing into the companion composer', async () => {
     const { wrapper } = await mountApp('/app/companion');
     const input = wrapper.get('[data-testid="chat-input"]');
@@ -133,23 +141,24 @@ describe('local companion composer interactions', () => {
 
   it('clicking send appends a user message', async () => {
     const { wrapper } = await mountApp('/app/companion');
-    const userMessages = wrapper.findAll('.companion-tab__message--user');
     const chatInput = wrapper.get('[data-testid="chat-input"]');
     const sendButton = wrapper.get('[data-testid="chat-send"]');
+
+    const userMessagesBefore = getMessagesByAuthor(wrapper, '你');
 
     await chatInput.setValue('How are you?');
     await sendButton.trigger('click');
     await flushPromises();
 
-    const updatedUserMessages = wrapper.findAll('.companion-tab__message--user');
-    expect(updatedUserMessages.length).toBe(userMessages.length + 1);
-    const latestUserMessage = updatedUserMessages[updatedUserMessages.length - 1];
-    expect(latestUserMessage.text()).toContain('How are you?');
+    const userMessagesAfter = getMessagesByAuthor(wrapper, '你');
+    expect(userMessagesAfter.length).toBe(userMessagesBefore.length + 1);
+    expect(wrapper.get('[data-testid="chat-thread"]').text()).toContain('How are you?');
   });
 
   it('clicking send appends a local assistant reply', async () => {
     const { wrapper } = await mountApp('/app/companion');
-    const assistantMessages = wrapper.findAll('.companion-tab__message--assistant');
+    const assistantMessagesBefore = getMessagesByAuthor(wrapper, 'SoulEcho');
+    const assistantTextsBefore = assistantMessagesBefore.map((article) => article.text());
     const chatInput = wrapper.get('[data-testid="chat-input"]');
     const sendButton = wrapper.get('[data-testid="chat-send"]');
 
@@ -157,39 +166,55 @@ describe('local companion composer interactions', () => {
     await sendButton.trigger('click');
     await flushPromises();
 
-    const updatedAssistantMessages = wrapper.findAll('.companion-tab__message--assistant');
-    expect(updatedAssistantMessages.length).toBe(assistantMessages.length + 1);
-    const latestAssistantMessage = updatedAssistantMessages[updatedAssistantMessages.length - 1];
-    expect(latestAssistantMessage.text()).toContain('SoulEcho');
+    const assistantMessagesAfter = getMessagesByAuthor(wrapper, 'SoulEcho');
+    expect(assistantMessagesAfter.length).toBe(assistantMessagesBefore.length + 1);
+    const latestAssistantMessage = assistantMessagesAfter[assistantMessagesAfter.length - 1];
+    const latestText = latestAssistantMessage.text();
+    expect(assistantTextsBefore).not.toContain(latestText);
   });
 
   it('prevents sending when the input is empty', async () => {
     const { wrapper } = await mountApp('/app/companion');
-    const userMessages = wrapper.findAll('.companion-tab__message--user');
-    const assistantMessages = wrapper.findAll('.companion-tab__message--assistant');
+    const userMessagesBefore = getMessagesByAuthor(wrapper, '你');
+    const assistantMessagesBefore = getMessagesByAuthor(wrapper, 'SoulEcho');
     const sendButton = wrapper.get('[data-testid="chat-send"]');
 
     await sendButton.trigger('click');
     await flushPromises();
 
-    expect(wrapper.findAll('.companion-tab__message--user').length).toBe(userMessages.length);
-    expect(wrapper.findAll('.companion-tab__message--assistant').length).toBe(assistantMessages.length);
+    expect(getMessagesByAuthor(wrapper, '你').length).toBe(userMessagesBefore.length);
+    expect(getMessagesByAuthor(wrapper, 'SoulEcho').length).toBe(assistantMessagesBefore.length);
+  });
+
+  it('prevents sending when the input is whitespace-only', async () => {
+    const { wrapper } = await mountApp('/app/companion');
+    const userMessagesBefore = getMessagesByAuthor(wrapper, '你');
+    const assistantMessagesBefore = getMessagesByAuthor(wrapper, 'SoulEcho');
+    const chatInput = wrapper.get('[data-testid="chat-input"]');
+    const sendButton = wrapper.get('[data-testid="chat-send"]');
+
+    await chatInput.setValue('   ');
+    await sendButton.trigger('click');
+    await flushPromises();
+
+    expect(getMessagesByAuthor(wrapper, '你').length).toBe(userMessagesBefore.length);
+    expect(getMessagesByAuthor(wrapper, 'SoulEcho').length).toBe(assistantMessagesBefore.length);
   });
 
   it('shows placeholder feedback for composer actions', async () => {
     const { wrapper } = await mountApp('/app/companion');
-    const actionTestIds = ['chat-plus', 'chat-voice', 'chat-settings'];
-    let previousFeedbackText = '';
+    const actionFeedbackMap: Record<string, string> = {
+      'chat-plus': '想要分享更多内容？我们会在这里等待你的故事。',
+      'chat-voice': '语音输入尚未开放，敬请期待。',
+      'chat-settings': '设置功能正在施工中，暂时无法更改。',
+    };
 
-    for (const testId of actionTestIds) {
+    for (const [testId, expectedFeedback] of Object.entries(actionFeedbackMap)) {
       const button = wrapper.get(`[data-testid="${testId}"]`);
       await button.trigger('click');
       await flushPromises();
       const feedback = wrapper.get('[data-testid="chat-feedback"]');
-      const currentFeedbackText = feedback.text();
-      expect(currentFeedbackText).not.toBe('');
-      expect(currentFeedbackText).not.toBe(previousFeedbackText);
-      previousFeedbackText = currentFeedbackText;
+      expect(feedback.text()).toBe(expectedFeedback);
     }
   });
 });
