@@ -76,7 +76,6 @@ npm run build
 ```
 
 这个模式会先停止当前容器，再使用 `docker compose build --no-cache` 重新构建，并通过 `up -d --force-recreate` 强制重建容器，适合 VPS 上做一次干净部署。
-
 如果需要查看更多日志，可以执行：
 
 ```bash
