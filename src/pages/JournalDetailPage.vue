@@ -1,28 +1,32 @@
 <template>
-  <section class="secondary-page journal-detail-page" data-testid="journal-detail-page">
-    <header class="secondary-page__header">
-      <button type="button" class="secondary-page__back" data-testid="journal-detail-back" @click="goBack">
-        Back
-      </button>
-      <h1>Journal Detail</h1>
-    </header>
-    <p class="secondary-page__copy">Journal detail page shell</p>
-  </section>
+  <MobileViewport scroll-test-id="journal-detail-scroll">
+    <section class="secondary-page journal-detail-page" data-testid="journal-detail-page">
+      <header class="secondary-page__header">
+        <button type="button" class="secondary-page__back" data-testid="journal-detail-back" @click="goBack">
+          Back
+        </button>
+        <h1>Journal Detail</h1>
+      </header>
+      <p class="secondary-page__copy">Journal detail page shell</p>
+    </section>
+  </MobileViewport>
 </template>
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 
+import MobileViewport from '@/layouts/MobileViewport.vue';
+
 const router = useRouter();
 
 function goBack() {
-  router.back();
+  void router.push('/app/journal');
 }
 </script>
 
 <style scoped>
 .secondary-page {
-  min-height: 100vh;
+  min-height: 100%;
   padding: 1.5rem;
   display: grid;
   align-content: start;

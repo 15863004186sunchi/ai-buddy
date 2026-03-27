@@ -1,28 +1,32 @@
 <template>
-  <section class="secondary-page healing-player-page" data-testid="healing-player-page">
-    <header class="secondary-page__header">
-      <button type="button" class="secondary-page__back" data-testid="healing-player-back" @click="goBack">
-        Back
-      </button>
-      <h1>Healing Player</h1>
-    </header>
-    <p class="secondary-page__copy">Healing player page shell</p>
-  </section>
+  <MobileViewport scroll-test-id="healing-player-scroll">
+    <section class="secondary-page healing-player-page" data-testid="healing-player-page">
+      <header class="secondary-page__header">
+        <button type="button" class="secondary-page__back" data-testid="healing-player-back" @click="goBack">
+          Back
+        </button>
+        <h1>Healing Player</h1>
+      </header>
+      <p class="secondary-page__copy">Healing player page shell</p>
+    </section>
+  </MobileViewport>
 </template>
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 
+import MobileViewport from '@/layouts/MobileViewport.vue';
+
 const router = useRouter();
 
 function goBack() {
-  router.back();
+  void router.push('/app/healing');
 }
 </script>
 
 <style scoped>
 .secondary-page {
-  min-height: 100vh;
+  min-height: 100%;
   padding: 1.5rem;
   display: grid;
   align-content: start;
