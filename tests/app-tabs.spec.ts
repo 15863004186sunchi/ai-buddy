@@ -2,8 +2,8 @@ import { flushPromises, mount } from '@vue/test-utils';
 import { createMemoryHistory } from 'vue-router';
 import { beforeEach, describe, expect, it } from 'vitest';
 
-import AppTabsPage from '@/pages/AppTabsPage.vue';
 import { resetSessionForTests, useSession } from '@/composables/useSession';
+import AppTabsPage from '@/pages/AppTabsPage.vue';
 import { createAppRouter } from '@/router';
 
 async function mountApp(tab = '/app/home') {
@@ -30,6 +30,10 @@ async function mountApp(tab = '/app/home') {
 
 function getChatMessages(wrapper: Awaited<ReturnType<typeof mountApp>>['wrapper'], role: 'user' | 'assistant') {
   return wrapper.findAll(`[data-testid="chat-message"][data-role="${role}"]`);
+}
+
+function getThreadMessages(wrapper: Awaited<ReturnType<typeof mountApp>>['wrapper']) {
+  return wrapper.findAll('[data-testid="chat-message"]');
 }
 
 describe('app tabs routing', () => {
@@ -130,8 +134,10 @@ describe('local companion composer interactions', () => {
   it('allows typing into the companion composer', async () => {
     const { wrapper } = await mountApp('/app/companion');
     const input = wrapper.get('[data-testid="chat-input"]');
+
     await input.setValue('Tell me a story');
     await flushPromises();
+
     expect((input.element as HTMLInputElement).value).toBe('Tell me a story');
   });
 
@@ -147,12 +153,14 @@ describe('local companion composer interactions', () => {
 
     const updatedUserMessages = getChatMessages(wrapper, 'user');
     expect(updatedUserMessages.length).toBe(userMessages.length + 1);
+
     const latestUserMessage = updatedUserMessages[updatedUserMessages.length - 1];
     expect(latestUserMessage.get('[data-testid="chat-message-text"]').text()).toBe('How are you?');
   });
 
-  it('clicking send appends a local assistant reply', async () => {
+  it('clicking send appends a local assistant reply after the user message', async () => {
     const { wrapper } = await mountApp('/app/companion');
+    const threadMessages = getThreadMessages(wrapper);
     const assistantMessages = getChatMessages(wrapper, 'assistant');
     const chatInput = wrapper.get('[data-testid="chat-input"]');
     const sendButton = wrapper.get('[data-testid="chat-send"]');
@@ -162,9 +170,14 @@ describe('local companion composer interactions', () => {
     await flushPromises();
 
     const updatedAssistantMessages = getChatMessages(wrapper, 'assistant');
+    const appendedMessages = getThreadMessages(wrapper).slice(threadMessages.length);
+
     expect(updatedAssistantMessages.length).toBe(assistantMessages.length + 1);
-    const latestAssistantMessage = updatedAssistantMessages[updatedAssistantMessages.length - 1];
-    expect(latestAssistantMessage.get('[data-testid="chat-message-text"]').text()).not.toBe('');
+    expect(appendedMessages).toHaveLength(2);
+    expect(appendedMessages[0].attributes('data-role')).toBe('user');
+    expect(appendedMessages[0].get('[data-testid="chat-message-text"]').text()).toBe('Show me a plan');
+    expect(appendedMessages[1].attributes('data-role')).toBe('assistant');
+    expect(appendedMessages[1].get('[data-testid="chat-message-text"]').text()).not.toBe('');
   });
 
   it('prevents sending when the input is empty', async () => {
@@ -178,6 +191,18 @@ describe('local companion composer interactions', () => {
 
     expect(getChatMessages(wrapper, 'user').length).toBe(userMessages.length);
     expect(getChatMessages(wrapper, 'assistant').length).toBe(assistantMessages.length);
+  });
+
+  it('shows feedback when send is clicked with an empty input', async () => {
+    const { wrapper } = await mountApp('/app/companion');
+    const sendButton = wrapper.get('[data-testid="chat-send"]');
+
+    await sendButton.trigger('click');
+    await flushPromises();
+
+    expect(wrapper.get('[data-testid="chat-feedback"]').text()).toBe(
+      '\u5148\u5199\u70b9\u60f3\u8bf4\u7684\u8bdd\uff0c\u6211\u4f1a\u5728\u8fd9\u91cc\u542c\u4f60\u3002',
+    );
   });
 
   it('prevents sending when the input only contains whitespace', async () => {
@@ -195,19 +220,26 @@ describe('local companion composer interactions', () => {
     expect(getChatMessages(wrapper, 'assistant').length).toBe(assistantMessages.length);
   });
 
-  it('shows placeholder feedback for composer actions', async () => {
+  it('shows placeholder feedback for composer actions without mutating the thread', async () => {
     const { wrapper } = await mountApp('/app/companion');
+    const initialThreadCount = getThreadMessages(wrapper).length;
+    const chatInput = wrapper.get('[data-testid="chat-input"]');
+    await chatInput.setValue('\u5148\u4e0d\u8981\u6539\u52a8\u6211\u7684\u8f93\u5165');
+
     const expectedFeedback = {
-      'chat-plus': '添加功能暂未开放',
-      'chat-voice': '语音功能暂未开放',
-      'chat-settings': '设置功能暂未开放',
+      'chat-plus': '\u6dfb\u52a0\u529f\u80fd\u6682\u672a\u5f00\u653e',
+      'chat-voice': '\u8bed\u97f3\u529f\u80fd\u6682\u672a\u5f00\u653e',
+      'chat-settings': '\u8bbe\u7f6e\u529f\u80fd\u6682\u672a\u5f00\u653e',
     } as const;
 
     for (const [testId, feedbackText] of Object.entries(expectedFeedback)) {
       const button = wrapper.get(`[data-testid="${testId}"]`);
       await button.trigger('click');
       await flushPromises();
+
       expect(wrapper.get('[data-testid="chat-feedback"]').text()).toBe(feedbackText);
+      expect(getThreadMessages(wrapper)).toHaveLength(initialThreadCount);
+      expect((chatInput.element as HTMLInputElement).value).toBe('\u5148\u4e0d\u8981\u6539\u52a8\u6211\u7684\u8f93\u5165');
     }
   });
 });

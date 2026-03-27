@@ -5,19 +5,28 @@
         <p class="companion-tab__brand">{{ companionHeader.title }}</p>
         <p class="companion-tab__time">{{ companionHeader.timestamp }}</p>
       </div>
-      <button type="button" class="companion-tab__settings">设置</button>
+      <button
+        type="button"
+        class="companion-tab__settings"
+        data-testid="chat-settings"
+        @click="showFeedback(companionFeedbackMessages.settings)"
+      >
+        {{ composerActions.settings }}
+      </button>
     </header>
 
     <section class="companion-tab__thread" data-testid="chat-thread">
       <article
-        v-for="message in companionMessages"
+        v-for="message in threadMessages"
         :key="message.id"
         class="companion-tab__message"
         :class="message.role === 'user' ? 'companion-tab__message--user' : 'companion-tab__message--assistant'"
+        data-testid="chat-message"
+        :data-role="message.role"
       >
         <span class="companion-tab__author">{{ message.author }}</span>
         <div class="companion-tab__bubble">
-          <p>{{ message.text }}</p>
+          <p data-testid="chat-message-text">{{ message.text }}</p>
           <div v-if="message.steps" class="companion-tab__steps">
             <div v-for="(step, index) in message.steps" :key="step" class="companion-tab__step">
               <span>{{ index + 1 }}</span>
@@ -32,23 +41,101 @@
     <div class="companion-tab__status">{{ companionHeader.status }}</div>
 
     <div class="companion-tab__composer" data-testid="chat-composer">
-      <button type="button" class="companion-tab__composer-icon">+</button>
-      <div class="companion-tab__composer-input">{{ composerActions.placeholder }}</div>
-      <button type="button" class="companion-tab__composer-icon">语音</button>
-      <button type="button" class="companion-tab__composer-send">发送</button>
+      <button
+        type="button"
+        class="companion-tab__composer-icon"
+        data-testid="chat-plus"
+        @click="showFeedback(companionFeedbackMessages.plus)"
+      >
+        {{ composerActions.plus }}
+      </button>
+      <input
+        v-model="draftMessage"
+        class="companion-tab__composer-input"
+        data-testid="chat-input"
+        :placeholder="composerActions.placeholder"
+        type="text"
+      />
+      <button
+        type="button"
+        class="companion-tab__composer-icon"
+        data-testid="chat-voice"
+        @click="showFeedback(companionFeedbackMessages.voice)"
+      >
+        {{ composerActions.voice }}
+      </button>
+      <button type="button" class="companion-tab__composer-send" data-testid="chat-send" @click="sendMessage">
+        {{ composerActions.send }}
+      </button>
     </div>
+
+    <p class="companion-tab__feedback" data-testid="chat-feedback" aria-live="polite">
+      {{ feedbackMessage }}
+    </p>
   </section>
 </template>
 
 <script setup lang="ts">
-import { companionHeader, companionMessages, composerActions } from '@/data/companion';
+import { ref } from 'vue';
+
+import {
+  companionFeedbackMessages,
+  companionHeader,
+  companionMessages,
+  composerActions,
+  createMockCompanionReply,
+  type CompanionMessage,
+} from '@/data/companion';
+
+function cloneMessage(message: CompanionMessage): CompanionMessage {
+  return {
+    ...message,
+    steps: message.steps ? [...message.steps] : undefined,
+  };
+}
+
+const threadMessages = ref<CompanionMessage[]>(companionMessages.map(cloneMessage));
+const draftMessage = ref('');
+const feedbackMessage = ref('');
+const replyIndex = ref(0);
+
+function showFeedback(message: string) {
+  feedbackMessage.value = message;
+}
+
+function sendMessage() {
+  const trimmedDraft = draftMessage.value.trim();
+
+  if (!trimmedDraft) {
+    showFeedback(companionFeedbackMessages.emptyDraft);
+    return;
+  }
+
+  threadMessages.value.push({
+    id: `user-${threadMessages.value.length + 1}`,
+    role: 'user',
+    author: '你',
+    text: trimmedDraft,
+  });
+
+  threadMessages.value.push({
+    id: `assistant-${threadMessages.value.length + 1}`,
+    role: 'assistant',
+    author: companionHeader.title,
+    text: createMockCompanionReply(trimmedDraft, replyIndex.value),
+  });
+
+  replyIndex.value += 1;
+  draftMessage.value = '';
+  feedbackMessage.value = '';
+}
 </script>
 
 <style scoped>
 .companion-tab {
   min-height: 100%;
   display: grid;
-  grid-template-rows: auto auto auto 1fr;
+  grid-template-rows: auto auto auto 1fr auto;
   gap: 1rem;
   padding: 1.4rem 1.4rem 1rem;
   align-content: start;
@@ -184,9 +271,19 @@ import { companionHeader, companionMessages, composerActions } from '@/data/comp
 }
 
 .companion-tab__composer-input {
+  width: 100%;
+  border: none;
   padding: 0.85rem 1rem;
   border-radius: 18px;
   background: rgba(244, 244, 240, 0.9);
+  color: var(--color-text);
+}
+
+.companion-tab__composer-input:focus {
+  outline: none;
+}
+
+.companion-tab__composer-input::placeholder {
   color: var(--color-text-muted);
 }
 
@@ -206,5 +303,12 @@ import { companionHeader, companionMessages, composerActions } from '@/data/comp
 .companion-tab__composer-send {
   background: linear-gradient(135deg, var(--color-primary), var(--color-primary-soft));
   color: white;
+}
+
+.companion-tab__feedback {
+  min-height: 1.25rem;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
 }
 </style>
