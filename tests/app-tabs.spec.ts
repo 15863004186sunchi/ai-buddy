@@ -64,6 +64,19 @@ describe('app tabs routing', () => {
     expect(wrapper.get('[data-testid="healing-categories"]').exists()).toBe(true);
   });
 
+  it('renders healing category icon labels in Chinese instead of raw English tokens', async () => {
+    const { wrapper } = await mountApp('/app/healing');
+
+    expect(wrapper.text()).toContain('\u52a9\u7720');
+    expect(wrapper.text()).toContain('\u51a5\u60f3');
+    expect(wrapper.text()).toContain('\u767d\u566a');
+    expect(wrapper.text()).toContain('\u6668\u5149');
+    expect(wrapper.text()).not.toContain('bedtime');
+    expect(wrapper.text()).not.toContain('self_improvement');
+    expect(wrapper.text()).not.toContain('waves');
+    expect(wrapper.text()).not.toContain('wb_sunny');
+  });
+
   it('navigates from healing discovery entry points to player routes', async () => {
     const { wrapper, router } = await mountApp('/app/healing');
 

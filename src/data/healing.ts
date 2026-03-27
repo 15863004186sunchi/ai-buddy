@@ -47,10 +47,10 @@ export const healingHero: HealingDiscoveryHero = {
 export const healingMoods = ['焦虑', '疲惫', '专注', '喜悦', '低落'];
 
 export const healingCategories: HealingCategory[] = [
-  { id: 'sleep', title: '助眠原声', meta: '128 个音频', icon: 'bedtime', targetId: 'track-1' },
-  { id: 'meditation', title: '减压冥想', meta: '85 个引导', icon: 'self_improvement', targetId: 'track-2' },
-  { id: 'noise', title: '专注白噪音', meta: '42 种氛围', icon: 'waves', targetId: 'track-3' },
-  { id: 'morning', title: '晨间唤醒', meta: '15 个时刻', icon: 'wb_sunny', targetId: 'track-4' },
+  { id: 'sleep', title: '助眠原声', meta: '128 个音频', icon: '助眠', targetId: 'track-1' },
+  { id: 'meditation', title: '减压冥想', meta: '85 个引导', icon: '冥想', targetId: 'track-2' },
+  { id: 'noise', title: '专注白噪音', meta: '42 种氛围', icon: '白噪', targetId: 'track-3' },
+  { id: 'morning', title: '晨间唤醒', meta: '15 个时刻', icon: '晨光', targetId: 'track-4' },
 ];
 
 export const recentHealingTracks: HealingTrackSummary[] = [
