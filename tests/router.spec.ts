@@ -61,4 +61,32 @@ describe('app bootstrap', () => {
 
     expect(router.currentRoute.value.fullPath).toBe('/auth');
   });
+
+  it('redirects unauthenticated users from journal detail to auth', async () => {
+    const router = createAppRouter(createMemoryHistory());
+    router.push('/journal/journal-1');
+    await router.isReady();
+
+    mount(App, {
+      global: {
+        plugins: [router],
+      },
+    });
+
+    expect(router.currentRoute.value.fullPath).toBe('/auth');
+  });
+
+  it('redirects unauthenticated users from healing player to auth', async () => {
+    const router = createAppRouter(createMemoryHistory());
+    router.push('/healing/track-1');
+    await router.isReady();
+
+    mount(App, {
+      global: {
+        plugins: [router],
+      },
+    });
+
+    expect(router.currentRoute.value.fullPath).toBe('/auth');
+  });
 });
