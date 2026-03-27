@@ -44,23 +44,29 @@ describe('secondary pages', () => {
     resetSessionForTests();
   });
 
-  it('renders the journal detail route shell inside the shared viewport and keeps history on the journal tab after custom back', async () => {
+  it('renders the journal detail route with hero, tags, ai feedback, favorite toggle, and companion navigation', async () => {
     const { router, wrapper } = await mountSecondaryPage('/journal/journal-1', '/app/journal');
 
     expect(router.currentRoute.value.fullPath).toBe('/journal/journal-1');
     expect(wrapper.get('[data-testid="journal-detail-page"]').exists()).toBe(true);
-    expect(wrapper.get('[data-testid="journal-detail-scroll"]').exists()).toBe(true);
-    expect(wrapper.text()).toContain('Journal Detail');
+    expect(wrapper.get('[data-testid="journal-detail-hero"]').exists()).toBe(true);
+    expect(wrapper.get('[data-testid="journal-detail-tags"]').exists()).toBe(true);
+    expect(wrapper.get('[data-testid="journal-detail-feedback"]').exists()).toBe(true);
+    expect(wrapper.text()).toContain('\u5fc3\u7075\u7684\u5b81\u9759');
+    expect(wrapper.text()).toContain('\u5fc3\u7075\u7684\u56de\u54cd');
 
-    await wrapper.get('[data-testid="journal-detail-back"]').trigger('click');
+    const favoriteButton = wrapper.get('[data-testid="journal-detail-favorite"]');
+    expect(favoriteButton.attributes('data-state')).toBe('inactive');
+
+    await favoriteButton.trigger('click');
     await flushPromises();
 
-    expect(router.currentRoute.value.fullPath).toBe('/app/journal');
+    expect(wrapper.get('[data-testid="journal-detail-favorite"]').attributes('data-state')).toBe('active');
 
-    router.back();
+    await wrapper.get('[data-testid="journal-detail-companion"]').trigger('click');
     await flushPromises();
 
-    expect(router.currentRoute.value.fullPath).toBe('/app/journal');
+    expect(router.currentRoute.value.fullPath).toBe('/app/companion');
   });
 
   it('renders the healing player route shell inside the shared viewport and keeps history on the healing tab after custom back', async () => {

@@ -47,11 +47,14 @@ describe('app tabs routing', () => {
     expect(wrapper.get('[data-testid="chat-composer"]').exists()).toBe(true);
   });
 
-  it('renders journal as a list page for /app/journal', async () => {
+  it('renders journal as an empty-state page for /app/journal by default', async () => {
     const { wrapper } = await mountApp('/app/journal');
 
-    expect(wrapper.get('[data-testid="journal-list"]').exists()).toBe(true);
+    expect(wrapper.get('[data-testid="journal-empty-state"]').exists()).toBe(true);
+    expect(wrapper.get('[data-testid="journal-empty-cta"]').exists()).toBe(true);
+    expect(wrapper.find('[data-testid="journal-list"]').exists()).toBe(false);
     expect(wrapper.text()).toContain('\u5fc3\u60c5\u65e5\u8bb0');
+    expect(wrapper.text()).toContain('\u5f00\u59cb\u4f60\u7684\u7b2c\u4e00\u7bc7\u65e5\u8bb0');
   });
 
   it('renders healing as a discovery page for /app/healing', async () => {
