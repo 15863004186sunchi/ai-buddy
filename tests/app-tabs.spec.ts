@@ -121,3 +121,75 @@ describe('app tabs routing', () => {
     expect(router.currentRoute.value.fullPath).toBe('/healing/track-3');
   });
 });
+
+describe('local companion composer interactions', () => {
+  it('allows typing into the companion composer', async () => {
+    const { wrapper } = await mountApp('/app/companion');
+    const input = wrapper.get('[data-testid="chat-input"]');
+    await input.setValue('Tell me a story');
+    await flushPromises();
+    expect((input.element as HTMLInputElement).value).toBe('Tell me a story');
+  });
+
+  it('clicking send appends a user message', async () => {
+    const { wrapper } = await mountApp('/app/companion');
+    const userMessages = wrapper.findAll('.companion-tab__message--user');
+    const chatInput = wrapper.get('[data-testid="chat-input"]');
+    const sendButton = wrapper.get('[data-testid="chat-send"]');
+
+    await chatInput.setValue('How are you?');
+    await sendButton.trigger('click');
+    await flushPromises();
+
+    const updatedUserMessages = wrapper.findAll('.companion-tab__message--user');
+    expect(updatedUserMessages.length).toBe(userMessages.length + 1);
+    const latestUserMessage = updatedUserMessages[updatedUserMessages.length - 1];
+    expect(latestUserMessage.text()).toContain('How are you?');
+  });
+
+  it('clicking send appends a local assistant reply', async () => {
+    const { wrapper } = await mountApp('/app/companion');
+    const assistantMessages = wrapper.findAll('.companion-tab__message--assistant');
+    const chatInput = wrapper.get('[data-testid="chat-input"]');
+    const sendButton = wrapper.get('[data-testid="chat-send"]');
+
+    await chatInput.setValue('Show me a plan');
+    await sendButton.trigger('click');
+    await flushPromises();
+
+    const updatedAssistantMessages = wrapper.findAll('.companion-tab__message--assistant');
+    expect(updatedAssistantMessages.length).toBe(assistantMessages.length + 1);
+    const latestAssistantMessage = updatedAssistantMessages[updatedAssistantMessages.length - 1];
+    expect(latestAssistantMessage.text()).toContain('SoulEcho');
+  });
+
+  it('prevents sending when the input is empty', async () => {
+    const { wrapper } = await mountApp('/app/companion');
+    const userMessages = wrapper.findAll('.companion-tab__message--user');
+    const assistantMessages = wrapper.findAll('.companion-tab__message--assistant');
+    const sendButton = wrapper.get('[data-testid="chat-send"]');
+
+    await sendButton.trigger('click');
+    await flushPromises();
+
+    expect(wrapper.findAll('.companion-tab__message--user').length).toBe(userMessages.length);
+    expect(wrapper.findAll('.companion-tab__message--assistant').length).toBe(assistantMessages.length);
+  });
+
+  it('shows placeholder feedback for composer actions', async () => {
+    const { wrapper } = await mountApp('/app/companion');
+    const actionTestIds = ['chat-plus', 'chat-voice', 'chat-settings'];
+    let previousFeedbackText = '';
+
+    for (const testId of actionTestIds) {
+      const button = wrapper.get(`[data-testid="${testId}"]`);
+      await button.trigger('click');
+      await flushPromises();
+      const feedback = wrapper.get('[data-testid="chat-feedback"]');
+      const currentFeedbackText = feedback.text();
+      expect(currentFeedbackText).not.toBe('');
+      expect(currentFeedbackText).not.toBe(previousFeedbackText);
+      previousFeedbackText = currentFeedbackText;
+    }
+  });
+});
