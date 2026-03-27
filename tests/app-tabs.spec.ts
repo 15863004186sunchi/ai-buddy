@@ -51,6 +51,14 @@ describe('app tabs routing', () => {
     expect(wrapper.text()).toContain('\u6bcf\u65e5\u56de\u54cd');
   });
 
+  it('keeps the app shell bottom navigation inside a dedicated viewport bottom region', async () => {
+    const { wrapper } = await mountApp('/app/home');
+
+    expect(wrapper.get('[data-testid="app-scroll"]').exists()).toBe(true);
+    expect(wrapper.get('[data-testid="bottom-nav"]').exists()).toBe(true);
+    expect(wrapper.get('[data-testid="viewport-bottom"]').find('[data-testid="bottom-nav"]').exists()).toBe(true);
+  });
+
   it('renders companion as a chat screen for /app/companion', async () => {
     const { wrapper } = await mountApp('/app/companion');
 

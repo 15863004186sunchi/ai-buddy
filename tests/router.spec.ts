@@ -3,7 +3,7 @@ import { createMemoryHistory } from 'vue-router';
 import { beforeEach, describe, expect, it } from 'vitest';
 
 import App from '@/App.vue';
-import { resetSessionForTests } from '@/composables/useSession';
+import { resetSessionForTests, useSession } from '@/composables/useSession';
 import { createAppRouter } from '@/router';
 
 describe('app bootstrap', () => {
@@ -88,5 +88,27 @@ describe('app bootstrap', () => {
     });
 
     expect(router.currentRoute.value.fullPath).toBe('/auth');
+  });
+
+  it('still allows authenticated users to enter the app shell after adding protected secondary routes', async () => {
+    useSession().register({
+      displayName: 'Tester',
+      email: 'tester@example.com',
+      password: 'password123',
+    });
+
+    const router = createAppRouter(createMemoryHistory());
+    router.push('/app/home');
+    await router.isReady();
+
+    const wrapper = mount(App, {
+      global: {
+        plugins: [router],
+      },
+    });
+
+    expect(router.currentRoute.value.fullPath).toBe('/app/home');
+    expect(wrapper.get('[data-testid="app-scroll"]').exists()).toBe(true);
+    expect(wrapper.get('[data-testid="bottom-nav"]').exists()).toBe(true);
   });
 });

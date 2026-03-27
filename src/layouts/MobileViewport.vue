@@ -5,7 +5,7 @@
         <div class="viewport-shell__scroll" :data-testid="scrollTestId">
           <slot />
         </div>
-        <div v-if="$slots.bottom" class="viewport-shell__bottom">
+        <div v-if="$slots.bottom" class="viewport-shell__bottom" data-testid="viewport-bottom">
           <slot name="bottom" />
         </div>
       </div>

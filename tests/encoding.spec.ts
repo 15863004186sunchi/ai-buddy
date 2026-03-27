@@ -39,9 +39,12 @@ describe('source encoding', () => {
     expect(journalData).toContain('\u5fc3\u7075\u7684\u5b81\u9759');
     expect(journalDetail).toContain('\u7ee7\u7eed\u5bf9\u8bdd');
     expect(journalDetail).toContain('\u6536\u85cf');
+    expect(journalDetail).toContain('\u7f16\u8f91\u529f\u80fd\u5c06\u5728\u4e0b\u4e00\u9636\u6bb5\u5f00\u653e');
     expect(healing).toContain('\u7597\u6108\u7a7a\u95f4');
     expect(healingData).toContain('\u6797\u95f4\u7ec6\u96e8');
     expect(healingPlayer).toContain('\u51a5\u60f3\u5f15\u5bfc');
+    expect(healingPlayer).toContain('\u64ad\u653e');
+    expect(healingPlayer).toContain('\u8fd4\u56de\u7597\u6108');
     expect(home).toContain('\u5e73\u9759');
     expect(validation).toContain('\u8bf7\u8f93\u5165\u6635\u79f0');
   });

@@ -134,4 +134,16 @@ describe('secondary pages', () => {
 
     expect(router.currentRoute.value.fullPath).toBe('/app/healing');
   });
+
+  it('does not render the tab-shell bottom navigation on secondary pages', async () => {
+    const journalPage = await mountSecondaryPage('/journal/journal-1', '/app/journal');
+    expect(journalPage.wrapper.get('[data-testid="journal-detail-scroll"]').exists()).toBe(true);
+    expect(journalPage.wrapper.find('[data-testid="bottom-nav"]').exists()).toBe(false);
+    expect(journalPage.wrapper.find('[data-testid="viewport-bottom"]').exists()).toBe(false);
+
+    const healingPage = await mountSecondaryPage('/healing/track-1', '/app/healing');
+    expect(healingPage.wrapper.get('[data-testid="healing-player-scroll"]').exists()).toBe(true);
+    expect(healingPage.wrapper.find('[data-testid="bottom-nav"]').exists()).toBe(false);
+    expect(healingPage.wrapper.find('[data-testid="viewport-bottom"]').exists()).toBe(false);
+  });
 });
