@@ -43,13 +43,20 @@
           <h2>为你推荐</h2>
         </div>
         <div class="home-tab__recommendations">
-          <article v-for="item in recommendations" :key="item.title" class="home-tab__recommendation-card glass-panel">
+          <button
+            v-for="item in recommendations"
+            :key="item.id"
+            type="button"
+            class="home-tab__recommendation-card glass-panel"
+            :data-testid="`home-recommendation-${item.id}`"
+            @click="openRecommendation(item.id)"
+          >
             <img :src="item.image" :alt="item.title" />
             <div>
               <strong>{{ item.title }}</strong>
               <span>{{ item.meta }}</span>
             </div>
-          </article>
+          </button>
         </div>
       </section>
     </section>
@@ -70,6 +77,10 @@ const userName = computed(() => session.user.value?.displayName ?? '旅伴');
 async function logout() {
   session.logout();
   await router.push('/welcome');
+}
+
+async function openRecommendation(id: string) {
+  await router.push(`/healing/${id}`);
 }
 </script>
 
@@ -209,6 +220,10 @@ async function logout() {
 .home-tab__recommendation-card {
   grid-template-columns: 5.5rem 1fr;
   align-items: center;
+  width: 100%;
+  border: none;
+  text-align: left;
+  cursor: pointer;
 }
 
 .home-tab__recommendation-card img {

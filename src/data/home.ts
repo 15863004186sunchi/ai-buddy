@@ -15,18 +15,21 @@ export const dailyEcho = {
 
 export const recommendations = [
   {
+    id: 'track-1',
     title: '正念呼吸',
     meta: '5 分钟 · 基础练习',
     image:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuCUfTjpUhUkY6kKL97JBlC1GwPDOKiVimUwpdyoedipls1qpMFpxNfSheZqeOEvCqNwP0L5K_10C7t05SPxoj6lR-OylaBsbgHd0IAETShOXRhiIx1-pFT8X4XqbVoGwxumJ9x4TdiinagQN1QpfK1V_1rKhOyGqA9Ob6wgwUTTJ2w3eY3nm0YeOQCB5AL0iJf_OAec_50P6J32Le8rcC440e_IaGuGSXDQ1u8fh4vceWLlRsAX6Q3lCOfo4WBYQNox9LIX6xrj1cfL',
   },
   {
+    id: 'track-2',
     title: '灵感声景',
     meta: '12 分钟 · 自然混响',
     image:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuA67x88SSEBWVDE-VLuiA5LoPKv-LrfPVv2_YNdLh5Gab20DtKCIWrzc1sbtl4zb9kxEPUuP00h6wDbMOfA3vpM54_1abxsatNdjDJjF8qA3yfrFPYSt3A79wUrfBtDUxmEe9jYyOYZlvcYGQ6oPzftzK797rVY0MH972fR1bhQGfyFGqwSt9uAzomOkzoWIFUd2Y852Zyf9BEWQNwh-GgW-YP105i9vUh4knN9wd9vIa2dbi1PjB5J-XLX84ebWQI0uum7oaXfvFO4',
   },
   {
+    id: 'track-3',
     title: '晚安整理',
     meta: '8 分钟 · 睡前放松',
     image:

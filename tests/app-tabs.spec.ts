@@ -77,6 +77,28 @@ describe('app tabs routing', () => {
     expect(wrapper.text()).not.toContain('wb_sunny');
   });
 
+  it('navigates from home recommendations to existing healing player routes', async () => {
+    const { wrapper, router } = await mountApp('/app/home');
+
+    await wrapper.get('[data-testid="home-recommendation-track-1"]').trigger('click');
+    await flushPromises();
+    expect(router.currentRoute.value.fullPath).toBe('/healing/track-1');
+
+    await router.push('/app/home');
+    await flushPromises();
+
+    await wrapper.get('[data-testid="home-recommendation-track-2"]').trigger('click');
+    await flushPromises();
+    expect(router.currentRoute.value.fullPath).toBe('/healing/track-2');
+
+    await router.push('/app/home');
+    await flushPromises();
+
+    await wrapper.get('[data-testid="home-recommendation-track-3"]').trigger('click');
+    await flushPromises();
+    expect(router.currentRoute.value.fullPath).toBe('/healing/track-3');
+  });
+
   it('navigates from healing discovery entry points to player routes', async () => {
     const { wrapper, router } = await mountApp('/app/healing');
 
