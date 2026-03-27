@@ -28,6 +28,11 @@ describe('source encoding', () => {
     expect(auth).toContain('\u6b22\u8fce\u56de\u6765');
     expect(register).toContain('\u7acb\u5373\u6ce8\u518c');
     expect(companion).toContain('\u4e8b\u60c5\u592a\u591a\u4e86');
+    expect(companion).toContain('\u5206\u4eab\u4f60\u7684\u60f3\u6cd5');
+    expect(companion).toContain('\u5148\u5199\u70b9\u60f3\u8bf4\u7684\u8bdd');
+    expect(companion).toContain('\u6dfb\u52a0\u529f\u80fd\u6682\u672a\u5f00\u653e');
+    expect(companion).toContain('\u8bed\u97f3\u529f\u80fd\u6682\u672a\u5f00\u653e');
+    expect(companion).toContain('\u8bbe\u7f6e\u529f\u80fd\u6682\u672a\u5f00\u653e');
     expect(journalTab).toContain('\u641c\u7d22\u90a3\u4e00\u523b\u7684\u60c5\u611f');
     expect(journalData).toContain('\u5fc3\u60c5\u65e5\u8bb0');
     expect(journalData).toContain('\u5f00\u59cb\u4f60\u7684\u7b2c\u4e00\u7bc7\u65e5\u8bb0');
